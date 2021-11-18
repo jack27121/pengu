@@ -1,10 +1,10 @@
 {
   "spriteId": {
-    "name": "spr_wall_halfpipe",
-    "path": "sprites/spr_wall_halfpipe/spr_wall_halfpipe.yy",
+    "name": "spr_wall_icey",
+    "path": "sprites/spr_wall_icey/spr_wall_icey.yy",
   },
   "solid": false,
-  "visible": false,
+  "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
@@ -23,7 +23,9 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -31,7 +33,7 @@
     "path": "folders/tools.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_wall_halfpipe",
+  "name": "obj_wall_icey",
   "tags": [],
   "resourceType": "GMObject",
 }

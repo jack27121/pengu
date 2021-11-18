@@ -7,38 +7,28 @@ if(controlled){
 	scaleY = lerp(scaleY,1,0.15);
 	scaleX = lerp(scaleX,1,0.15);
 	
-	#region movement
-	//hspdDelta = 0;
-	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-
-	if(hinput>0){
-		if(hspd>=0) hspd+=acc
-		else hspd+=dcc;
-	}
-	
-	if(hinput<0){
-		if(hspd<=0) hspd-=acc
-		else hspd-=dcc;
-	}
-	
-	if(hinput == 0){
-		if hspd>0 hspd-=frc;	
-		if hspd<0 hspd+=frc;
-		if(frc>=abs(hspd)) hspd = 0;
-	}
-	
-	show_debug_message(hspd);
-	#endregion
-	
-	
 	#region jumping
 	if (input_check_pressed(eVerb.Up) && grounded){
-		//state.change("jumping");
+		state.change("jumping");
 		vspd=-6;
 	} else
 	#endregion
 	
+	vspd+=grv
 	
-	collision(); //Collissions
+	#region movement
+	//hspdDelta = 0;
+	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
+	
+	vspd=clamp(vspd,-vspdMax,vspdMax);
+	hspd=clamp(hspd,-hspdMax,hspdMax);
+
+	if(hinput!=0){
+		hspd+=hinput*spd;
+		collision(0.95); //Collissions
+	} else collision(0.8);
+	
+	show_debug_message(hspd);
+	#endregion
 	
 }

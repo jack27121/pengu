@@ -8,21 +8,15 @@ vinput = 0;
 
 hspd = 0;
 vspd = 0;
+hspdMax = 3;
+vspdMax = 6;
 
-hspdl = 16;
-vspdl = 16;
+spd= 0.21;
+spdSliding= 0.3;
 
-acc= 0.046875;
-dcc=0.5;
-
-frc=0.046875;
 grv=0.21875;
 
 grounded = false;
-
-acos = 1;
-asin = 0;
-angle = 0;
 
 
 
@@ -40,7 +34,7 @@ state.event_set_default_function("step", function() {
 });
 
 state.event_set_default_function("draw", function() {
-	draw_sprite_ext(sprite_index,subimg,x,y,image_xscale*scaleX,image_yscale*scaleY,angle,white,image_alpha);
+	draw_sprite_ext(sprite_index,subimg,x,y,image_xscale*scaleX,image_yscale*scaleY,0,white,image_alpha);
 });
 
 state.add("idle", {
@@ -48,10 +42,10 @@ state.add("idle", {
 		sprite_index = spr_pengu_idle;
     },
 	step: function() {
-		//if (hinput != 0){
-		//	if( hinput != image_xscale ) state.change("turning");
-		//	else state.change("running");
-		//}
+		if (hinput != 0){
+			if( hinput != image_xscale ) state.change("turning");
+			else state.change("running");
+		}
 	},
 });
 

@@ -1,13 +1,13 @@
 /// @description
 #macro cam view_camera[0]
-#macro view_w 416 //camera_get_view_width(view_camera[0])
-#macro view_h 240 //camera_get_view_height(view_camera[0])
+#macro view_w 320 //camera_get_view_width(view_camera[0])
+#macro view_h 180 //camera_get_view_height(view_camera[0])
 
 view_surf = -1;
 camera_set_view_size(cam,view_w,view_h);
 
 //Game Resoloution
-global.upscale = 3;
+global.upscale = 4;
 
 resolution_resize = function(){
 	display_width =  view_w * global.upscale;
