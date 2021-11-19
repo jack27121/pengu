@@ -10,7 +10,7 @@ if(controlled){
 	#region jumping
 	if (input_check_pressed(eVerb.Up) && grounded){
 		state.change("jumping");
-		vspd=-6;
+		vspd=-jumpF;
 	} else
 	#endregion
 	
@@ -19,16 +19,17 @@ if(controlled){
 	#region movement
 	//hspdDelta = 0;
 	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-	
+	hspd+=hinput*spd;
 	vspd=clamp(vspd,-vspdMax,vspdMax);
-	hspd=clamp(hspd,-hspdMax,hspdMax);
-
-	if(hinput!=0){
-		hspd+=hinput*spd;
-		collision(0.95); //Collissions
-	} else collision(0.8);
 	
-	show_debug_message(hspd);
+	if(state.get_current_state() != "sliding"){ //the limit is higher when sliding
+		if(hinput!=0){
+			collision(0.95); //Collissions
+		} else collision(0.8);
+		hspd=clamp(hspd,-hspdMax,hspdMax);
+	} else{
+		hspd=clamp(hspd,-hspdSlidingMax,hspdSlidingMax);
+		collision(0.96);
+	}
 	#endregion
-	
 }

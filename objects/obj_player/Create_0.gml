@@ -9,10 +9,10 @@ vinput = 0;
 hspd = 0;
 vspd = 0;
 hspdMax = 3;
+hspdSlidingMax = 6;
 vspdMax = 6;
 
-spd= 0.21;
-spdSliding= 0.3;
+spd= 0.42;
 
 grv=0.21875;
 
@@ -25,6 +25,7 @@ scaleY = 1;
 
 jumpF = 10;
 subimg = 0;
+slidingSubimg = 0;
 
 #region states
 state = new SnowState("idle");
@@ -89,7 +90,41 @@ state.add("running", {
 	step: function() {
 		if (hinput == 0) state.change("halt");
 		else if (hinput != image_xscale) state.change("turning");
+		
+		if(input_check_pressed(eVerb.Down)) state.change("sliding_begin");
 	},
+});
+
+state.add("sliding_begin", {
+    enter: function() {
+		sprite_index = spr_pengu_slide_begin;
+		subimg = 0;
+    },
+	step: function() {
+		if (animation_end(sprite_index,subimg)){
+			state.change("sliding");
+		}
+	},
+});
+
+state.add("sliding", {
+    enter: function() {
+		sprite_index = spr_pengu_slide;
+		
+		if(image_xscale > 0) slidingSubimg = 6; //decides wether to start pointing left or right
+		else slidingSubimg = 0;
+		subimg = slidingSubimg;
+		image_xscale = 1;
+    },
+	step: function() {
+		if(hinput > 0) slidingSubimg+=0.1;
+		if(hinput < 0) slidingSubimg-=0.1;
+		slidingSubimg = clamp(slidingSubimg,0,6);
+		subimg = slidingSubimg;
+	},
+	leave: function() {
+		if(slidingSubimg<3) image_xscale = -1;	
+	}
 });
 
 state.add("jumping", {
