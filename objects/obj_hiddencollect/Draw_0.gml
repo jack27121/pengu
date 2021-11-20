@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_index,image_index,x,y+sinwave(-5,5,1,0),image_xscale,image_yscale,sinwave(-10,10,1,0),image_blend,image_alpha);

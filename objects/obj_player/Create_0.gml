@@ -91,7 +91,7 @@ state.add("running", {
 		if (hinput == 0) state.change("halt");
 		else if (hinput != image_xscale) state.change("turning");
 		
-		if(input_check_pressed(eVerb.Down)) state.change("sliding_begin");
+		if(input_check(eVerb.Down)) state.change("sliding_begin");
 	},
 });
 
