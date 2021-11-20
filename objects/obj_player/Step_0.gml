@@ -24,7 +24,7 @@ if(controlled){
 	
 	if(state.get_current_state() != "sliding"){ //the limit is higher when sliding
 		if(hinput!=0){
-			collision(0.95); //Collissions
+			collision(0.90);
 		} else collision(0.8);
 		hspd=clamp(hspd,-hspdMax,hspdMax);
 	} else{

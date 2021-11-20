@@ -35,7 +35,7 @@ state.event_set_default_function("step", function() {
 });
 
 state.event_set_default_function("draw", function() {
-	draw_sprite_ext(sprite_index,subimg,x,y,image_xscale*scaleX,image_yscale*scaleY,0,white,image_alpha);
+	draw_sprite_ext(sprite_index,subimg,x,y,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);
 });
 
 state.add("idle", {
@@ -47,6 +47,8 @@ state.add("idle", {
 			if( hinput != image_xscale ) state.change("turning");
 			else state.change("running");
 		}
+		
+		if(input_check(eVerb.Down)) state.change("sliding_begin");
 	},
 });
 
@@ -109,18 +111,25 @@ state.add("sliding_begin", {
 
 state.add("sliding", {
     enter: function() {
+		scaleY = 0.8;
+		scaleX = 1.2;
+		
 		sprite_index = spr_pengu_slide;
 		
-		if(image_xscale > 0) slidingSubimg = 6; //decides wether to start pointing left or right
+		if(image_xscale > 0) slidingSubimg = 12; //decides wether to start pointing left or right
 		else slidingSubimg = 0;
 		subimg = slidingSubimg;
 		image_xscale = 1;
     },
 	step: function() {
-		if(hinput > 0) slidingSubimg+=0.1;
-		if(hinput < 0) slidingSubimg-=0.1;
-		slidingSubimg = clamp(slidingSubimg,0,6);
+		slidingSubimg+=hspd/10;
+		slidingSubimg = clamp(slidingSubimg,0,12);
 		subimg = slidingSubimg;
+		
+		if(hinput !=0 ){ //squishes a little bit when moving
+			scaleY = 0.95;
+			scaleX = 1.05;	
+		}
 	},
 	leave: function() {
 		if(slidingSubimg<3) image_xscale = -1;	

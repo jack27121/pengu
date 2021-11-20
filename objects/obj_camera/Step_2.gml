@@ -1,6 +1,7 @@
 /// @description
 #region Fullscreen toggle
-if (keyboard_check_pressed(vk_f11)){
+if (keyboard_check_pressed(vk_f11))
+{
 	if (window_get_fullscreen()){
 		window_set_fullscreen(false);
 	}else{
@@ -17,14 +18,17 @@ if (!is_undefined(global.camera_follow))
 	yTo = global.camera_follow.y;
 	
 	//update camera position
-	if (abs(xTo - x) > bounds_w){
-		x += (xTo - x)*spd
+	while (abs(xTo - x) > bounds_w)
+	{
+		if (x < xTo) x+=spd;
+		else if (x > xTo) x-=spd;
 	}
 	
-	if (abs(y - yTo) > bounds_h){
-		y += (yTo - y)*spd
+	while (abs(y - yTo) > bounds_h)
+	{
+		if (y < yTo) y+=spd;
+		else if (y > yTo) y-=spd;
 	}
-	
 } else if(moving){
 	//gradually moves camera into position based on duration
 	if (duration == 0){
@@ -66,5 +70,3 @@ var new_y = y - (view_h / 2 + shake_y)*zoom;
 //constrained_y = clamp(new_y,0,room_height-view_h)
 
 camera_set_view_pos(cam, new_x, new_y);
-
-effect_clear()

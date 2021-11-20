@@ -10,18 +10,16 @@ camera_set_view_size(cam,view_w,view_h);
 global.upscale = 4;
 
 resolution_resize = function(){
-	display_width =  view_w * global.upscale;
-	display_height = view_h * global.upscale;
-	
-	window_set_size(display_width, display_height);
-	display_set_gui_size(display_width, display_height);
+	window_set_size(view_w*global.upscale, view_h*global.upscale);
+	display_set_gui_size(-1,-1);
 	surface_resize(application_surface, view_w,view_h);
 	display_reset(0, false);
 	
 	view_wport[0] = view_w
 	view_hport[0] = view_h
 	
-	
+	display_width =  view_w * global.upscale;
+	display_height = view_h* global.upscale;
 	
 	if(window_get_fullscreen())
 	{
@@ -37,8 +35,8 @@ zoom = 1;
 
 // Dipplers note: we should make this a global variable that can change based on the room. PBBBPLPBLPTTT
 //the camera bounding box, for the player to leave before the camera starts moving
-bounds_w = 10;
-bounds_h = 10;
+bounds_w = 20;
+bounds_h = 20;
 
 //screen shake1
 shake_length = 0;
@@ -51,7 +49,10 @@ zooming = false;
 shake_x = 0;
 shake_y = 0;
 
-spd = 0.1;
+constrained_x = 0;
+constrained_y = 0;
+
+spd = 0.2;
 
 #region shaders
 application_surface_draw_enable(false);

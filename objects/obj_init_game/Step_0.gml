@@ -6,3 +6,5 @@ if (keyboard_check(ord("R")))
 	audio_stop_all();
 	game_restart();
 }
+
+global.timer++;

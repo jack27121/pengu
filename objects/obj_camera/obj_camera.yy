@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_tool_cam",
-    "path": "sprites/spr_tool_cam/spr_tool_cam.yy",
+    "name": "",
+    "path": "",
   },
   "solid": false,
   "visible": true,

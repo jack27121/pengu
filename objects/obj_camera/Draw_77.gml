@@ -32,5 +32,14 @@ shader_reset();
 surface_reset_target();
 
 //Draw rgb_split_surf
-draw_surface_stretched(rgb_split_surf,0,0,display_width,display_height);
+draw_surface_stretched(rgb_split_surf,0,0,view_w*global.upscale,view_h*global.upscale);
 surface_free(rgb_split_surf);
+
+#region points n' timer
+draw_set_font(f_hyper);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_text(4,4,"POINTS: " + string(global.points) + " / " + string(global.pointsMax));
+draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
+draw_text(4,70,string(global.timer/fps));
+#endregion

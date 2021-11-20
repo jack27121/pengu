@@ -1,10 +1,4 @@
 /// @description Esc Quitting
-draw_set_font(f_hyper)
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-
-draw_text(0,32,global.score);
-
 //if i < quit_speed
 //{
 //	//Holding the Esc key, will fade in the quit icon.

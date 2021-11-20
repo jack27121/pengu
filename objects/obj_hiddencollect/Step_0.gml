@@ -2,7 +2,7 @@ if distance_to_object(obj_player) < 10 and goto = false
 {
 	goto = true;
 	depth = obj_player.depth+1;
-	obj_controller.secret += 1;
+	global.secret += 1;
 	
 	repeat(5) {
 		sap = instance_create_depth(x,y+sinwave(-5,5,1,wavemod),obj_player.depth-1,obj_shrinkawaypart);
