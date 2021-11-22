@@ -1,3 +1,3 @@
 /// @description
-frict = 0.9875;
+frict = 0.95;
 bounciness = 0;

@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_plane",
-    "path": "sprites/spr_plane/spr_plane.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

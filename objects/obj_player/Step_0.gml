@@ -1,35 +1,60 @@
 /// @desc every step
 if(controlled){
 	subimg += sprite_get_speed(sprite_index);
-
+	
 	state.step();
-	//Makes the body always conform to it's original size
+	////Makes the body always conform to it's original size
 	scaleY = lerp(scaleY,1,0.15);
 	scaleX = lerp(scaleX,1,0.15);
 	
-	#region jumping
-	if (input_check_pressed(eVerb.Up) && grounded){
-		state.change("jumping");
-		vspd=-jumpF;
-	} else
-	#endregion
-	
-	vspd+=grv
+	if(grounded){
+		//jumping
+		if (input_check_pressed(eVerb.Up)){
+			grounded = false;
+			state.change("jumping");
+			vspd+= jumpF;
+		} else if (input_check(eVerb.Down) && !sliding){
+			sliding = true;
+			state.change("sliding_begin");
+		}
+	}
 	
 	#region movement
-	//hspdDelta = 0;
-	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-	hspd+=hinput*spd;
-	vspd=clamp(vspd,-vspdMax,vspdMax);
+	vspd+= mass * global.gravity; //applies gravity
 	
-	if(state.get_current_state() != "sliding"){ //the limit is higher when sliding
-		if(hinput!=0){
-			collision(0.90);
-		} else collision(0.8);
-		hspd=clamp(hspd,-hspdMax,hspdMax);
-	} else{
-		hspd=clamp(hspd,-hspdSlidingMax,hspdSlidingMax);
-		collision(0.96);
+	var maxFlySpd = max(abs(hspd),maxWalkSpd);
+	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
+	hspd += hinput * spd;
+	
+	//different max speeds
+	var frict = 0.75;
+	//walking
+	if (grounded && !sliding){
+		hspd = clamp(hspd,-maxWalkSpd,maxWalkSpd);
 	}
+	//sliding
+	else if (grounded && sliding){
+		hspd = clamp(hspd,-maxSlideSpd,maxSlideSpd);
+		frict = 0.95;
+	}
+	//flying
+	else{
+		hspd = clamp(hspd,-maxFlySpd,maxFlySpd);
+	}
+	vspd = clamp(vspd,-maxSpd,maxSpd);
+	
+	collision(frict)
+	
+	///slope factor
+	if grounded && collision_left_line(16) && collision_right_line(16){
+	    angle=find_angle(angle,16,24);
+	}else{
+	    angle=0;
+	}
+	image_angle = angle;
+	 
+	acos = cos(degtorad(angle));
+	asin = sin(degtorad(angle));
+	
 	#endregion
 }

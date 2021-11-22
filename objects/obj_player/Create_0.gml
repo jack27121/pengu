@@ -2,30 +2,33 @@
 controlled = true;
 invincible = false;
 hurting = false;
+grounded = false;
+sliding = false;
+
+mass = 0.3;
 
 hinput = 0;
 vinput = 0;
 
 hspd = 0;
 vspd = 0;
-hspdMax = 3;
-hspdSlidingMax = 6;
-vspdMax = 6;
 
-spd= 0.42;
+maxWalkSpd = 3;
+maxSlideSpd = 5;
+maxSpd = 8
 
-grv=0.21875;
-
-grounded = false;
-
-
+spd= 0.21;
 
 scaleX = 1;
 scaleY = 1;
 
-jumpF = 10;
+jumpF = -7;
 subimg = 0;
 slidingSubimg = 0;
+
+acos = 1;
+asin = 0;
+angle = 0;
 
 #region states
 state = new SnowState("idle");
@@ -47,25 +50,6 @@ state.add("idle", {
 			if( hinput != image_xscale ) state.change("turning");
 			else state.change("running");
 		}
-		
-		if(input_check(eVerb.Down)) state.change("sliding_begin");
-	},
-});
-
-state.add("halt", {
-    enter: function() {
-		subimg = 0;
-		sprite_index = spr_pengu_idle;
-    },
-	step: function() {
-		
-		if (hinput != 0){
-			if( hinput != sign(image_xscale) ) state.change("turning");
-			else state.change("running");
-		}
-		if (animation_end(sprite_index,subimg)){
-			state.change("idle");
-		}
 	},
 });
 
@@ -80,7 +64,7 @@ state.add("turning", {
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){
-			state.change("halt");
+			state.change("idle");
 		}
 	}
 });
@@ -90,10 +74,8 @@ state.add("running", {
 		sprite_index = spr_pengu_idle;
     },
 	step: function() {
-		if (hinput == 0) state.change("halt");
+		if (hinput == 0) state.change("idle");
 		else if (hinput != image_xscale) state.change("turning");
-		
-		if(input_check(eVerb.Down)) state.change("sliding_begin");
 	},
 });
 
@@ -114,6 +96,8 @@ state.add("sliding", {
 		scaleY = 0.8;
 		scaleX = 1.2;
 		
+		sliding = true;
+		
 		sprite_index = spr_pengu_slide;
 		
 		if(image_xscale > 0) slidingSubimg = 12; //decides wether to start pointing left or right
@@ -132,16 +116,14 @@ state.add("sliding", {
 		}
 	},
 	leave: function() {
+		sliding = false;
 		if(slidingSubimg<3) image_xscale = -1;	
 	}
 });
 
 state.add("jumping", {
     enter: function() {
-		sprite_index = spr_pengu_idle;
-		vspd = jumpF;
-		armYOffset = -15;
-		
+		sprite_index = spr_pengu_idle;		
 		if( hinput != 0 && hinput != image_xscale ) image_xscale = -image_xscale; //to turn when you start jumping
 		
 		scaleY = 1.9;
@@ -174,7 +156,7 @@ state.add("falling", {
 	step: function() {
 		
 		if(grounded){
-			if (hinput == 0) state.change("halt");
+			if (hinput == 0) state.change("idle");
 			else state.change("running");
 		}
 	},

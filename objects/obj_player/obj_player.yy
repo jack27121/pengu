@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_pengu_mask",
+    "path": "sprites/spr_pengu_mask/spr_pengu_mask.yy",
+  },
   "persistent": true,
   "parentObjectId": null,
   "physicsObject": false,

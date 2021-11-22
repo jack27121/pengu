@@ -4,7 +4,7 @@
     "path": "sprites/spr_wall_diagonal/spr_wall_diagonal.yy",
   },
   "solid": false,
-  "visible": false,
+  "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {

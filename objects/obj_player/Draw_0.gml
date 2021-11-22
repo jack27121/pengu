@@ -10,3 +10,5 @@ state.draw();
 //draw_circle(x + xOffset,y + yOffset + armYOffset,armRadius,1);
 
 //draw_set_alpha(1);
+
+//draw_circle(x+acos*16,y+asin*16,3,false);
