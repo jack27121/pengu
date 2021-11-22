@@ -7,20 +7,15 @@ function collision(frict = 0.8,bounciness = 0) {
 	var hspd_ = sign(hspd) * max(1,abs(hspd));
 	var vspd_ = sign(vspd) * max(1,abs(vspd));
 	
-	var nudgeH = 16;
+	var nudge = 8;
 	
 	// Horizontal collisions
 	//Checks if the player will hit the wall on the next frame
 	var wall = instance_place(x+hspd_, y, obj_wall);
 	if (wall != noone) {
-		//moves the player one pixel closer until it's just next to the wall, and then stop moving
-		//If there is space right next to the wall. It will nudge the player around the corner
-		if (!place_meeting(x+hspd, y-nudgeH, obj_wall)) {
+		//If there is space right above the wall. It will nudge the player up
+		if (!place_meeting(x+hspd, y-nudge, obj_wall)) {
 			while(place_meeting(x+hspd, y, obj_wall)) y-=1;
-			x+= hspd;
-		}
-		else if (!place_meeting(x+hspd, y+nudgeH, obj_wall)) {
-			while(place_meeting(x+hspd, y, obj_wall)) y+=1;
 			x+= hspd;
 		}
 		else {//Else it will then move the player one pixel closer until it's just next to the wall, and then stop moving
@@ -33,6 +28,13 @@ function collision(frict = 0.8,bounciness = 0) {
 	} else x+= hspd;
 	
 	// Vertical collisions
+	//keeps player alligned with floor
+	if(grounded && place_meeting(x, y+nudge, obj_wall)){
+		while(!place_meeting(x, y+1, obj_wall)) {
+			y += 1
+		}
+	}
+	
 	var wall = instance_place(x, y+vspd_, obj_wall);
 	if (wall != noone) {
 		while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
@@ -45,126 +47,16 @@ function collision(frict = 0.8,bounciness = 0) {
  		y+= vspd;
 		grounded = false;	
 	}
-}
-
-// @function	collision(radius,bounciness,frict);
-// @param		radius of collission circle
-// @param		frict 0.0 to 1.0
-// @param		bounciness 0.0 to 1.0
-// @description   collissions
-function collision_sphere(radius){
-	//Vertical movement
-	if(hspd > 0){
-		for(var i = 0; i < hspd && !collision_offset(16,dirRight);i++){
-			x+=acos;
-			y-=asin;
-		}
-	}
-	if(hspd < 0){
-		for(var i = 0; i > hspd && !collision_offset(16,dirLeft);i--){
-			x-=acos;
-			y+=asin;
-		}
-	}
 	
-	//Vertical movement
-	if(vspd > 0){
-		for(var i = 0; i < vspd && !collision_offset(16,dirUp);i++){
-			x+=acos;
-			y-=asin;
-		}
+	///slope factor
+	if (grounded && collision_left_line(8) && collision_right_line(8)){
+	    angle=find_angle(angle,8,24);
+	}else{
+	    angle=0;
 	}
-	if(vspd < 0){
-		for(var i = 0; i > vspd && !collision_offset(16,dirDown);i--){
-			x-=acos;
-			y+=asin;
-		}
-	}
-
-	acos = cos(degtorad(angle)); //cos 1 means rotation facing right
+	acos = cos(degtorad(angle));
 	asin = sin(degtorad(angle));
 	
-	
-	//if(hspd > 0){
-	//	for(var i = 0; i < hspd && !collision_right(16);i++){
-	//		x+=acos;
-	//		y-=asin;
-	//	}
-	//}
-	//if(hspd < 0){
-	//	for(var i = 0; i > hspd && !collision_left(16);i--){
-	//		x-=acos;
-	//		y+=asin;
-	//	}
-	//}
-	
-	//Vertical movement
-	//if(vspd > 0){
-	//	for(var i = 0; i < vspd && !collision_top(16);i++){
-	//		x+=acos;
-	//		y-=asin;
-	//	}
-	//}
-	//if(vspd < 0){
-	//	for(var i = 0; i > vspd && !collision_bottom(16);i--){
-	//		x-=acos;
-	//		y+=asin;
-	//	}
-	//}
-	
-	//Landing
-	//if(vspd >= 0 && !grounded && collision_bottom(16) && (collision_left_line(16) || collision_right_line(16))){
-	//	angle = find_angle(angle,10,16);
-	//	acos=cos(degtorad(angle));
-	//	asin=sin(degtorad(angle));
-	//	
-	//	vspd = 0;
-	//	grounded = true;
-	//}
-	
-	
-	//lock to ground
-	//if(grounded){
-	//	while collision_main(){
-	//		x-=asin; y-=acos;	
-	//	}
-	//	//while(collision_ground(16) && !collision_main()){
-	//	//	x+=asin; y+=acos;	
-	//	//}
-	//}
-	
-	
-	//wall collision
-	//while(collision_right(16)){
-	//	x-=acos;
-	//	y+=asin;
-	//}
-	//while(collision_left(16)){
-	//	x+=acos;
-	//	y-=asin;
-	//}
-	//
-	////leave ground
-	//if((!collision_left_line(16) || !collision_right_line(16)) && grounded){
-	//	grounded = false;	
-	//}
-	//
-	////gravity
-	//if (!grounded) vspd+=grv;
-	//
-	//if (grounded && collision_left_line(16) && collision_right_line(16)){
-	//	angle=find_angle(angle,16,24);	
-	//}else angle =0;
-	//
-	//acos = cos(degtorad(angle));
-	//asin = sin(degtorad(angle));
-}
-
-function collision_offset(radius,dir){
-	var x_ = lengthdir_x(radius,dir);
-	var y_ = lengthdir_y(radius,dir);
-	if collision_circle(x+x_*acos,y+y_*asin,3,obj_wall,true,true) return true;
-	return false;
 }
 
 //function collision_360(){
@@ -284,7 +176,7 @@ function collision_offset(radius,dir){
 //}
 //
 function collision_right_line(mask){
-	line = floor(mask*2.5);
+	var line = floor(mask*2.5);
 	if collision_line(
 		x+(acos*mask)+(asin*mask),
 		y-(asin*mask)+(acos*mask),
@@ -295,7 +187,7 @@ function collision_right_line(mask){
 }
 
 function collision_left_line(mask){
-	line = floor(mask*2.5);
+	var line = floor(mask*2.5);
 	if collision_line(
 		x-(acos*mask)+(asin*mask),
 		y+(asin*mask)+(acos*mask),

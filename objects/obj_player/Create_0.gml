@@ -38,7 +38,9 @@ state.event_set_default_function("step", function() {
 });
 
 state.event_set_default_function("draw", function() {
-	draw_sprite_ext(sprite_index,subimg,x,y,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);
+	var yoffset = 16 * (1-scaleY);
+	show_debug_message(yoffset);
+	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);
 });
 
 state.add("idle", {
@@ -161,7 +163,6 @@ state.add("falling", {
 		}
 	},
 	leave: function() {
-		armYOffset = 0;
 		scaleY = 0.7;
 		scaleX = 1.3;
 	}
