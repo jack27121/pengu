@@ -6,6 +6,7 @@ grounded = false;
 sliding = false;
 
 mass = 0.3;
+ouch = 0;
 
 hinput = 0;
 vinput = 0;
