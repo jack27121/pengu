@@ -27,6 +27,7 @@
     {"id":{"name":"GMLive_vm","path":"scripts/GMLive_vm/GMLive_vm.yy",},"order":5,},
     {"id":{"name":"input_player_source_set","path":"scripts/input_player_source_set/input_player_source_set.yy",},"order":7,},
     {"id":{"name":"obj_interactable_nonSolid","path":"objects/obj_interactable_nonSolid/obj_interactable_nonSolid.yy",},"order":7,},
+    {"id":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},"order":3,},
     {"id":{"name":"obj_conductor","path":"objects/obj_conductor/obj_conductor.yy",},"order":5,},
     {"id":{"name":"obj_wall_halfpipe","path":"objects/obj_wall_halfpipe/obj_wall_halfpipe.yy",},"order":26,},
     {"id":{"name":"move_functions","path":"scripts/move_functions/move_functions.yy",},"order":15,},
@@ -381,6 +382,7 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"init_game","path":"rooms/init_game/init_game.yy",},},
+    {"roomId":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},},
     {"roomId":{"name":"test_room","path":"rooms/test_room/test_room.yy",},},
     {"roomId":{"name":"rm_sound_test","path":"rooms/rm_sound_test/rm_sound_test.yy",},},
   ],

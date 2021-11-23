@@ -5,6 +5,7 @@
 
 state.draw();
 
+draw_set_alpha(0.2);
 draw_sprite(spr_pengu_mask,0,x,y);
 
 var mask = 8;
@@ -20,7 +21,8 @@ draw_line(
 	y+(asin*mask)+(acos*mask),
 	x-(acos*mask)+(asin*line),
 	y+(asin*mask)+(acos*line));
-	
+
+draw_set_alpha(1);
 	
 	
 	
