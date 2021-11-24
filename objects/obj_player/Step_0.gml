@@ -56,6 +56,8 @@ if(controlled){
 	scaleX = lerp(scaleX,1,0.15);
 	#endregion
 	
+	///////////////////// TAKING DAMAGE /////////////////////
+	
 	if ouch >= 1
 	{
 		image_blend = c_red;
@@ -66,6 +68,7 @@ if(controlled){
 			//"KILL" the player!!! DIE FAT FUCK!!!
 			visible = 0;
 			spd = 0;
+			controlled = 0;
 		}
 		else //OHHH? THE PLAYER DOES HAVE POINTS?
 		{
@@ -83,18 +86,17 @@ if(controlled){
 			ouch = 0.9; //SET OUCH TO 0.9 TO STOP IT FROM CHECKING TO KILL THE PLAYER
 		}
 	}
-	else
+	else 
 	{
-		ouch = approach(ouch,0,0.01); //GIVE A LITTLE BIT OF IMMORTALITY TIME
-		
 		if ouch = 0 //MAKE SURE THE PLAYER IS NOT STILL IMMORTAL
 		{
-			image_blend = c_white;
 			//DETECT BEING HIT BY ANYTHING
 			if instance_place(x,y+4,obj_spikes) {ouch = 1;}
 			//if instance_place(x,y+4,obj_yourmomma) {ouch = 1;}
-			//if instance_place(x,y+4,obj_enemytype) {ouch = 1;}
-			//if instance_place(x,y+4,obj_lava or something) {ouch = 1;}
+		}
+		else
+		{
+			ouch = approach(ouch,0,0.01); //GIVE A LITTLE BIT OF IMMORTALITY TIME	
 		}
 	}
 }

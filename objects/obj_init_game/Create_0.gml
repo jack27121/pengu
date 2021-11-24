@@ -63,6 +63,7 @@ global.points = 0;
 global.pointsMax = 99;
 global.pointsTotal = 0;
 global.secret = 0;
+global.counting = true;
 #endregion
 
 #region shaders

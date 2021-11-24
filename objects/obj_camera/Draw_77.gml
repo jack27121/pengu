@@ -39,7 +39,7 @@ surface_free(rgb_split_surf);
 draw_set_font(f_hyper);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text(4,4,"POINTS: " + string(global.points) + " / " + string(global.pointsMax));
+draw_text(4,4,"POINTS: " + string(global.points));
 draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
 draw_text(4,70,string(global.timer/fps));
 #endregion

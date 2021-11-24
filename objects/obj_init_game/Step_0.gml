@@ -7,4 +7,4 @@ if (keyboard_check(ord("R")))
 	game_restart();
 }
 
-global.timer++;
+if global.counting = true {global.timer++;}
