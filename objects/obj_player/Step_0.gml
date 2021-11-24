@@ -55,4 +55,46 @@ if(controlled){
 	scaleY = lerp(scaleY,1,0.15);
 	scaleX = lerp(scaleX,1,0.15);
 	#endregion
+	
+	if ouch >= 1
+	{
+		image_blend = c_red;
+		
+		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
+		if global.points = 0
+		{
+			//"KILL" the player!!! DIE FAT FUCK!!!
+			visible = 0;
+			spd = 0;
+		}
+		else //OHHH? THE PLAYER DOES HAVE POINTS?
+		{
+			vspd += (jumpF * acos)*1.25; // LAUNCH THE PLAYER UP
+			
+			repeat(global.points) { //CREATE POINTS AS ... WELL, FIRED POINTS
+				point = instance_create_layer(x,y-8,"Instances",obj_point); 
+				point.fired = true; 
+				point.direction = random_range(90-45,90+45);
+				point.speed = 4;
+				point.gravity = 0.1;
+			}
+				
+			global.points = 0; //REMOVE ALL POINTS
+			ouch = 0.9; //SET OUCH TO 0.9 TO STOP IT FROM CHECKING TO KILL THE PLAYER
+		}
+	}
+	else
+	{
+		ouch = approach(ouch,0,0.01); //GIVE A LITTLE BIT OF IMMORTALITY TIME
+		
+		if ouch = 0 //MAKE SURE THE PLAYER IS NOT STILL IMMORTAL
+		{
+			image_blend = c_white;
+			//DETECT BEING HIT BY ANYTHING
+			if instance_place(x,y+4,obj_spikes) {ouch = 1;}
+			//if instance_place(x,y+4,obj_yourmomma) {ouch = 1;}
+			//if instance_place(x,y+4,obj_enemytype) {ouch = 1;}
+			//if instance_place(x,y+4,obj_lava or something) {ouch = 1;}
+		}
+	}
 }
