@@ -57,7 +57,7 @@ if(controlled){
 	#endregion
 	
 #region damage
-	
+
 	if (ouch >= 1){
 		image_blend = c_red;
 		
@@ -68,7 +68,7 @@ if(controlled){
 			spd = 0;
 			controlled = 0;
 		}else{ //OHHH? THE PLAYER DOES HAVE POINTS?
-			vspd += (jumpF * acos)*1.25; // LAUNCH THE PLAYER UP
+			vspd = -6; // LAUNCH THE PLAYER UP
 			
 			repeat(global.points) { //CREATE POINTS AS ... WELL, FIRED POINTS
 				point = instance_create_layer(x,y-8,"Instances",obj_point); 
