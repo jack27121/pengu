@@ -1,10 +1,10 @@
 {
   "spriteId": {
-    "name": "spr_wall_diagonal",
-    "path": "sprites/spr_wall_diagonal/spr_wall_diagonal.yy",
+    "name": "spr_wall_bump",
+    "path": "sprites/spr_wall_bump/spr_wall_bump.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "tools",
-    "path": "folders/tools.yy",
+    "name": "walls",
+    "path": "folders/tools/walls.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_wall_diagonal",

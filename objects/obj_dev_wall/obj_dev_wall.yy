@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "testing",
-    "path": "folders/Objects/testing.yy",
+    "path": "folders/tools/background/testing.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_dev_wall",

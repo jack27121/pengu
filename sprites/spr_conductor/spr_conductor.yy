@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_conductor","path":"sprites/spr_conductor/spr_conductor.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_conductor",
     "tags": [],
     "resourceType": "GMSequence",
   },

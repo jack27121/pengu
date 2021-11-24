@@ -4,7 +4,7 @@
     "path": "sprites/spr_wall_icey/spr_wall_icey.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "tools",
-    "path": "folders/tools.yy",
+    "name": "walls",
+    "path": "folders/tools/walls.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_wall_icey",

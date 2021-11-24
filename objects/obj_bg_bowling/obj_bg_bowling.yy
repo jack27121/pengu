@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "bowling_alley",
-    "path": "folders/Objects/bowling_alley.yy",
+    "path": "folders/tools/background/bowling_alley.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_bg_bowling",

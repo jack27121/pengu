@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_controller_manager",
+    "path": "sprites/spr_controller_manager/spr_controller_manager.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
