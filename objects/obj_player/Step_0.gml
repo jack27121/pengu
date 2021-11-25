@@ -48,7 +48,7 @@ if(controlled){
 	}
 	vspd = clamp(vspd,-maxSpd,maxSpd);
 	
-	if(hinput != 0) frict = 0;
+	if(hinput != 0) frict = 1;
 	collision(frict)
 	state.step();
 	////Makes the body always conform to it's original size

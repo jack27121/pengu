@@ -17,8 +17,8 @@ vinput = 0;
 hspd = 0;
 vspd = 0;
 
-maxWalkSpd = 4;
-maxSlideSpd = 6;
+maxWalkSpd = 3;
+maxSlideSpd = 5;
 maxSpd = 8
 
 spd= 0.42;
