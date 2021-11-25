@@ -1,4 +1,4 @@
-/// @desc restart
+/// @desc restart && timer
 ////restart
 if (keyboard_check(ord("R")))
 {
@@ -7,4 +7,4 @@ if (keyboard_check(ord("R")))
 	game_restart();
 }
 
-if global.counting = true {global.timer++;}
+if (global.counting) global.timer++;

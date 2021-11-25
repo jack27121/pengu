@@ -40,7 +40,12 @@ function collision(frict = 0.8,bounciness = 0) {
 		while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
 			y += sign(vspd);
 		}
-		if(hinput == 0)	hspd = hspd * max(frict,wall.frict);//friction
+		var frict_ = max(frict,wall.frict);//friction
+		hspd = hspd * frict_;
+		if(frict_ > 0.9){
+			hspd-=(asin);
+		}
+		
 		vspd = vspd * -(bounciness + wall.bounciness);		//bounciness
 		grounded = true;
 	} else{

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_cookiepart",
-    "path": "sprites/spr_cookiepart/spr_cookiepart.yy",
+    "name": "spr_point",
+    "path": "sprites/spr_point/spr_point.yy",
   },
   "solid": false,
   "visible": true,

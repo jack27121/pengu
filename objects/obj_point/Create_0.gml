@@ -1,12 +1,14 @@
 shrink = 0;
-xx = x;
-yy = y;
 spd = 0.01;
 wavemod = 0;
-fired = 0;
-waittime = 80;
+fired = false;
+waittime = 40;
 ymod = 0;
-bounce = 0;
+grounded = false;
+
+hspd = 0;
+vspd = 0;
+grav = 0;
 
 var max_frames = sprite_get_number(sprite_index);
 image_index = random_range(0,max_frames);

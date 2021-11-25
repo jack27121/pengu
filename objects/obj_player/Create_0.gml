@@ -1,11 +1,14 @@
 /// @descr Initialize player
 controlled = true;
 invincible = false;
-hurting = false;
 grounded = false;
 sliding = false;
 
 mass = 0.3;
+
+//hurting
+hurting = false;
+hurtT = 0;
 ouch = 0;
 
 hinput = 0;
@@ -14,11 +17,11 @@ vinput = 0;
 hspd = 0;
 vspd = 0;
 
-maxWalkSpd = 3;
-maxSlideSpd = 5;
+maxWalkSpd = 4;
+maxSlideSpd = 6;
 maxSpd = 8
 
-spd= 0.21;
+spd= 0.42;
 
 scaleX = 1;
 scaleY = 1;
@@ -40,7 +43,6 @@ state.event_set_default_function("step", function() {
 
 state.event_set_default_function("draw", function() {
 	var yoffset = 16 * (1-scaleY);
-	show_debug_message(yoffset);
 	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);
 });
 
@@ -171,9 +173,44 @@ state.add("falling", {
 
 state.add("hurt", {
 	enter: function(){
-		controlled = false;
+		//controlled = false;
 		screen_shake(20,10);
 		hurting = true;
+		sprite_index = spr_pengu_hurt;
+		
+		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
+		if (global.points == 0){
+			state.change("dying");
+		}else{ //OHHH? THE PLAYER DOES HAVE POINTS?
+			repeat(global.points) { //CREATE POINTS AS ... WELL, FIRED POINTS
+				var point = instance_create_layer(x,y-8,"Instances",obj_point); 
+				point.fired = true; 
+				//point.direction = random_range(90-45,90+45);
+				//point.speed = 6;
+				
+				var dir = random_range(90-80,90+80);
+				point.hspd = lengthdir_x(6,dir);
+				point.vspd = lengthdir_y(6,dir);
+				show_debug_message(point.hspd);
+				show_debug_message(point.vspd);
+				point.grav = 0.4;
+			}
+			global.points = 0; //REMOVE ALL POINTS
+			ouch = 0.9; //SET OUCH TO 0.9 TO STOP IT FROM CHECKING TO KILL THE PLAYER
+		}
+	},
+	
+	step: function(){
+		if(hurtT > 1 * room_speed){
+			hurtT = 0;
+			state.change("idle");
+		} else hurtT++
+	},
+	
+	leave: function(){
+		//controlled = true;
+		hurting = false;
+		
 	}
 });
 	

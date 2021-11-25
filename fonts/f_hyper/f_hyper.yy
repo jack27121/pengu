@@ -1,5 +1,5 @@
 {
-  "hinting": 0,
+  "hinting": 1,
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,

@@ -1,7 +1,7 @@
 /// @desc Draw player
-//if(hurting && floor(current_time/50) mod 2 == 0){ //if hurt it'll flash
-//	gpu_set_fog(true, gray,0,0);
-//}
+if(hurting && floor(current_time/50) mod 2 == 0){ //if hurt it'll flash
+	gpu_set_fog(true, gray,0,0);
+}
 
 state.draw();
 
@@ -23,6 +23,8 @@ draw_line(
 	y+(asin*mask)+(acos*line));
 
 draw_set_alpha(1);
+
+gpu_set_fog(false, gray,0,0);
 	
 	
 	

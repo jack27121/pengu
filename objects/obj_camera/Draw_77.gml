@@ -36,10 +36,18 @@ draw_surface_stretched(rgb_split_surf,0,0,view_w*global.upscale,view_h*global.up
 surface_free(rgb_split_surf);
 
 #region points n' timer
-draw_set_font(f_hyper);
+draw_set_font(f_hyper_mono);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
-draw_text(4,4,"POINTS: " + string(global.points));
-draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
-draw_text(4,70,string(global.timer/fps));
+draw_text_outline(10,10,"SNACKS:" + string_replace_all(string_format(global.points,3,0)," ","0"),5);
+
+//draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
+var frames, seconds, minutes = 0;
+
+frames = string_format(global.timer mod room_speed,2,0);
+seconds = string_format(global.timer div 60 mod 60,2,0);
+minutes = string_format(global.timer div 3600,2,0);
+var timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0")
+
+draw_text_outline(10,60,"TIME:" + timer_text,5);
 #endregion
