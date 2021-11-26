@@ -22,8 +22,8 @@
     {"speed":100.0,"x":928.0,"y":80.0,},
   ],
   "parent": {
-    "name": "pengu",
-    "path": "pengu.yyp",
+    "name": "Paths",
+    "path": "folders/Paths.yy",
   },
   "resourceVersion": "1.0",
   "name": "path_1a",

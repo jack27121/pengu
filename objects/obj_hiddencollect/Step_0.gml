@@ -19,11 +19,11 @@ if goto = true
 	{
 		move_towards_point(obj_player.x-32,obj_player.y-32,spd);
 		deterspd = distance_to_object(obj_player)/10;
-		spd = approach(spd,deterspd,0.1);
+		spd = lerp(spd,deterspd,0.1);
 	}
 	else
 	{
-		speed = approach(speed,0,0.2);	
-		spd = approach(spd,0,0.2);
+		speed = lerp(speed,0,0.2);	
+		spd = lerp(spd,0,0.2);
 	}
 }

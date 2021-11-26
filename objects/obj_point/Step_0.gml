@@ -20,7 +20,7 @@ if(fired == 1){
 	if (abs(hspd) > 0 || abs(vspd) > 0){
 		hspd = lerp(hspd,0,0.025); //SLOWLY DECREASE SPEED
 		vspd = lerp(vspd,0,0.025);
-		//if (bounce >= 7) {speed = approach(speed,0,0.1); gravity = 0;} //IF BOUNCED 3 TIMES, STOP GRAVITY AND BRING SPEED TO 0 FASTER
+		//if (bounce >= 7) {speed = lerp(speed,0,0.1); gravity = 0;} //IF BOUNCED 3 TIMES, STOP GRAVITY AND BRING SPEED TO 0 FASTER
 		
 		//Horizontal bounced
 		if(place_meeting(x + hspd, y, obj_wall)) hspd = -hspd;

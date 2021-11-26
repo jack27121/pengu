@@ -196,7 +196,6 @@ state.add("hurt", {
 				point.grav = 0.4;
 			}
 			global.points = 0; //REMOVE ALL POINTS
-			ouch = 0.9; //SET OUCH TO 0.9 TO STOP IT FROM CHECKING TO KILL THE PLAYER
 		}
 	},
 	
@@ -208,9 +207,7 @@ state.add("hurt", {
 	},
 	
 	leave: function(){
-		//controlled = true;
-		hurting = false;
-		
+		hurting = false;		
 	}
 });
 	

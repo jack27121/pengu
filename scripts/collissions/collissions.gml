@@ -12,7 +12,7 @@ function collision(frict = 0.8,bounciness = 0) {
 	// Horizontal collisions
 	//Checks if the player will hit the wall on the next frame
 	var wall = instance_place(x+hspd_, y, obj_wall);
-	if (wall != noone) {
+	if (wall != noone && !is_child(wall,obj_wall_top)) {
 		//If there is space right above the wall. It will nudge the player up
 		if (!place_meeting(x+hspd, y-nudge, obj_wall)) {
 			while(place_meeting(x+hspd, y, obj_wall)) y-=1;
@@ -28,26 +28,36 @@ function collision(frict = 0.8,bounciness = 0) {
 	} else x+= hspd;
 	
 	// Vertical collisions
-	//keeps player alligned with floor
-	if(grounded && place_meeting(x, y+nudge, obj_wall)){
+	//keeps player alligned with floor when going down slopes
+	//var wall = instance_place(x, y+nudge, obj_wall);
+	if(grounded && place_meeting(x,y+nudge, obj_wall)){//wall != noone){
+		//x+= wall.x - wall.xprevious;
+		//y+= wall.y - wall.yprevious;
 		while(!place_meeting(x, y+1, obj_wall)) {
 			y += 1
 		}
 	}
 	
 	var wall = instance_place(x, y+vspd_, obj_wall);
-	if (wall != noone) {
+	//doesn't run if you're underneath a one way platform
+	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && vspd > 0)){//bbox_bottom <= wall.bbox_top)){
 		while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
 			y += sign(vspd);
 		}
+		
+		//make player move with moving platforms
+		x+= wall.x - wall.xprevious;
+		y+= wall.y - wall.yprevious;
+		
 		var frict_ = max(frict,wall.frict);//friction
 		hspd = hspd * frict_;
 		if(frict_ > 0.9){
 			hspd-=(asin);
 		}
 		
-		vspd = vspd * -(bounciness + wall.bounciness);		//bounciness
-		grounded = true;
+		vspd = vspd * -(bounciness + wall.bounciness);//bounciness
+		if(!grounded && place_meeting(x,y,obj_wall_top)) y--;
+		else grounded = true;
 	} else{
  		y+= vspd;
 		grounded = false;	

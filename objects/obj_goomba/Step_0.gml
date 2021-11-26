@@ -28,7 +28,7 @@ if dead = false
 	} else {
 		//MOVE LITTLE GOOMBA!!
 		x += (spd*dir);
-		xscale = approach(xscale,image_xscale,0.2);
+		xscale = lerp(xscale,image_xscale,0.2);
 		image_xscale = dir;
 	}
 }

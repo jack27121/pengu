@@ -57,7 +57,7 @@ if(controlled){
 	#endregion
 	
 	#region damage
-	if(ouch == 0) { //DETECT BEING HIT BY spikies
+	if(!hurting) { //DETECT BEING HIT BY spikies
 		var spike = instance_place(x+hspd,y+vspd,obj_spikes);
 		if(spike != noone){
 			var launch_spd = 10;
@@ -67,11 +67,9 @@ if(controlled){
 			hspd += launch_x; // Launch the player away;
 			vspd += launch_y; 
 			
-			ouch = 1;
+			hurting = true;
 			state.change("hurt");
 		}
-	} else {
-		ouch = approach(ouch,0,0.01); //GIVE A LITTLE BIT OF IMMORTALITY TIME
 	}
 #endregion
 }
