@@ -12,6 +12,7 @@ if(controlled){
 					sliding = false;
 					grounded = false;
 					state.change("jumping");
+					if(asin != 0) image_xscale = -sign(asin);
 					vspd+= jumpF * acos;
 					hspd+= jumpF * asin;
 				} else mask_index = spr_pengu_mask;
@@ -32,11 +33,12 @@ if(controlled){
 	var maxFlySpd = clamp(max(abs(hspd),maxWalkSpd), -maxSpd,maxSpd);
 	if(hcontrol){
 		hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-		if(grounded) hspd += hinput * spd;
+		if(grounded && !sliding) hspd += hinput * spd;
+		else if(grounded && sliding) hspd += hinput * spd * 0.6;
 		else hspd += hinput * spd * 0.8; //not as good control in air
 	}
 	
-	image_angle = 0;
+	image_angle -= angle_difference(image_angle,0) * 0.1;
 	
 	//different max speeds
 	var frict = 0.25;

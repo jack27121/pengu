@@ -19,11 +19,11 @@ hcontrol = true;
 hspd = 0;
 vspd = 0;
 
-maxWalkSpd = 2.2;
-maxSlideSpd = 4;
+maxWalkSpd = 3;
+maxSlideSpd = 6;
 maxSpd = 6
 
-spd= 0.42;
+spd= 0.3;
 
 scaleX = 1;
 scaleY = 1;
