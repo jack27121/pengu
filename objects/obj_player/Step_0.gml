@@ -5,15 +5,17 @@ if(controlled){
 	if(grounded){
 		//jumping
 		if (input_check_pressed(eVerb.Up)){
-			grounded = false;
-			state.change("jumping");
-			
 			//if sliding you jump at an angle
 			if(!sliding) vspd+= jumpF;
 			else {
 				vspd+= jumpF * acos;
 				hspd+= jumpF * asin;
 			}
+			
+			grounded = false;
+			sliding = false;
+			state.change("jumping");
+			
 		} else if (input_check(eVerb.Down) && !sliding){
 			sliding = true;
 			state.change("sliding_begin");
@@ -23,24 +25,27 @@ if(controlled){
 	#region movement
 	vspd+= mass * global.gravity; //applies gravity	
 	
-	var maxFlySpd = max(abs(hinput),maxWalkSpd);
-	hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-	hspd += hinput * spd;
+	var maxFlySpd = clamp(max(abs(hspd),maxWalkSpd), -maxSpd,maxSpd);
+	if(hcontrol){
+		hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
+		if(grounded) hspd += hinput * spd;
+		else hspd += hinput * spd * 0.8; //not as good control in air
+	}
 	
 	image_angle = 0;
 	
 	//different max speeds
-	var frict = 0.75;
+	var frict = 0.25;
 	//walking
 	if (grounded && !sliding){
 		hspd = clamp(hspd,-maxWalkSpd,maxWalkSpd);
 	}
 	//sliding
 	else if (grounded && sliding){
-		///angle speed
 		image_angle = angle;
-		hspd = clamp(hspd,-maxSlideSpd,maxSlideSpd);
-		frict = 0.95;
+		///angle speed
+		hspd = clamp(hspd,-maxSlideSpd,  maxSlideSpd);
+		frict = 0.05;
 	}
 	//flying
 	else{
@@ -48,8 +53,16 @@ if(controlled){
 	}
 	vspd = clamp(vspd,-maxSpd,maxSpd);
 	
-	if(hinput != 0) frict = 1;
-	collision(frict)
+	//retarded code but returning the ground object, to see if it's a slidey one
+	var wall = collision(hinput, frict);
+	if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
+		hcontrol = false;
+		if(!sliding){
+			state.change("sliding_begin");
+			sliding = true;
+		}
+	} else hcontrol = true;
+	
 	state.step();
 	////Makes the body always conform to it's original size
 	scaleY = lerp(scaleY,1,0.15);

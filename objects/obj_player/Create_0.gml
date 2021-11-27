@@ -14,12 +14,14 @@ ouch = 0;
 hinput = 0;
 vinput = 0;
 
+hcontrol = true;
+
 hspd = 0;
 vspd = 0;
 
-maxWalkSpd = 3;
-maxSlideSpd = 5;
-maxSpd = 8
+maxWalkSpd = 2.2;
+maxSlideSpd = 4;
+maxSpd = 6
 
 spd= 0.42;
 
@@ -93,16 +95,14 @@ state.add("sliding_begin", {
 		if (animation_end(sprite_index,subimg)){
 			state.change("sliding");
 		}
-	},
+	}
 });
 
 state.add("sliding", {
     enter: function() {
 		scaleY = 0.8;
 		scaleX = 1.2;
-		
-		sliding = true;
-		
+
 		sprite_index = spr_pengu_slide;
 		
 		if(image_xscale > 0) slidingSubimg = 12; //decides wether to start pointing left or right

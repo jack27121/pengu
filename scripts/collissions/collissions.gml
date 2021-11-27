@@ -2,7 +2,7 @@
 // @param		frict 0.0 to 1.0
 // @param		bounciness 0.0 to 1.0
 // @description   collissions
-function collision(frict = 0.8,bounciness = 0) {
+function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 	//decimals under 1, are too small to do collission detection, so they're checking minimum 1 pixel ahead
 	var hspd_ = sign(hspd) * max(1,abs(hspd));
 	var vspd_ = sign(vspd) * max(1,abs(vspd));
@@ -49,10 +49,15 @@ function collision(frict = 0.8,bounciness = 0) {
 		x+= wall.x - wall.xprevious;
 		y+= wall.y - wall.yprevious;
 		
-		var frict_ = max(frict,wall.frict);//friction
-		hspd = hspd * frict_;
-		if(frict_ > 0.9){
-			hspd-=(asin);
+		var frict_ = min(frict,wall.frict);//friction
+		if(hinput_ == 0) hspd = hspd * (1-frict_);
+		
+		//going up is slow, going down is fast
+		hspd = hspd * (1-sign(hspd)*asin*0.5);
+		
+		//slippery surfaces make you slide
+		if(frict_<0.1){
+			hspd-=(asin)*(1-frict_)*0.1;
 		}
 		
 		vspd = vspd * -(bounciness + wall.bounciness);//bounciness
@@ -72,6 +77,7 @@ function collision(frict = 0.8,bounciness = 0) {
 	acos = cos(degtorad(angle));
 	asin = sin(degtorad(angle));
 	
+	return wall;
 }
 
 //function collision_360(){
