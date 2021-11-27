@@ -104,6 +104,7 @@ state.add("sliding", {
 		scaleX = 1.2;
 
 		sprite_index = spr_pengu_slide;
+		mask_index = spr_pengu_mask;
 		
 		if(image_xscale > 0) slidingSubimg = 12; //decides wether to start pointing left or right
 		else slidingSubimg = 0;

@@ -6,8 +6,8 @@
   "solid": false,
   "visible": true,
   "spriteMaskId": {
-    "name": "spr_pengu_mask",
-    "path": "sprites/spr_pengu_mask/spr_pengu_mask.yy",
+    "name": "spr_pengu_mask_standing",
+    "path": "sprites/spr_pengu_mask_standing/spr_pengu_mask_standing.yy",
   },
   "persistent": true,
   "parentObjectId": null,

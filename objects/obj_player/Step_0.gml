@@ -5,17 +5,21 @@ if(controlled){
 	if(grounded){
 		//jumping
 		if (input_check_pressed(eVerb.Up)){
-			//if sliding you jump at an angle
-			if(!sliding) vspd+= jumpF;
-			else {
-				vspd+= jumpF * acos;
-				hspd+= jumpF * asin;
+			//checks if there's space to stop sliding first
+			if(sliding){
+				mask_index = spr_pengu_mask_standing;	
+				if !place_meeting(x,y,obj_wall){
+					sliding = false;
+					grounded = false;
+					state.change("jumping");
+					vspd+= jumpF * acos;
+					hspd+= jumpF * asin;
+				} else mask_index = spr_pengu_mask;
+			} else{
+				grounded = false;
+				state.change("jumping");
+				vspd+= jumpF;
 			}
-			
-			grounded = false;
-			sliding = false;
-			state.change("jumping");
-			
 		} else if (input_check(eVerb.Down) && !sliding){
 			sliding = true;
 			state.change("sliding_begin");
