@@ -72,6 +72,7 @@ state.add("turning", {
 	step: function() {
 		if (animation_end(sprite_index,subimg)){
 			state.change("idle");
+			audio_play_sound(snd_slide_end, 15, false);
 		}
 	}
 });
@@ -90,6 +91,8 @@ state.add("sliding_begin", {
     enter: function() {
 		sprite_index = spr_pengu_slide_begin;
 		subimg = 0;
+		audio_play_sound(snd_down, 20, false);
+		audio_play_sound(snd_slide_start, 15, false);
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){
@@ -102,6 +105,7 @@ state.add("sliding", {
     enter: function() {
 		scaleY = 0.8;
 		scaleX = 1.2;
+		// audio_play_sound(snd_slide_loop, 15, true); NEED TO FIX
 
 		sprite_index = spr_pengu_slide;
 		mask_index = spr_pengu_mask;
@@ -131,6 +135,8 @@ state.add("jumping", {
     enter: function() {
 		sprite_index = spr_pengu_idle;		
 		if( hinput != 0 && hinput != image_xscale ) image_xscale = -image_xscale; //to turn when you start jumping
+		audio_play_sound(snd_up, 20, false);
+		audio_play_sound(snd_jump, 15, false);
 		
 		scaleY = 1.9;
 		scaleX = 0.5;
@@ -178,6 +184,7 @@ state.add("hurt", {
 		screen_shake(20,10);
 		hurting = true;
 		sprite_index = spr_pengu_hurt;
+		audio_play_sound(snd_hurt,15,false);
 		
 		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
 		if (global.points == 0){

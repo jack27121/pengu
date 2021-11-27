@@ -1,7 +1,7 @@
 {
   "conversionMode": 0,
   "compression": 0,
-  "volume": 0.3,
+  "volume": 1.0,
   "preload": false,
   "bitRate": 128,
   "sampleRate": 44100,
@@ -11,14 +11,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "snd_hit",
-  "duration": 0.180741,
+  "soundFile": "snd_down.ogg",
+  "duration": 0.124989,
   "parent": {
     "name": "sfx",
     "path": "folders/Sounds/sfx.yy",
   },
   "resourceVersion": "1.0",
-  "name": "snd_hit",
+  "name": "snd_down",
   "tags": [],
   "resourceType": "GMSound",
 }
