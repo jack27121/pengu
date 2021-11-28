@@ -8,21 +8,18 @@ if(controlled){
 			//checks if there's space to stop sliding first
 			if(sliding){
 				mask_index = spr_pengu_mask_standing;	
-				if !place_meeting(x,y,obj_wall){
-					sliding = false;
-					grounded = false;
+				var wall = instance_place(x,y,obj_wall);
+				if (wall == noone || is_child(wall,obj_wall_top)){
 					state.change("jumping");
 					if(asin != 0) image_xscale = -sign(asin);
 					vspd+= jumpF * acos;
 					hspd+= jumpF * asin;
 				} else mask_index = spr_pengu_mask;
 			} else{
-				grounded = false;
 				state.change("jumping");
 				vspd+= jumpF;
 			}
 		} else if (input_check(eVerb.Down) && !sliding){
-			sliding = true;
 			state.change("sliding_begin");
 		}
 	}
@@ -57,7 +54,7 @@ if(controlled){
 	else{
 		hspd = clamp(hspd,-maxFlySpd,maxFlySpd);
 	}
-	vspd = clamp(vspd,-maxSpd,maxSpd);
+	vspd = clamp(vspd,-maxSpd,maxSpd);	
 	
 	//retarded code but returning the ground object, to see if it's a slidey one
 	var wall = collision(hinput, frict);
@@ -69,19 +66,13 @@ if(controlled){
 		}
 	} else hcontrol = true;
 	
-	state.step();
-	////Makes the body always conform to it's original size
-	scaleY = lerp(scaleY,1,0.15);
-	scaleX = lerp(scaleX,1,0.15);
-	#endregion
-	
 	#region damage
 	if(!hurting) { //DETECT BEING HIT BY spikies
-		var spike = instance_place(x+hspd,y+vspd,obj_spikes);
-		if(spike != noone){
-			var launch_spd = 10;
-			var launch_x = lengthdir_x(launch_spd,spike.image_angle+90);
-			var launch_y = lengthdir_y(launch_spd,spike.image_angle+90);
+		//var spike = instance_place(x+hspd,y+vspd,obj_spikes);
+		if(is_child(wall,obj_spikes)){
+			var launch_spd = 20;
+			var launch_x = lengthdir_x(launch_spd/2,wall.image_angle+90);
+			var launch_y = lengthdir_y(launch_spd,wall.image_angle+90);
 			
 			hspd += launch_x; // Launch the player away;
 			vspd += launch_y; 
@@ -90,5 +81,11 @@ if(controlled){
 			state.change("hurt");
 		}
 	}
-#endregion
+	#endregion
+	
+	state.step();
+	////Makes the body always conform to it's original size
+	scaleY = lerp(scaleY,1,0.15);
+	scaleX = lerp(scaleX,1,0.15);
+	#endregion
 }

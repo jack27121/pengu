@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "pengu",
-    "path": "folders/Sprites/characters/pengu.yy",
+    "path": "folders/Sprites/pengu.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_pengu_mask",

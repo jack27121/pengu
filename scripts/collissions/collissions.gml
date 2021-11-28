@@ -22,37 +22,33 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 			while(!place_meeting(x+sign(hspd_), y, obj_wall)) {
 				x += sign(hspd);
 			}
-			wallBump = true;
 			//vspd = vspd * max(frict,wall.frict);				//friction
 			hspd = hspd * -(bounciness + wall.bounciness);		//bounciness
 		}
-	} else{
-		x+= hspd;
-		wallBump = false;	
-	}
+	} else	x+= hspd;
 	
 	// Vertical collisions
 	//keeps player alligned with floor when going down slopes
 	//var wall = instance_place(x, y+nudge, obj_wall);
 	if(grounded && place_meeting(x,y+nudge, obj_wall)){//wall != noone){
-		//x+= wall.x - wall.xprevious;
-		//y+= wall.y - wall.yprevious;
 		while(!place_meeting(x, y+1, obj_wall)) {
 			y += 1
 		}
 	}
 	
 	var wall = instance_place(x, y+vspd_, obj_wall);
+	
 	//doesn't run if you're underneath a one way platform
-	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && vspd > 0)){//bbox_bottom <= wall.bbox_top)){
+	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2)){
 		while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
 			y += sign(vspd);
 		}
+		y = round(y);
 		
-		//make player move with moving platforms
-		x+= wall.x - wall.xprevious;
-		y+= wall.y - wall.yprevious;
-		
+		x+= wall.x-wall.xprevious;
+		if !collision_point(x,bbox_bottom,obj_wall,true,true) y+= wall.y-wall.yprevious;
+		else while(collision_point(x,bbox_bottom,obj_wall,true,true))y--;
+
 		var frict_ = min(frict,wall.frict);//friction
 		if(hinput_ == 0) hspd = hspd * (1-frict_);
 		
@@ -66,8 +62,7 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 		}
 		
 		vspd = vspd * -(bounciness + wall.bounciness);//bounciness
-		if(!grounded && place_meeting(x,y,obj_wall_top)) y--;
-		else grounded = true;
+		grounded = true;
 	} else{
  		y+= vspd;
 		grounded = false;	
@@ -139,15 +134,15 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 //		}
 //	}
 //	
-//	//wall collision
-//	while(collision_right(16)){
-//		x-=acos;
-//		y+=asin;
-//	}
-//	while(collision_left(16)){
-//		x+=acos;
-//		y-=asin;
-//	}
+////wall collision
+//while(collision_right(16)){
+//	x-=acos;
+//	y+=asin;
+//}
+//while(collision_left(16)){
+//	x+=acos;
+//	y-=asin;
+//}
 //
 //	//gravity
 //	if !grounded vspd+=mass*global.gravity;

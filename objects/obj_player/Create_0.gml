@@ -4,7 +4,7 @@ invincible = false;
 sliding = false;
 
 grounded = false;
-mass = 0.3;
+mass = 0.26;
 
 //hurting
 hurting = false;
@@ -27,7 +27,7 @@ spd= 0.3;
 scaleX = 1;
 scaleY = 1;
 
-jumpF = -7;
+jumpF = -7.5;
 
 acos = 1;
 asin = 0;
@@ -88,6 +88,7 @@ state.add("running", {
 
 state.add("sliding_begin", {
     enter: function() {
+		sliding = true;
 		sprite_index = spr_pengu_slide_begin;
 		subimg = 0;
 		audio_play_sound(snd_down, 20, false);
@@ -102,6 +103,7 @@ state.add("sliding_begin", {
 
 state.add("sliding", {
     enter: function() {
+		sliding = true;
 		scaleY = 0.8;
 		scaleX = 1.2;
 		// audio_play_sound(snd_slide_loop, 15, true); NEED TO FIX
@@ -133,7 +135,11 @@ state.add("sliding", {
 
 state.add("jumping", {
     enter: function() {
-		sprite_index = spr_pengu_idle;		
+		
+		grounded = false;
+		sliding = false;
+		mask_index = spr_pengu_mask_standing;
+		sprite_index = spr_pengu_jump;		
 		if( hinput != 0 && hinput != image_xscale ) image_xscale = -image_xscale; //to turn when you start jumping
 		audio_play_sound(snd_up, 20, false);
 		audio_play_sound(snd_jump, 15, false);
@@ -144,12 +150,18 @@ state.add("jumping", {
 	step: function() {
 		if (!input_check(eVerb.Up) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
 		if (vspd > 0) state.change("falling_start")
+		if(grounded){
+			scaleY = 0.7;
+			scaleX = 1.3;
+			if (hinput == 0) state.change("idle");
+			else state.change("running");
+		}
 	},
 });
 
 state.add("falling_start", {
     enter: function() {
-		sprite_index = spr_pengu_idle;
+		sprite_index = spr_pengu_begin_fall;
 		subimg = 0;
 		armYOffset = -15;
     },
@@ -157,25 +169,29 @@ state.add("falling_start", {
 		if (animation_end(sprite_index,subimg)){
 			state.change("falling");
 		}
+		if(grounded){
+			scaleY = 0.7;
+			scaleX = 1.3;
+			if (hinput == 0) state.change("idle");
+			else state.change("running");
+		}
 	},
 });
 
 state.add("falling", {
     enter: function() {
-		sprite_index = spr_pengu_idle;
+		sprite_index = spr_pengu_fall;
 		armYOffset = -15;
     },
 	step: function() {
 		
 		if(grounded){
+			scaleY = 0.7;
+			scaleX = 1.3;
 			if (hinput == 0) state.change("idle");
 			else state.change("running");
 		}
 	},
-	leave: function() {
-		scaleY = 0.7;
-		scaleX = 1.3;
-	}
 });
 
 state.add("hurt", {
@@ -201,7 +217,6 @@ state.add("hurt", {
 				point.vspd = lengthdir_y(6,dir);
 				show_debug_message(point.hspd);
 				show_debug_message(point.vspd);
-				point.grav = 0.4;
 			}
 			global.points = 0; //REMOVE ALL POINTS
 		}

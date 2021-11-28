@@ -68,7 +68,7 @@ function view_h_gui(){
 /// @function out_cam_bounds()
 /// @description returns if the object is outside cam bounds
 function out_cam_bounds(){
-	var margin = 32;
+	var margin = 64;
 	var col = ( //uses boundinx box to see if it's within the camera view
 		bbox_left   < cam_x()-margin ||
 		bbox_top    < cam_y()-margin ||

@@ -26,6 +26,6 @@ state.draw();
 
 gpu_set_fog(false, gray,0,0);
 	
-	
+//draw_point(x,bbox_bottom);
 	
 	
