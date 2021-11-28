@@ -1,4 +1,15 @@
 function hurtplayer(){
-	if (obj_player.ouch = 0) 
-	{obj_player.ouch = 1;}
+	with(obj_player){
+		if(!hurting && controlled){
+			var launch_spd = 10;
+			var launch_x = lengthdir_x(launch_spd,90);
+			var launch_y = lengthdir_y(launch_spd,90);
+			
+			hspd += launch_x; // Launch the player away;
+			vspd += launch_y; 
+			
+			hurting = true;
+			state.change("hurt");
+		}
+	}
 }

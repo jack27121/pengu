@@ -3,9 +3,9 @@ if((!fired) || (fired && !waittime)){
 		shrink = true;
 		depth = obj_player.depth+1;
 		global.points += 1;
-		
-		//random_pitch(snd_pickup,.9,1,15);
-		audio_play_sound(snd_pickup, 15, false);
+
+		var sound = audio_play_sound(snd_pickup, 15, false);
+		audio_sound_pitch(sound,pitch_change(random_range(-5,5)))
 	
 		repeat(5) {
 			var sap = instance_create_depth(x,y+sinwave(-5,5,1,wavemod),obj_player.depth-1,obj_shrinkawaypart);

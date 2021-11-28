@@ -73,8 +73,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "goomba",
+    "path": "folders/Sprites/enemies/goomba.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_goomba",

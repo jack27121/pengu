@@ -30,16 +30,6 @@ gpu_set_blendenable(true);
 #macro brown make_colour_rgb(205,136,21)
 #endregion
 
-#region language
-lexicon_index_declare("English", "en-US");
-lexicon_index_declare("日本語", "ja-JP");
-lexicon_index_add_csv("en-US", "lang\\lang.csv");
-lexicon_index_add_csv("ja-JP", "lang\\lang.csv");
-
-lexicon_locale_set("en-US");
-#macro languages lexicon_languages_get_array()
-#endregion
-
 #region global vars
 global.gravity = 1;
 global.timer = 0;
@@ -68,10 +58,6 @@ global.counting = true;
 
 #region shaders
 application_surface_draw_enable(false);
-rgb_split_surf = -1;
-//seed = 0;
 #endregion
 
-
-//surf_b=surface_create(view_w,view_h);
 room_goto_next();

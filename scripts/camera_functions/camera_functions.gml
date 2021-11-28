@@ -67,25 +67,14 @@ function view_h_gui(){
 
 /// @function out_cam_bounds()
 /// @description returns if the object is outside cam bounds
-/// @param x_
-/// @param y_
-function out_cam_bounds(x_,y_){
-	var x_delta = x;
-	var y_delta = y;
-	
-	x = x_;
-	y = y_;
-	
+function out_cam_bounds(){
+	var margin = 32;
 	var col = ( //uses boundinx box to see if it's within the camera view
-		bbox_left   < cam_x() ||
-		bbox_top    < cam_y() ||
-		bbox_right  > (cam_x()+view_w) ||
-		bbox_bottom > (cam_y()+view_h)
+		bbox_left   < cam_x()-margin ||
+		bbox_top    < cam_y()-margin ||
+		bbox_right  > (cam_x()+view_w+margin) ||
+		bbox_bottom > (cam_y()+view_h+margin)
 	)
-	
-	x = x_delta;
-	y = y_delta;
-	
 	if(col)return true
 	else return false;	
 }

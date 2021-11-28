@@ -5,7 +5,10 @@
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": null,
+  "spriteMaskId": {
+    "name": "spr_goomba_mask",
+    "path": "sprites/spr_goomba_mask/spr_goomba_mask.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

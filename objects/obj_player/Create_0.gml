@@ -1,15 +1,14 @@
 /// @descr Initialize player
 controlled = true;
 invincible = false;
-grounded = false;
 sliding = false;
 
+grounded = false;
 mass = 0.3;
 
 //hurting
 hurting = false;
 hurtT = 0;
-ouch = 0;
 
 hinput = 0;
 vinput = 0;
@@ -29,12 +28,12 @@ scaleX = 1;
 scaleY = 1;
 
 jumpF = -7;
-subimg = 0;
-slidingSubimg = 0;
 
 acos = 1;
 asin = 0;
 angle = 0;
+
+subimg = 0;
 
 #region states
 state = new SnowState("idle");
@@ -127,6 +126,7 @@ state.add("sliding", {
 	},
 	leave: function() {
 		sliding = false;
+		mask_index = spr_pengu_mask;
 		if(slidingSubimg<3) image_xscale = -1;	
 	}
 });
@@ -215,7 +215,7 @@ state.add("hurt", {
 	},
 	
 	leave: function(){
-		hurting = false;		
+		hurting = false;
 	}
 });
 	

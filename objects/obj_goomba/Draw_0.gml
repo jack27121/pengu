@@ -1,2 +1,4 @@
-/// @description draw the sprite to flip  it
-draw_sprite_ext(sprite_index,image_index,x,y,xscale,image_yscale,image_angle,image_blend,image_alpha);
+/// @description draw the sprite to flip it
+if(!out_cam_bounds()){
+	state.draw();//draw_sprite_ext(sprite_index,image_index,x,y,xscale,image_yscale,image_angle,image_blend,image_alpha);
+}

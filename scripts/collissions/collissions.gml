@@ -22,10 +22,14 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 			while(!place_meeting(x+sign(hspd_), y, obj_wall)) {
 				x += sign(hspd);
 			}
+			wallBump = true;
 			//vspd = vspd * max(frict,wall.frict);				//friction
 			hspd = hspd * -(bounciness + wall.bounciness);		//bounciness
 		}
-	} else x+= hspd;
+	} else{
+		x+= hspd;
+		wallBump = false;	
+	}
 	
 	// Vertical collisions
 	//keeps player alligned with floor when going down slopes
@@ -53,10 +57,11 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 		if(hinput_ == 0) hspd = hspd * (1-frict_);
 		
 		//going up is slow, going down is fast
-		hspd = hspd * (1-sign(hspd)*asin*0.5);
+		hspd = hspd * (1-sign(hspd)*asin*0.01);
 		
 		//slippery surfaces make you slide
 		if(frict_<0.1){
+			hspd = hspd * (1-sign(hspd)*asin*0.5);
 			hspd-=(asin)*(1-frict_)*0.1;
 		}
 		
