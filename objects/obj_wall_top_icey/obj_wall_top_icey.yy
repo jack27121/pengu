@@ -30,7 +30,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "walls",
-    "path": "folders/tools/walls.yy",
+    "path": "folders/Objects/walls.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_wall_top_icey",

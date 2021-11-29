@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_bg_bowling_backwall",
-    "path": "sprites/spr_bg_bowling_backwall/spr_bg_bowling_backwall.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

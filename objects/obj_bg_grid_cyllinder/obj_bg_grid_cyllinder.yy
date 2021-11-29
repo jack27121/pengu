@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_bg_grid_cyllinder",
-    "path": "sprites/spr_bg_grid_cyllinder/spr_bg_grid_cyllinder.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
