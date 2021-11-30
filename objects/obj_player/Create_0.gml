@@ -125,6 +125,11 @@ state.add("sliding", {
 			scaleY = 0.95;
 			scaleX = 1.05;	
 		}
+		
+		if(!grounded){
+			state.change("falling_start")
+			image_angle = sign(hspd)*-90;
+		}
 	},
 	leave: function() {
 		sliding = false;
@@ -196,7 +201,7 @@ state.add("falling", {
 
 state.add("hurt", {
 	enter: function(){
-		//controlled = false;
+		hurtT = 0;
 		screen_shake(20,10);
 		hurting = true;
 		sprite_index = spr_pengu_hurt;

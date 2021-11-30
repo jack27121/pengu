@@ -50,7 +50,7 @@ global.timer = 0;
 
 #region points and timer
 global.points = 0;
-global.counting = false;
+global.counting = true;
 #endregion
 
 #region shaders
