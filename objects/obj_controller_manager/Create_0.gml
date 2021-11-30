@@ -30,7 +30,10 @@ input_default_gamepad_button(gp_padr, eVerb.Right,);
 input_default_gamepad_button(gp_padu, eVerb.Up,   );
 input_default_gamepad_button(gp_padd, eVerb.Down, );
 
-input_default_gamepad_button(gp_face1, eVerb.Up, 1);
+input_default_gamepad_button(gp_face1, eVerb.Jump, 0);
+input_default_gamepad_button(gp_face2, eVerb.Jump, 1);
+input_default_gamepad_button(gp_face3, eVerb.Jump, 2);
+input_default_gamepad_button(gp_face4, eVerb.Jump, 3);
 
 input_default_gamepad_button(gp_select, eVerb.Escape, 1);
 
@@ -44,6 +47,9 @@ input_default_key(ord("A"), eVerb.Left,1);
 input_default_key(ord("D"), eVerb.Right,1);
 input_default_key(ord("W"), eVerb.Up,1);
 input_default_key(ord("S"), eVerb.Down,1);
+
+input_default_key(vk_space , eVerb.Jump);
+input_default_key(vk_enter , eVerb.Jump,1);
 
 input_default_key(vk_escape, eVerb.Escape);
 

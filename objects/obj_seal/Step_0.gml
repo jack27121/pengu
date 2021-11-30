@@ -15,7 +15,7 @@ if (!out_cam_bounds()){
 		
 		if(!obj_player.hurting) { //Hurting or being hurt by player
 			//jump on enemy
-			if collision_circle(x,y-16,6,obj_player,true,true){
+			if place_meeting(x,y-16,obj_player){
 				state.change("dying");
 				with(obj_player){
 					grounded = false;

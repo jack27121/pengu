@@ -4,7 +4,7 @@ if(controlled){
 	
 	if(grounded){
 		//jumping
-		if (input_check_pressed(eVerb.Up)){
+		if (input_check_pressed(eVerb.Up) || input_check_pressed(eVerb.Jump)){
 			//checks if there's space to stop sliding first
 			if(sliding){
 				mask_index = spr_pengu_mask_standing;	

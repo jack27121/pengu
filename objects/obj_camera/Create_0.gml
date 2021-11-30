@@ -2,15 +2,15 @@
 #macro cam view_camera[0]
 #macro view_w 320 //camera_get_view_width(view_camera[0])
 #macro view_h 180 //camera_get_view_height(view_camera[0])
+//Game Resoloution
+//global.upscale = 4;
+#macro upscale 4
 
 view_surf = -1;
 camera_set_view_size(cam,view_w,view_h);
 
-//Game Resoloution
-global.upscale = 4;
-
 resolution_resize = function(){
-	window_set_size(view_w*global.upscale, view_h*global.upscale);
+	window_set_size(view_w*upscale, view_h*upscale);
 	display_set_gui_size(-1,-1);
 	surface_resize(application_surface, view_w,view_h);
 	display_reset(0, false);
@@ -18,8 +18,8 @@ resolution_resize = function(){
 	view_wport[0] = view_w
 	view_hport[0] = view_h
 	
-	display_width =  view_w * global.upscale;
-	display_height = view_h* global.upscale;
+	display_width =  view_w * upscale;
+	display_height = view_h* upscale;
 	
 	if(window_get_fullscreen())
 	{

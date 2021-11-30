@@ -56,13 +56,13 @@ function cam_y(){
 /// @function view_w_gui()
 /// @description gets gui width
 function view_w_gui(){
-	return view_w * global.upscale;
+	return view_w * upscale;
 }
 
 /// @function view_h_gui()
 /// @description gets gui height
 function view_h_gui(){
-	return view_h * global.upscale;
+	return view_h * upscale;
 }
 
 /// @function out_cam_bounds()

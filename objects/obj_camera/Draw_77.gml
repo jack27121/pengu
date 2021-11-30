@@ -8,7 +8,7 @@
 //surface_reset_target();
 
 //Draw rgb_split_surf
-draw_surface_stretched(application_surface,0,0,view_w*global.upscale,view_h*global.upscale);
+draw_surface_stretched(application_surface,0,0,view_w*upscale,view_h*upscale);
 //surface_free(rgb_split_surf);
 
 #region points n' timer

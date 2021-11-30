@@ -148,7 +148,7 @@ state.add("jumping", {
 		scaleX = 0.5;
     },
 	step: function() {
-		if (!input_check(eVerb.Up) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
+		if ((!input_check(eVerb.Up) && !input_check(eVerb.Jump)) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
 		if (vspd > 0) state.change("falling_start")
 		if(grounded){
 			scaleY = 0.7;
@@ -206,18 +206,7 @@ state.add("hurt", {
 		if (global.points == 0){
 			state.change("dying");
 		}else{ //OHHH? THE PLAYER DOES HAVE POINTS?
-			repeat(global.points) { //CREATE POINTS AS ... WELL, FIRED POINTS
-				var point = instance_create_layer(x,y-8,"Instances",obj_point); 
-				point.fired = true; 
-				//point.direction = random_range(90-45,90+45);
-				//point.speed = 6;
-				
-				var dir = random_range(90-80,90+80);
-				point.hspd = lengthdir_x(6,dir);
-				point.vspd = lengthdir_y(6,dir);
-				show_debug_message(point.hspd);
-				show_debug_message(point.vspd);
-			}
+			point_scatter();
 			global.points = 0; //REMOVE ALL POINTS
 		}
 	},

@@ -39,7 +39,7 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 	var wall = instance_place(x, y+vspd_, obj_wall);
 	
 	//doesn't run if you're underneath a one way platform
-	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2)){
+	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2 && vspd >= 0)){
 		while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
 			y += sign(vspd);
 		}

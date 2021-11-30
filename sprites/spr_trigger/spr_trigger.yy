@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_trigger","path":"sprites/spr_trigger/spr_trigger.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_trigger",
     "tags": [],
     "resourceType": "GMSequence",
   },

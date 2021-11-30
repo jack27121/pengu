@@ -42,6 +42,7 @@ state.add("walking", {
 
 state.add("dying", {
     enter: function() {
+		sprite_index = spr_seal_dead;
 	  	hspd = 2*sign(hspd); //launches into the air
 		vspd = -8;
 		rot_rate = 8 * -sign(hspd);
