@@ -310,8 +310,8 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"init_game","path":"rooms/init_game/init_game.yy",},},
-    {"roomId":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},},
     {"roomId":{"name":"rm_2_tankman","path":"rooms/rm_2_tankman/rm_2_tankman.yy",},},
+    {"roomId":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},},
     {"roomId":{"name":"rm_lvl_select","path":"rooms/rm_lvl_select/rm_lvl_select.yy",},},
     {"roomId":{"name":"test_room","path":"rooms/test_room/test_room.yy",},},
   ],
