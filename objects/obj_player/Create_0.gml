@@ -1,4 +1,5 @@
 /// @descr Initialize player
+//array_push(global.sacred_objects,self);
 controlled = true;
 invincible = false;
 sliding = false;
@@ -11,7 +12,6 @@ hurting = false;
 hurtT = 0;
 
 hinput = 0;
-vinput = 0;
 
 hcontrol = true;
 
@@ -218,7 +218,6 @@ state.add("hurt", {
 	
 	step: function(){
 		if(hurtT > 1 * room_speed){
-			hurtT = 0;
 			state.change("idle");
 		} else hurtT++
 	},

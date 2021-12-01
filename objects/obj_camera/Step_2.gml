@@ -70,3 +70,13 @@ var new_y = y - (view_h / 2 + shake_y)*zoom;
 //constrained_y = clamp(new_y,0,room_height-view_h)
 
 camera_set_view_pos(cam, new_x, new_y);
+
+// activates/deactivates objects when they are inside/out of bound
+var margin = 128;
+instance_deactivate_all(true);
+instance_activate_region(new_x-margin,new_y-margin,view_w+margin,view_h+margin,true);
+instance_activate_object(obj_init_game);
+instance_activate_object(obj_controller_manager);
+instance_activate_object(obj_player);
+instance_activate_object(obj_moving_platform);
+instance_activate_object(obj_point);

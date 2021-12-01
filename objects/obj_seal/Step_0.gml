@@ -1,5 +1,4 @@
 /// @description advanced goomba ai state machine
-if (!out_cam_bounds()){
 	/// @desc every step
 	if(!state.state_is("dying")){
 		subimg += sprite_get_speed(sprite_index);
@@ -11,7 +10,7 @@ if (!out_cam_bounds()){
 		
 		var frict = 0.25;
 		hspd = clamp(hspd,-maxSpd,maxSpd);
-		vspd = clamp(vspd,-maxSpd,maxSpd);
+		vspd = clamp(vspd,-maxVSpd,maxVSpd);
 		
 		if(!obj_player.hurting) { //Hurting or being hurt by player
 			//jump on enemy
@@ -37,4 +36,3 @@ if (!out_cam_bounds()){
 	////Makes the body always conform to it's original size
 	scaleY = lerp(scaleY,1,0.15);
 	scaleX = lerp(scaleX,1,0.15);
-}

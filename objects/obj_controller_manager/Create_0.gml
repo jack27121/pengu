@@ -1,4 +1,5 @@
 /// @description inputs and their bindings
+//array_push(global.sacred_objects,self);
 
 //direction macros
 #macro dirRight 0

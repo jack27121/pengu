@@ -1,6 +1,6 @@
 /// @description
 if(x_ != x_dest){
-	x_ = ease_out(t,x_start,x_dest-x_start,duration);
+	x_ = ease_in_out(t,x_start,x_dest-x_start,duration);
 }if(y_ != y_dest){
 	y_ = ease_in_out(t,y_start,y_dest-y_start,duration);
 }
@@ -16,3 +16,5 @@ else{ //reverses after reaching destination
 
 x = round(x_);
 y = round(y_);
+
+show_debug_message("i run now: "+string(current_time));

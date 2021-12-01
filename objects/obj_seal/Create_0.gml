@@ -1,10 +1,11 @@
 /// @description init vars
 grounded = false;
-mass = 0.4;
+mass = 0.2;
 hspd = 0;
 vspd = 0;
 
 spd = 1;
+maxVSpd = 8
 maxSpd = 1
 
 scaleX = 1;

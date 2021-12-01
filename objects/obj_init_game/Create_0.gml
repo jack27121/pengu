@@ -34,6 +34,9 @@ gpu_set_blendenable(true);
 global.gravity = 1;
 global.timer = 0;
 
+//global.sacred_objects = [];
+//array_push(global.sacred_objects,self);
+
 //layer_create(-100,"particles");
 //global.particles = part_system_create_layer("particles", true);
 

@@ -2,7 +2,7 @@
 if(controlled){
 	subimg += sprite_get_speed(sprite_index);
 	
-	if(grounded){
+	if(grounded && !hurting){
 		//jumping
 		if (input_check_pressed(eVerb.Up) || input_check_pressed(eVerb.Jump)){
 			//checks if there's space to stop sliding first

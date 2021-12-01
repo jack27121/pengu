@@ -1,4 +1,4 @@
-if(!out_cam_bounds()){
+
 	if(!obj_player.hurting){
 		if (distance_to_object(obj_player) < 10 && !shrink){
 			shrink = true;
@@ -21,7 +21,7 @@ if(!out_cam_bounds()){
 			instance_destroy();
 		}
 	}
-}
+
 
 if(fired == 1){	
 	lifetime--;

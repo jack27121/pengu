@@ -1,5 +1,4 @@
 /// @description draw the sprite to flip it
-if(!out_cam_bounds()){	
 	state.draw();
 	//wall collission
 	//var x_offset = lengthdir_x(16*image_xscale,angle);
@@ -12,5 +11,3 @@ if(!out_cam_bounds()){
 	//var y_offset = lengthdir_y(16,angle+90);
 	//
 	//draw_circle(x+x_offset,y+y_offset,4,true);
-	
-}

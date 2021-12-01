@@ -2,7 +2,7 @@ shrink = 0;
 spd = 0.01;
 wavemod = 0;
 fired = false;
-lifetime = 4*room_speed;
+lifetime = 2*room_speed;
 blinktime = lifetime/1.5;
 
 ymod = 0;
