@@ -1,2 +1,2 @@
 /// @description MAKE THEM VISIBLE CHEAT
-visible = 1;
+visible = !visible;

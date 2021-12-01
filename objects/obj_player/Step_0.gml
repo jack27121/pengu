@@ -83,6 +83,12 @@ if(controlled){
 	}
 	#endregion
 	
+	#region pits
+	if(y > room_height+20) { //DETECT BEING HIT BY spikies
+		state.change("dying");
+	}
+	#endregion
+	
 	state.step();
 	////Makes the body always conform to it's original size
 	scaleY = lerp(scaleY,1,0.15);

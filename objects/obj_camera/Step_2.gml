@@ -1,15 +1,15 @@
 /// @description
-#region Fullscreen toggle
-if (keyboard_check_pressed(vk_f11))
-{
-	if (window_get_fullscreen()){
-		window_set_fullscreen(false);
-	}else{
-		window_set_fullscreen(true);
-	}
-	resolution_resize();
-}
-#endregion
+//#region Fullscreen toggle
+//if (keyboard_check_pressed(vk_f11))
+//{
+//	if (window_get_fullscreen()){
+//		window_set_fullscreen(false);
+//	}else{
+//		window_set_fullscreen(true);
+//	}
+//	resolution_resize();
+//}
+//#endregion
 
 if (!is_undefined(global.camera_follow))
 {
@@ -76,6 +76,7 @@ var margin = 128;
 instance_deactivate_all(true);
 instance_activate_region(new_x-margin,new_y-margin,view_w+margin,view_h+margin,true);
 instance_activate_object(obj_init_game);
+instance_activate_object(obj_wall);
 instance_activate_object(obj_controller_manager);
 instance_activate_object(obj_player);
 instance_activate_object(obj_moving_platform);

@@ -16,5 +16,3 @@ else{ //reverses after reaching destination
 
 x = round(x_);
 y = round(y_);
-
-show_debug_message("i run now: "+string(current_time));
