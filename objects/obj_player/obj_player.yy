@@ -9,7 +9,7 @@
     "name": "spr_pengu_mask_standing",
     "path": "sprites/spr_pengu_mask_standing/spr_pengu_mask_standing.yy",
   },
-  "persistent": true,
+  "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,

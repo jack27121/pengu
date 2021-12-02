@@ -1,14 +1,15 @@
 /// @description
-array_push(global.sacred_objects,self);
-depth_ = 0.5;
+t= 0;
 
-water_top_y = view_h/2;
-
-u_scale = shader_get_uniform(sh_perspective,"scale");
-u_pan = shader_get_uniform(sh_perspective,"pan");
-u_tilt = shader_get_uniform(sh_perspective,"tilt");
-u_rows = shader_get_uniform(sh_perspective,"rows");
-
-col = make_color_rgb(34,120,195);
-
-pan= 0
+ocean_y1 = 126;
+ocean_y2 = ocean_y1+5;
+ocean_y3 = ocean_y1+10;
+ocean_y4 = ocean_y1+15;
+ocean_y5 = ocean_y1+20;
+ocean_y6 = ocean_y1+25;
+ocean_y7 = ocean_y1+30;
+ocean_y8 = ocean_y1+35;
+ocean_y9 = ocean_y1+40;
+ocean_y10 = ocean_y1+45;
+ocean_y11 = ocean_y1+50;
+ocean_y12 = ocean_y1+55;

@@ -14,7 +14,7 @@
 		
 		if(!obj_player.hurting) { //Hurting or being hurt by player
 			//jump on enemy
-			if place_meeting(x,y-16,obj_player){
+			if (place_meeting(x,y-16,obj_player) && obj_player.vspd > 0){
 				state.change("dying");
 				with(obj_player){
 					grounded = false;

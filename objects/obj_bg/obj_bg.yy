@@ -3,7 +3,7 @@
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
-  "persistent": false,
+  "persistent": true,
   "parentObjectId": {
     "name": "obj_bg_parent",
     "path": "objects/obj_bg_parent/obj_bg_parent.yy",

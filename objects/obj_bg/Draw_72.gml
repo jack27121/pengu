@@ -1,78 +1,24 @@
 /// @description draws background
-draw_clear(col);
+//(x_+x_) mod view_w)/view_w
+var x_ = cam_x();
+var y_ = cam_y();
 
-var x_ = cam_x();// + view_w/2;
-var y_ = cam_y();// + view_h/2;
-//var x_offset = 200;
-//var y_offset = 50;
+draw_sprite_tiled(spr_bg_sky,0,x_*0.9,y_); //sky
 
-gpu_set_texrepeat(true);
-shader_set(sh_perspective);
-//show_debug_message(-(x_ mod view_w)/view_w);
-shader_set_uniform_f(u_pan,((x_+pan) mod view_w)/view_w);
-shader_set_uniform_f(u_rows,1);
-shader_set_uniform_f(u_scale,1);
-shader_set_uniform_f(u_tilt,depth_);
-draw_sprite_pos(spr_water,0,
-	x_,y_+water_top_y, //top left
-	x_+view_w,y_+water_top_y, //top right
-	x_+view_w,y_+view_h, //bottom right
-	x_,y_+view_h, //bottom left
-1);
+draw_sprite_tiled(spr_bg_burg1,0,x_*0.8,y_); //burg1
+draw_sprite_tiled(spr_bg_burg2,0,x_*0.7,y_); //burg2
+draw_sprite_tiled(spr_bg_burg3,0,x_*0.6,y_); //burg3
 
-pan+=0.1;
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.55,y_,x_,y_+ocean_y1,x_+view_w,y_+ocean_y2); //ocean 1
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.50,y_,x_,y_+ocean_y2,x_+view_w,y_+ocean_y3); //ocean 2
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.45,y_,x_,y_+ocean_y3,x_+view_w,y_+ocean_y4); //ocean 3
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.4,y_,x_,y_+ocean_y4,x_+view_w,y_+ocean_y5); //ocean 4
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.35,y_,x_,y_+ocean_y5,x_+view_w,y_+ocean_y6); //ocean 5
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.3,y_,x_,y_+ocean_y6,x_+view_w,y_+ocean_y7); //ocean 6
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.25,y_,x_,y_+ocean_y7,x_+view_w,y_+ocean_y8); //ocean 7
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.2,y_,x_,y_+ocean_y8,x_+view_w,y_+ocean_y9); //ocean 8
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.15,y_,x_,y_+ocean_y9,x_+view_w,y_+ocean_y10); //ocean 9
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.1,y_,x_,y_+ocean_y10,x_+view_w,y_+ocean_y11); //ocean 10
+draw_sprite_tiled_area(spr_bg_ocean,0,(x_+t)*0.05,y_,x_,y_+ocean_y11,x_+view_w,y_+ocean_y12); //ocean 11
 
-//backstage
-//shader_set_uniform_f(u_rows,3);
-//shader_set_uniform_f(u_scale,depth_-0.02);
-//shader_set_uniform_f(u_tilt,0.05);
-//draw_sprite_pos(spr_bg_bowling_backstage,0,
-//	x_,backstage_y, //top left
-//	x_+view_w,backstage_y, //top right
-//	x_+view_w,backstage_h, //bottom right
-//	x_,backstage_h, //bottom left
-//1);
-//
-////backwall
-//shader_set_uniform_f(u_rows,1.5);
-//shader_set_uniform_f(u_scale,depth_);
-//shader_set_uniform_f(u_tilt,0);
-//draw_sprite_pos(spr_bg_bowling_backwall,0,
-//	x_,0, //top left
-//	x_+view_w,0, //top right
-//	x_+view_w,wall_y, //bottom right
-//	x_,wall_y, //bottom left
-//1);
-//
-////signs
-//shader_set_uniform_f(u_rows,3);
-//shader_set_uniform_f(u_scale,depth_+0.02);
-//draw_sprite_pos(spr_bg_bowling_sign,0,
-//	x_,sign_y, //top left
-//	x_+view_w,sign_y, //top right
-//	x_+view_w,sign_h, //bottom right
-//	x_,sign_h, //bottom left
-//1);
-
-//floor
-//shader_set_uniform_f(u_rows,3);
-//shader_set_uniform_f(u_scale,1);
-//shader_set_uniform_f(u_tilt,depth_);
-//draw_sprite_pos(spr_water,0,
-//	x_,y_, //top left
-//	x_+view_w,y_, //top right
-//	x_+view_w,y_+view_h, //bottom right
-//	x_,y_+view_h, //bottom left
-//1);
-
-//cap
-//shader_set_uniform_f(u_scale,1);
-//shader_set_uniform_f(u_tilt,0);
-//draw_sprite_pos(spr_bg_bowling_floor_end,0,
-//	x_,cap_y, //top left
-//	x_+view_w,cap_y, //top right
-//	x_+view_w,cap_h, //bottom right
-//	x_,cap_h, //bottom left
-//1);
-
-shader_reset();
+t-=0.1;

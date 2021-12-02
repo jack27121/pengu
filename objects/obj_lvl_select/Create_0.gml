@@ -1,4 +1,6 @@
 /// @description
+controlled = true;
+
 levels = [
 	rm_1_pico,
 	rm_2_tankman,
@@ -13,6 +15,8 @@ levels = [
 	"11",
 	"12"
 ];
+
+unlocked_levels = 2 //this and every level before this number will be unlocked
 
 beattime = [];
 ini_open("savedata.ini");

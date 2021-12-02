@@ -22,7 +22,8 @@ enum eVerb
 
 	//buttons
 	Jump,
-	Escape
+	Escape,
+	Restart
 }
 
 //Bind gamepad controls to verbs
@@ -36,7 +37,8 @@ input_default_gamepad_button(gp_face2, eVerb.Jump, 1);
 input_default_gamepad_button(gp_face3, eVerb.Jump, 2);
 input_default_gamepad_button(gp_face4, eVerb.Jump, 3);
 
-input_default_gamepad_button(gp_select, eVerb.Escape, 1);
+input_default_gamepad_button(gp_start, eVerb.Escape, 1);
+input_default_gamepad_button(gp_select, eVerb.Restart, 1);
 
 //Bind keyboard controls to verbs
 input_default_key(vk_left , eVerb.Left);
@@ -53,6 +55,7 @@ input_default_key(vk_space , eVerb.Jump);
 input_default_key(vk_enter , eVerb.Jump,1);
 
 input_default_key(vk_escape, eVerb.Escape);
+input_default_key(ord("R"), eVerb.Restart);
 
 //input_player_source_set(INPUT_SOURCE.KEYBOARD_AND_MOUSE);
 input_player_source_set(INPUT_SOURCE.GAMEPAD);

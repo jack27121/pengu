@@ -60,4 +60,7 @@ global.counting = true;
 application_surface_draw_enable(false);
 #endregion
 
+//background
+instance_create_depth(0,0,1000,obj_bg);
+
 room_goto_next();
