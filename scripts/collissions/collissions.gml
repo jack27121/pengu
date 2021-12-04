@@ -45,9 +45,18 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 		}
 		y = round(y);
 		
+		//moves with platform
 		x+= wall.x-wall.xprevious;
 		if !collision_point(x,bbox_bottom,obj_wall,true,true) y+= wall.y-wall.yprevious;
 		else while(collision_point(x,bbox_bottom,obj_wall,true,true))y--;
+		
+		//rotation with platform
+		if(variable_instance_exists(wall,"rot_spd")){
+			var platform_dist = point_distance(x,y,wall.x,wall.y);
+			var platform_dir = point_direction(x,y,wall.x,wall.y);
+			x += (lengthdir_x(platform_dist,platform_dir) - lengthdir_x(platform_dist,platform_dir+wall.rot_spd));
+			y += (lengthdir_y(platform_dist,platform_dir) - lengthdir_y(platform_dist,platform_dir+wall.rot_spd));
+		}
 
 		var frict_ = min(frict,wall.frict);//friction
 		if(hinput_ == 0) hspd = hspd * (1-frict_);
@@ -61,8 +70,9 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 			hspd-=(asin)*(1-frict_)*0.1;
 		}
 		
+		if(vspd > 0) grounded = true;
 		vspd = vspd * -(bounciness + wall.bounciness);//bounciness
-		grounded = true;
+		
 	} else{
  		y+= vspd;
 		grounded = false;	

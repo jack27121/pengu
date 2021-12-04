@@ -21,6 +21,7 @@ vspd = 0;
 maxWalkSpd = 3;
 maxSlideSpd = 6;
 maxSpd = 6
+maxFlySpd = 0;
 
 spd= 0.3;
 

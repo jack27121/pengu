@@ -1,20 +1,20 @@
 {
   "spriteId": {
-    "name": "spr_pengu_idle",
-    "path": "sprites/spr_pengu_idle/spr_pengu_idle.yy",
+    "name": "spr_wheel_platform",
+    "path": "sprites/spr_wheel_platform/spr_wheel_platform.yy",
   },
   "solid": false,
   "visible": true,
-  "spriteMaskId": {
-    "name": "spr_pengu_mask_standing",
-    "path": "sprites/spr_pengu_mask_standing/spr_pengu_mask_standing.yy",
-  },
+  "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_wall",
+    "path": "objects/obj_wall/obj_wall.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
-  "physicsGroup": 0,
+  "physicsGroup": 1,
   "physicsDensity": 0.5,
   "physicsRestitution": 0.1,
   "physicsLinearDamping": 0.1,
@@ -24,9 +24,8 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":2,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
@@ -35,7 +34,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player",
+  "name": "obj_rotate_wheel",
   "tags": [],
   "resourceType": "GMObject",
 }
