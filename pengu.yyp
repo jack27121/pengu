@@ -221,11 +221,7 @@
     {"id":{"name":"obj_wall_top_icey","path":"objects/obj_wall_top_icey/obj_wall_top_icey.yy",},"order":7,},
     {"id":{"name":"input_gamepad_check_pressed","path":"scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy",},"order":1,},
     {"id":{"name":"input_string_async_is_active","path":"scripts/input_string_async_is_active/input_string_async_is_active.yy",},"order":1,},
-<<<<<<< HEAD
-    {"id":{"name":"obj_seal","path":"objects/obj_seal/obj_seal.yy",},"order":8,},
-=======
     {"id":{"name":"obj_seal","path":"objects/obj_seal/obj_seal.yy",},"order":10,},
->>>>>>> d6f6e88f5ea7bb0d95cef172fe9fbcf24d6d36de
     {"id":{"name":"spr_wall_diagonal","path":"sprites/spr_wall_diagonal/spr_wall_diagonal.yy",},"order":2,},
     {"id":{"name":"__input_binding_get_source","path":"scripts/__input_binding_get_source/__input_binding_get_source.yy",},"order":3,},
     {"id":{"name":"__input_fix_config_struct","path":"scripts/__input_fix_config_struct/__input_fix_config_struct.yy",},"order":12,},
@@ -274,17 +270,10 @@
     {"id":{"name":"spr_tool_textbox","path":"sprites/spr_tool_textbox/spr_tool_textbox.yy",},"order":11,},
     {"id":{"name":"draw_grid","path":"scripts/draw_grid/draw_grid.yy",},"order":0,},
     {"id":{"name":"path_moving_h1","path":"paths/path_moving_h1/path_moving_h1.yy",},"order":2,},
-<<<<<<< HEAD
     {"id":{"name":"obj_moving_platform","path":"objects/obj_moving_platform/obj_moving_platform.yy",},"order":9,},
     {"id":{"name":"snd_pickup","path":"sounds/snd_pickup/snd_pickup.yy",},"order":9,},
     {"id":{"name":"obj_win","path":"objects/obj_win/obj_win.yy",},"order":0,},
     {"id":{"name":"obj_pengu_dance","path":"objects/obj_pengu_dance/obj_pengu_dance.yy",},"order":7,},
-=======
-    {"id":{"name":"obj_moving_platform","path":"objects/obj_moving_platform/obj_moving_platform.yy",},"order":11,},
-    {"id":{"name":"snd_pickup","path":"sounds/snd_pickup/snd_pickup.yy",},"order":9,},
-    {"id":{"name":"obj_finish","path":"objects/obj_finish/obj_finish.yy",},"order":8,},
-    {"id":{"name":"obj_pengu_dance","path":"objects/obj_pengu_dance/obj_pengu_dance.yy",},"order":9,},
->>>>>>> d6f6e88f5ea7bb0d95cef172fe9fbcf24d6d36de
     {"id":{"name":"spr_interactable","path":"sprites/spr_interactable/spr_interactable.yy",},"order":3,},
     {"id":{"name":"spr_interactable_nonSolid","path":"sprites/spr_interactable_nonSolid/spr_interactable_nonSolid.yy",},"order":4,},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},"order":4,},
@@ -347,11 +336,7 @@
     {"roomId":{"name":"rm_2_ena","path":"rooms/rm_2_ena/rm_2_ena.yy",},},
     {"roomId":{"name":"rm_3_tankman","path":"rooms/rm_3_tankman/rm_3_tankman.yy",},},
     {"roomId":{"name":"test_room","path":"rooms/test_room/test_room.yy",},},
-<<<<<<< HEAD
-=======
-    {"roomId":{"name":"rm_2_ena","path":"rooms/rm_2_ena/rm_2_ena.yy",},},
     {"roomId":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
->>>>>>> d6f6e88f5ea7bb0d95cef172fe9fbcf24d6d36de
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":14,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -401,21 +386,12 @@
     {"folderPath":"folders/Scripts/Input/String.yy","order":13,"resourceVersion":"1.0","name":"String","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/background/testing.yy","order":1,"resourceVersion":"1.0","name":"testing","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/pengu.yy","order":11,"resourceVersion":"1.0","name":"pengu","tags":[],"resourceType":"GMFolder",},
-<<<<<<< HEAD
     {"folderPath":"folders/Objects/walls.yy","order":10,"resourceVersion":"1.0","name":"walls","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/background.yy","order":12,"resourceVersion":"1.0","name":"background","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/tiles.yy","order":7,"resourceVersion":"1.0","name":"tiles","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/enemies/seal.yy","order":2,"resourceVersion":"1.0","name":"seal","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/calendar.yy","order":12,"resourceVersion":"1.0","name":"calendar","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Objects/decor.yy","order":11,"resourceVersion":"1.0","name":"decor","tags":[],"resourceType":"GMFolder",},
-=======
-    {"folderPath":"folders/Objects/walls.yy","order":12,"resourceVersion":"1.0","name":"walls","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects/background.yy","order":14,"resourceVersion":"1.0","name":"background","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Sprites/tiles.yy","order":7,"resourceVersion":"1.0","name":"tiles","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Sprites/enemies/seal.yy","order":2,"resourceVersion":"1.0","name":"seal","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Sprites/calendar.yy","order":12,"resourceVersion":"1.0","name":"calendar","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects/decor.yy","order":13,"resourceVersion":"1.0","name":"decor","tags":[],"resourceType":"GMFolder",},
->>>>>>> d6f6e88f5ea7bb0d95cef172fe9fbcf24d6d36de
     {"folderPath":"folders/Sprites/gui.yy","order":15,"resourceVersion":"1.0","name":"gui","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/win_anims.yy","order":17,"resourceVersion":"1.0","name":"win_anims","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Sprites/win_anims/pico.yy","order":1,"resourceVersion":"1.0","name":"pico","tags":[],"resourceType":"GMFolder",},
