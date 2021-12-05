@@ -3,11 +3,11 @@ if(room != rm_lvl_select){
 #region points n' timer
 	draw_sprite(spr_icon_cookie,0,10,10);
 	draw_set_color(white);
-	draw_set_font(f_hyper_mono);
+	draw_set_font(f_whackyjoe_mono);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
 	//draw_text_outline(74,6,":",5);
-	draw_text_outline(130,-8,string_replace_all(string_format(global.points,3,0)," ","0"),5);
+	draw_text(32,0,string_replace_all(string_format(global.points,3,0)," ","0"));
 	
 	//draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
 	var frames, seconds, minutes = 0;
@@ -18,8 +18,8 @@ if(room != rm_lvl_select){
 	var timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0")
 	
 	draw_set_halign(fa_center);
-	draw_sprite(spr_icon_watch,0,(view_w*upscale/2)-206,10);
-	draw_text_outline((view_w*upscale/2)+86,-8,timer_text,5);
+	draw_sprite(spr_icon_watch,0,100,2);
+	draw_text(116,0,timer_text);
 	#endregion
 	
 	#region Escape level / restart menu

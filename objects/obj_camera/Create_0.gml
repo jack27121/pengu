@@ -11,7 +11,7 @@ camera_set_view_size(cam,view_w,view_h);
 
 resolution_resize = function(){
 	window_set_size(view_w*upscale, view_h*upscale);
-	display_set_gui_size(view_w*upscale,view_h*upscale);
+	display_set_gui_size(view_w,view_h);
 	surface_resize(application_surface, view_w,view_h);
 	display_reset(0, false);
 	
