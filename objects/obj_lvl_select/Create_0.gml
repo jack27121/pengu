@@ -16,7 +16,7 @@ levels = [
 	"12"
 ];
 
-unlocked_levels = 2 //this and every level before this number will be unlocked
+unlocked_levels = 6 //this and every level before this number will be unlocked
 
 beattime = [];
 ini_open("savedata.ini");
