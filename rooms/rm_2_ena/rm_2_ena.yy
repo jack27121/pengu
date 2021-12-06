@@ -382,7 +382,7 @@
 ],},"visible":true,"depth":400,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"ts_solid1","tags":[],"resourceType":"GMRTileLayer",},
   ],
   "inheritLayers": false,
-  "creationCodeFile": "${project_dir}/rooms/rm_1_pico/RoomCreationCode.gml",
+  "creationCodeFile": "${project_dir}/rooms/rm_2_ena/RoomCreationCode.gml",
   "inheritCode": false,
   "instanceCreationOrder": [
     {"name":"inst_5BFAD6BB_1_1","path":"rooms/rm_2_ena/rm_2_ena.yy",},

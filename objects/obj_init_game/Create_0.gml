@@ -18,6 +18,7 @@ gpu_set_blendenable(true);
 #macro white c_white
 #macro black c_black
 #macro gray make_colour_rgb(204,204,204)
+#macro darkgray make_colour_rgb(50,50,50)
 #macro red make_colour_rgb(255,0,60)
 #macro darkred make_colour_rgb(52,4,23)
 #macro blue make_colour_rgb(30,130,240)

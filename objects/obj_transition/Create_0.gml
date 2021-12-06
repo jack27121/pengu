@@ -1,8 +1,8 @@
 t = 0;
 
 duration = 25;
-start_ = view_w*upscale +64;
-end_ = -64;
+start_ = view_w +16;
+end_ = -16;
 
 x1 = start_;
 x2 = start_;

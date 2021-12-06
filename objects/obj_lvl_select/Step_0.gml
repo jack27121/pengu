@@ -12,6 +12,9 @@ if(controlled){
 			controlled = false;
 			start_fade_out(function(){
 				room_goto(level);
+				//this runs before each level
+				audio_stop_all();
+				global.counting = true;
 			})
 		}
 	}
