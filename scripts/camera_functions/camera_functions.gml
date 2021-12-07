@@ -13,17 +13,21 @@ function screen_shake(magnitude, duration) {
 /// @param _x
 /// @param _y
 /// @param _duration
-function camera_move(_x, _y, duration){	
-	with (obj_camera)
-	{
-		moving = true;
-		t = 0;
-		xStart = x;
-		yStart = y;
+function camera_move(_x, _y, duration){
+	if(duration == 0){
+		obj_camera.x = _x;
+		obj_camera.y = _y;
+	}else{
+		with (obj_camera){
+			moving = true;
+			t = 0;
+			xStart = x;
+			yStart = y;
+		}
+		obj_camera.xTo = _x;
+		obj_camera.yTo = _y;
+		obj_camera.duration = duration;
 	}
-	obj_camera.xTo = _x;
-	obj_camera.yTo = _y;
-	obj_camera.duration = duration;
 }
 
 /// @function camera_zoom(_zoom,zoom_duration)
