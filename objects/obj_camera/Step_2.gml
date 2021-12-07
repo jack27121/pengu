@@ -71,3 +71,4 @@ instance_activate_object(obj_player);
 instance_activate_object(obj_moving_platform);
 instance_activate_object(obj_point);
 instance_activate_object(obj_bg);
+instance_activate_object(obj_tunnel_ride);

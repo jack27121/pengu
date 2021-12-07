@@ -1,4 +1,4 @@
-/// @description ties to path
+/// @description
 
 // Inherit the parent event
 event_inherited();

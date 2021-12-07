@@ -3,6 +3,7 @@
 controlled = true;
 invincible = false;
 sliding = false;
+sliding_sound = false;
 
 grounded = false;
 mass = 0.26;
@@ -97,6 +98,13 @@ state.add("sliding_begin", {
 			state.change("sliding");
 		}
 	}
+});
+
+state.add("spinning", {
+    enter: function() {
+		sprite_index = spr_pengu_spin;
+		subimg = 0;
+    }
 });
 
 state.add("sliding", {

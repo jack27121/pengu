@@ -3,9 +3,9 @@ controlled = true;
 
 levels = [
 	rm_1_pico,
-	rm_2_ena,
-	rm_3_tankman,
-	"4",
+	rm_2_tankman,
+	rm_3_ena,
+	rm_4_fnf,
 	"5",
 	"6",
 	"7",

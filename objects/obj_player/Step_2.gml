@@ -53,6 +53,12 @@ else if (grounded && sliding){
 	hspd = clamp(hspd,-maxSlideSpd,  maxSlideSpd);
 	frict = 0.05;
 }
+
+//sliding sound
+//if (sliding){
+//	if (audio_is_playing(sliding_sound))	sliding_sound = audio_play_sound(snd_slide_start,1,false);
+//}
+
 //flying
 else{
 	hspd = clamp(hspd,-maxFlySpd,maxFlySpd);
