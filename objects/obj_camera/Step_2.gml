@@ -59,16 +59,28 @@ var new_y = y - (view_h / 2 + shake_y)*zoom;
 
 camera_set_view_pos(cam, new_x, new_y);
 
-// activates/deactivates objects when they are inside/out of bound
-var margin = 128;
-instance_deactivate_all(true);
-instance_activate_region(new_x-margin,new_y-margin,view_w+margin,view_h+margin,true);
-instance_activate_object(obj_init_game);
-instance_activate_object(obj_transition);
-instance_activate_object(obj_wall);
-instance_activate_object(obj_controller_manager);
-instance_activate_object(obj_player);
-instance_activate_object(obj_moving_platform);
-instance_activate_object(obj_point);
-instance_activate_object(obj_bg);
-instance_activate_object(obj_tunnel_ride);
+#region Deactivates certain objects when they're out of bounds
+var margin = 64;
+var region_x1 = new_x-margin;
+var region_x2 = new_x+view_w+margin;
+var region_y1 = new_y-margin;
+var region_y2 = new_y+view_h+margin;
+instance_activate_all();
+with(obj_enemy_parent){
+	if (!collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
+		instance_deactivate_object(self);
+	}
+}
+
+with(obj_falling_platform){ // only deactivates if it's in the idle state
+	if (state.state_is("idle") && !collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
+		instance_deactivate_object(self);
+	}
+}
+
+with(obj_point){ // only deactivates if it's waving in the air normally
+	if (!fired && !collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
+		instance_deactivate_object(self);
+	}
+}
+#endregion

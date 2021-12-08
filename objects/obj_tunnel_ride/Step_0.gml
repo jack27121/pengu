@@ -10,9 +10,9 @@ if (triggered){
 			hspd = lengthdir_x(other.spd,image_angle);
 			vspd = lengthdir_y(other.spd,image_angle);
 			controlled = true;
-			state.change("falling");
+			state.change("jumping");
 			other.triggered = false;
-			other.script();
+			if(other.script != -1) other.script();
 		}
 	}
 } else if (place_meeting(x,y,obj_player)){

@@ -3,7 +3,6 @@
 controlled = true;
 invincible = false;
 sliding = false;
-sliding_sound = false;
 
 grounded = false;
 mass = 0.26;
@@ -52,6 +51,7 @@ state.event_set_default_function("draw", function() {
 state.add("idle", {
     enter: function() {
 		sprite_index = spr_pengu_idle;
+		mask_index = spr_pengu_mask_standing;
     },
 	step: function() {
 		if (hinput != 0){

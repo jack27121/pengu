@@ -4,7 +4,7 @@
 event_inherited();
 
 hspd = 0;
-hspd_max = 12;
+hspd_max = 4;
 
 t = 0;
 mass = 0.5;
@@ -23,7 +23,7 @@ state.add("idle", {
 
     },
 	step: function() {
-		if place_meeting(x,y-5,obj_player) state.change("shake");
+		if (place_meeting(x,y-5,obj_player) && obj_player.grounded) state.change("shake");
 	},
 });
 
@@ -41,7 +41,7 @@ state.add("shake", {
 	draw: function() {
 		var shake_x = random_range(-1,1);
 		var shake_y = random_range(-1,1);
-		draw_sprite(sprite_index,0,x+shake_x,y+shake_y);	
+		draw_sprite_ext(sprite_index,0,x+shake_x,y+shake_y,image_xscale,image_yscale,0,white,1);	
 	}
 });
 
@@ -49,12 +49,15 @@ state.add("fall", {
     enter: function() {
 		t = 0;
 		delay = 60*5;
+		y_ = y;
 
     },
 	step: function() {
 		hspd+= mass;
-		hspd = min(hspd,hspd_max);
-		y+= hspd;
+		hspd = clamp(hspd,0,hspd_max);
+		y_+= hspd;
+		
+		y = round(y_);
 		
 		if(t >= delay) state.change("reappear");
 		t++;
@@ -73,7 +76,7 @@ state.add("reappear", {
 		t++;
 	},
 	draw: function(){
-		draw_sprite_ext(sprite_index,0,x,y,1,1,0,white,(t/delay))
+		draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,white,(t/delay))
 	}
 });
 

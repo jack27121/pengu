@@ -3,7 +3,7 @@ function point_scatter(){
 	var angle = 184;
 	var flip = false;
 	var spd = 6;
-	repeat(clamp(global.points,0,32)) {
+	repeat(clamp(global.points,0,16)) {
 		//create point
 		var point = instance_create_layer(x,y,"Instances",obj_point);
 		point.fired = true;
