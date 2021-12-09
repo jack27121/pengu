@@ -168,6 +168,31 @@ state.add("jumping", {
 	},
 });
 
+state.add("launch", {
+    enter: function() {
+		
+		grounded = false;
+		sliding = false;
+		mask_index = spr_pengu_mask_standing;
+		sprite_index = spr_pengu_spin;		
+		
+		scaleY = 1.9;
+		scaleX = 0.5;
+		
+		maxFlySpd = 60;
+    },
+	step: function() {
+		//if ((!input_check(eVerb.Up) && !input_check(eVerb.Jump)) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
+		if (vspd > 0) state.change("falling_start")
+		if(grounded){
+			scaleY = 0.7;
+			scaleX = 1.3;
+			if (hinput == 0) state.change("idle");
+			else state.change("running");
+		}
+	},
+});
+
 state.add("falling_start", {
     enter: function() {
 		sprite_index = spr_pengu_begin_fall;

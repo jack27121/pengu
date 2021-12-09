@@ -63,7 +63,9 @@ else if (grounded && sliding){
 else{
 	hspd = clamp(hspd,-maxFlySpd,maxFlySpd);
 }
-vspd = clamp(vspd,-maxSpd,maxSpd);	
+
+var maxSpdV = max(maxSpd,maxFlySpd);
+vspd = clamp(vspd,-maxSpdV,maxSpdV);	
 
 //retarded code but returning the ground object, to see if it's a slidey one
 var wall = collision(hinput, frict);
