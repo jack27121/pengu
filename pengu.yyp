@@ -255,6 +255,7 @@
     {"id":{"name":"ts_bg","path":"tilesets/ts_bg/ts_bg.yy",},"order":2,},
     {"id":{"name":"obj_bg_grid_cyllinder","path":"objects/obj_bg_grid_cyllinder/obj_bg_grid_cyllinder.yy",},"order":0,},
     {"id":{"name":"sh_perspective","path":"shaders/sh_perspective/sh_perspective.yy",},"order":7,},
+    {"id":{"name":"path_8a","path":"paths/path_8a/path_8a.yy",},"order":3,},
     {"id":{"name":"rm_2_tankman","path":"rooms/rm_2_tankman/rm_2_tankman.yy",},"order":3,},
     {"id":{"name":"spr_transition_diamond","path":"sprites/spr_transition_diamond/spr_transition_diamond.yy",},"order":0,},
     {"id":{"name":"input_binding_get_collisions","path":"scripts/input_binding_get_collisions/input_binding_get_collisions.yy",},"order":1,},
