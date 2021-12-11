@@ -37,7 +37,7 @@ state.add("bounce", {
     enter: function() {
 		subimg = 1;
 		var sound = audio_play_sound(snd_bounce_pad,0,false);
-		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
+		audio_sound_pitch(sound,random_pitch());
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){

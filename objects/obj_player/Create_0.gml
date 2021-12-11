@@ -306,7 +306,6 @@ state.add("dying", {
 	enter: function(){
 		controlled = false;	
 		start_fade_out(function(){
-			audio_stop_all();
 			room_restart();
 		});
 	}

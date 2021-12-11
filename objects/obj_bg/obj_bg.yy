@@ -4,10 +4,7 @@
   "visible": false,
   "spriteMaskId": null,
   "persistent": true,
-  "parentObjectId": {
-    "name": "obj_bg_parent",
-    "path": "objects/obj_bg_parent/obj_bg_parent.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,

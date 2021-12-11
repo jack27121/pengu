@@ -47,7 +47,7 @@
     "spriteId": {"name":"spr_spring","path":"sprites/spr_spring/spr_spring.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.2,
+    "playbackSpeed": 0.3,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

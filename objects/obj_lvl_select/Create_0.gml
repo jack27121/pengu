@@ -25,5 +25,4 @@ for (var i = 0; i < array_length(levels); ++i) {
 }
 
 offset = 30;
-selected = 0;
 selected_viz = 0;

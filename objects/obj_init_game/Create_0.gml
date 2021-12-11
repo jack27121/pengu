@@ -35,8 +35,14 @@ gpu_set_blendenable(true);
 global.gravity = 1;
 global.timer = 0;
 
-//global.sacred_objects = [];
-//array_push(global.sacred_objects,self);
+global.music = audio_play_sound(music_christmas,0,true);
+
+//root note has to be G
+#macro scale_pitches [-7,-5,-3,0,2,4,5,7,9,12];
+global.scale_pitches_i = 0;
+
+global.selected = 0; //for level select menu;
+
 
 //layer_create(-100,"particles");
 //global.particles = part_system_create_layer("particles", true);

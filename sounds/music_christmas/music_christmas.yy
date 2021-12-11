@@ -11,8 +11,8 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "music_christmas.ogg",
-  "duration": 215.414185,
+  "soundFile": "music_christmas.wav",
+  "duration": 60.8863525,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

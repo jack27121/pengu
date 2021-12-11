@@ -13,7 +13,7 @@ if(controlled){
 					if(asin != 0) image_xscale = -sign(asin);				
 					
 					vspd+= jumpF * acos;
-					hspd+= jumpF * asin * 0.1;
+					hspd+= jumpF * asin * 0.5;
 				} else mask_index = spr_pengu_mask;
 			} else{
 				state.change("jumping");
@@ -81,7 +81,7 @@ if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
 		state.change("sliding_begin");
 		sliding = true;
 	}
-} else hcontrol = true;
+} else if(grounded) hcontrol = true;
 
 if (grounded && !sliding) angle = angle/2; 
 if(!grounded && (state.state_is("running") || state.state_is("idle"))) state.change("falling_start");

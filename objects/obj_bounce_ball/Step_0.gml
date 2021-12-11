@@ -5,7 +5,7 @@ if(place_meeting(x,y,obj_player)){
 	scaleY = 2;
 	
 	var sound = audio_play_sound(snd_bounce_ball,1,false);
-	audio_sound_pitch(sound,pitch_change(random_range(-2,2)));
+	audio_sound_pitch(sound,random_pitch());
 	show_debug_message("bounce!");
 	
 	with(obj_player){

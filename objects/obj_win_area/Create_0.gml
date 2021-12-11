@@ -46,7 +46,6 @@ state.add("prep", {
 				obj_player.image_xscale = 1;
 				obj_player.hspd = 0;
 				obj_win.state.change("turn");
-				show_debug_message("start turning")
 				state.change("win");
 			}
 		}
@@ -59,7 +58,7 @@ state.add("win", {
 	},
 	step: function(){
 		banner_t = lerp(banner_t,1,0.1);
-		if(wait_t < 60) wait_t++; //a little delay before you win
+		if(wait_t < 120) wait_t++; //a little delay before you win
 		else start_fade_out(function(){
 			room_goto(rm_lvl_select);
 		})

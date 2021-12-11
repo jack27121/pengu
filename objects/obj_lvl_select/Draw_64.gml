@@ -12,7 +12,7 @@ for (var i = 0; i < array_length(levels); ++i) {
 	if !(unlocked_levels > i) draw_set_alpha(0.5);
     draw_text(view_w/2+(i*offset)-(selected_viz*offset),view_h,string(i+1));
 	
-	if(selected == i){//display best time
+	if(global.selected == i){//display best time
 		draw_set_font(f_pixel);
 		draw_set_color(black);
 		var timer_text;
@@ -24,8 +24,8 @@ for (var i = 0; i < array_length(levels); ++i) {
 			timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0");
 		}
 		
-		draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(selected*offset)-28,view_h-22);
-		draw_text(view_w/2+(i*offset)-(selected*offset),view_h-21,timer_text);
+		draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(global.selected*offset)-28,view_h-22);
+		draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21,timer_text);
 		draw_set_color(white);
 	}
 	draw_set_alpha(1);
