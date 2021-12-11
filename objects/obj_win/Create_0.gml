@@ -4,6 +4,7 @@ subimg = 0;
 spr_idle = spr_win_pico_idle;
 spr_turn = spr_win_pico_turn;
 spr_end = spr_win_pico_end;
+medal = false;
 
 win_string = "Found them!"
 
@@ -34,6 +35,14 @@ state.add("end", {
     enter: function() {
 		sprite_index = spr_end;
 		subimg = 0;
+		
+		if (medal = false) {
+			medal = true;	
+			
+			show_debug_message("submit scores");
+			if room = rm_1_pico {ng_unlockmedal("Day 1"); ng_postScore(11149, global.timer)}
+			if room = rm_2_tankman {ng_unlockmedal("Day 2"); ng_postScore(11150, global.timer)}
+		}
     }
 });
 #endregion
