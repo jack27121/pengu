@@ -20,15 +20,16 @@ vspd = 0;
 
 maxWalkSpd = 3;
 maxSlideSpd = 6;
-maxSpd = 6
+maxSpd = 16
 maxFlySpd = 0;
+maxSlideDeltaSpd = 0;
 
 spd= 0.3;
 
 scaleX = 1;
 scaleY = 1;
 
-jumpF = -7.5;
+jumpF = -6;
 
 acos = 1;
 asin = 0;
@@ -45,7 +46,10 @@ state.event_set_default_function("step", function() {
 
 state.event_set_default_function("draw", function() {
 	var yoffset = 16 * (1-scaleY);
-	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);
+	
+	viz_angle = angle;
+	if (grounded && !sliding) viz_angle = angle_difference(angle,0)/2 //if walking up slopes you aren't rotated as much
+	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,viz_angle,white,image_alpha);
 });
 
 state.add("idle", {
@@ -92,6 +96,8 @@ state.add("sliding_begin", {
 		sliding = true;
 		sprite_index = spr_pengu_slide_begin;
 		subimg = 0;
+		var sound = audio_play_sound(snd_down,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){
@@ -134,7 +140,7 @@ state.add("sliding", {
 		
 		if(!grounded){
 			state.change("falling_start")
-			image_angle = sign(hspd)*-90;
+			angle = sign(hspd)*-90;
 		}
 	},
 	leave: function() {
@@ -155,6 +161,9 @@ state.add("jumping", {
 		
 		scaleY = 1.9;
 		scaleX = 0.5;
+		
+		var sound = audio_play_sound(snd_jump,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
     },
 	step: function() {
 		if ((!input_check(eVerb.Up) && !input_check(eVerb.Jump)) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
@@ -176,14 +185,46 @@ state.add("launch", {
 		mask_index = spr_pengu_mask_standing;
 		sprite_index = spr_pengu_spin;		
 		
-		scaleY = 1.9;
-		scaleX = 0.5;
+		scaleY = 2.1;
+		scaleX = 0.4;
 		
-		maxFlySpd = 60;
+		spinSubimg = 0;
+		
+		var sound = audio_play_sound(snd_jump,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
+		
     },
 	step: function() {
-		//if ((!input_check(eVerb.Up) && !input_check(eVerb.Jump)) && vspd < 0) vspd*= 0.9 //letting go of jump will make you fall faster
-		if (vspd > 0) state.change("falling_start")
+		var spin_spd = point_distance(0,0,hspd,vspd);
+		spinSubimg+=spin_spd/10;
+		//spinSubimg = clamp(spinSubimg,0,7);
+		subimg = spinSubimg;		
+		
+		if (vspd > 0) state.change("launch_end")
+		if(grounded){
+			scaleY = 0.7;
+			scaleX = 1.3;
+			if (hinput == 0) state.change("idle");
+			else state.change("running");
+		}
+	},
+	leave: function(){
+		if hspd != 0{
+			if hspd > 0 image_xscale = 1;
+			else image_xscale = -1;
+		}
+	}
+});
+
+state.add("launch_end", {
+    enter: function() {
+		sprite_index = spr_pengu_spin_end;
+		subimg = 0;
+    },
+	step: function() {
+		if (animation_end(sprite_index,subimg)){
+			state.change("falling_start");
+		}
 		if(grounded){
 			scaleY = 0.7;
 			scaleX = 1.3;
@@ -197,7 +238,6 @@ state.add("falling_start", {
     enter: function() {
 		sprite_index = spr_pengu_begin_fall;
 		subimg = 0;
-		armYOffset = -15;
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){
@@ -215,13 +255,16 @@ state.add("falling_start", {
 state.add("falling", {
     enter: function() {
 		sprite_index = spr_pengu_fall;
-		armYOffset = -15;
     },
 	step: function() {
 		
 		if(grounded){
 			scaleY = 0.7;
 			scaleX = 1.3;
+			
+			//var sound = audio_play_sound(snd_landing,100,false);
+			//audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
+			
 			if (hinput == 0) state.change("idle");
 			else state.change("running");
 		}
@@ -234,6 +277,10 @@ state.add("hurt", {
 		screen_shake(20,10);
 		hurting = true;
 		sprite_index = spr_pengu_hurt;
+		
+		var sound_file = (random_range(1,1000) != 1000) ? snd_pengu_hurt : snd_pengu_uwu;
+		var sound = audio_play_sound(sound_file,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(2,10)))
 		
 		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
 		if (global.points == 0){

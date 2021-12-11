@@ -1,6 +1,6 @@
 t = 0;
 
-duration = 25;
+duration = 10;
 start_ = view_w +16;
 end_ = -16;
 

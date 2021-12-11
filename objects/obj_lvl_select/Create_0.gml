@@ -8,7 +8,7 @@ levels = [
 	rm_4_fnf,
 	rm_5_zone,
 	rm_6_fancypants,
-	"7",
+	rm_7_mimes,
 	"8",
 	"9",
 	"10",
@@ -16,7 +16,7 @@ levels = [
 	"12"
 ];
 
-unlocked_levels = 6 //this and every level before this number will be unlocked
+unlocked_levels = 7 //this and every level before this number will be unlocked
 
 beattime = [];
 ini_open("savedata.ini");

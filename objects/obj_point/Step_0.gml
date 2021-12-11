@@ -4,10 +4,12 @@
 			shrink = true;
 			depth = obj_player.depth+1;
 			global.points += 1;
-	
-			var sound = audio_play_sound(snd_pickup, 15, false);
-			audio_sound_pitch(sound,pitch_change(random_range(-5,5)))
 			crumbs();
+			
+			//if(!audio_is_playing(snd_pickup)){
+				var sound = audio_play_sound(snd_pickup, 15, false);
+				audio_sound_pitch(sound,pitch_change(random_range(-2,12)));
+			//}
 		}
 	}
 	

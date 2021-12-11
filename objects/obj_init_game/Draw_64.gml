@@ -2,18 +2,29 @@
 if(room != rm_lvl_select){
 #region points n' timer
 	draw_sprite(spr_icon_cookie,0,2,2);
-	draw_set_color(white);
 	draw_set_font(f_whackyjoe);
 	draw_set_halign(fa_left);
 	draw_set_valign(fa_top);
-	//draw_text_outline(74,6,":",5);
+	
 	var point_text = string_replace_all(string_format(global.points,3,0)," ","0");
 	draw_set_color(black);
 	draw_set_alpha(0.5);
 	draw_text(22,-2,point_text);
-	draw_set_color(white);
+	
 	draw_set_alpha(1);
-	draw_text(20,-4,point_text);
+	
+	if(global.points == 0){
+		draw_set_color(white);
+		var offsetY = random_range(-0.5,0.5);
+		var offsetX = random_range(-0.5,0.5);
+		
+		draw_text(20+offsetX,-4+offsetY,point_text);
+		
+	}else{ 
+		draw_set_color(white);
+		
+		draw_text(20,-4,point_text);
+	}
 	
 	//draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
 	var frames, seconds, minutes = 0;

@@ -10,9 +10,10 @@ if(controlled){
 				var wall = instance_place(x,y,obj_wall);
 				if (wall == noone || is_child(wall,obj_wall_top)){
 					state.change("jumping");
-					if(asin != 0) image_xscale = -sign(asin);
+					if(asin != 0) image_xscale = -sign(asin);				
+					
 					vspd+= jumpF * acos;
-					hspd+= jumpF * asin;
+					hspd+= jumpF * asin * 0.1;
 				} else mask_index = spr_pengu_mask;
 			} else{
 				state.change("jumping");
@@ -23,10 +24,12 @@ if(controlled){
 		}
 	}
 	
-
-	
 	//horizontal movement
 	maxFlySpd = clamp(max(abs(hspd),maxWalkSpd), -maxSpd,maxSpd);
+	maxSlideDeltaSpd = max( min(abs(hspd),maxSlideDeltaSpd), maxSlideSpd);
+	maxSlideDeltaSpd = clamp(maxSlideDeltaSpd, -maxSpd,maxSpd);
+	
+	
 	if(hcontrol){
 		hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
 		if(grounded && !sliding) hspd += hinput * spd;
@@ -38,7 +41,9 @@ if(controlled){
 //vertical movement
 vspd+= mass * global.gravity; //applies gravity	
 
-image_angle -= angle_difference(image_angle,0) * 0.1;
+if(!state.state_is("spinning") && !state.state_is("launch")){
+	angle -= angle_difference(angle,0) * 0.1;
+}
 
 //different max speeds
 var frict = 0.25;
@@ -48,9 +53,10 @@ if (grounded && !sliding){
 }
 //sliding
 else if (grounded && sliding){
-	image_angle = angle;
+	//image_angle = angle;	
 	///angle speed
-	hspd = clamp(hspd,-maxSlideSpd,  maxSlideSpd);
+	hspd = clamp(hspd,-maxSlideDeltaSpd,  maxSlideDeltaSpd);
+	//hspd = clamp(hspd,-maxFlySpd,maxFlySpd);
 	frict = 0.05;
 }
 
@@ -77,18 +83,22 @@ if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
 	}
 } else hcontrol = true;
 
+if (grounded && !sliding) angle = angle/2; 
 if(!grounded && (state.state_is("running") || state.state_is("idle"))) state.change("falling_start");
 
 #region damage
 if(!hurting) { //DETECT BEING HIT BY spikies
 	//var spike = instance_place(x+hspd,y+vspd,obj_spikes);
 	if(is_child(wall,obj_spikes)){
-		var launch_spd = 20;
+		var launch_spd = 6;
 		var launch_x = lengthdir_x(launch_spd/2,wall.image_angle+90);
 		var launch_y = lengthdir_y(launch_spd,wall.image_angle+90);
 		
 		hspd += launch_x; // Launch the player away;
 		vspd += launch_y; 
+		
+		var sound = audio_play_sound(snd_pengu_hurt_spikes,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
 		
 		hurting = true;
 		state.change("hurt");
@@ -101,6 +111,9 @@ if(y > room_height+20) { //DETECT BEING HIT BY spikies
 	state.change("dying");
 }
 #endregion
+
+if(angle < 0) angle += 360;
+if(abs(angle_difference(0,angle)) < 1) angle = 0;
 
 state.step();
 ////Makes the body always conform to it's original size

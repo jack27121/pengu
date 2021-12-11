@@ -66,7 +66,7 @@ var region_x2 = new_x+view_w+margin;
 var region_y1 = new_y-margin;
 var region_y2 = new_y+view_h+margin;
 instance_activate_all();
-with(obj_enemy_parent){
+with(obj_seal){
 	if (!collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
 		instance_deactivate_object(self);
 	}
@@ -78,8 +78,20 @@ with(obj_falling_platform){ // only deactivates if it's in the idle state
 	}
 }
 
+with(obj_falling_platform_icey){ // only deactivates if it's in the idle state
+	if (state.state_is("idle") && !collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
+		instance_deactivate_object(self);
+	}
+}
+
 with(obj_point){ // only deactivates if it's waving in the air normally
 	if (!fired && !collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
+		instance_deactivate_object(self);
+	}
+}
+
+with(obj_spring){
+	if (!collision_rectangle(region_x1,region_y1,region_x2,region_y2,self,false,false)){
 		instance_deactivate_object(self);
 	}
 }

@@ -7,27 +7,4 @@ state.draw();
 
 gpu_set_fog(false, gray,0,0);
 
-//draw_set_alpha(0.5);
-//draw_sprite(spr_pengu_mask,0,x,y);
-//
-//var mask = 4;
-//var line = floor(mask*2);
-//draw_line(
-//	x+(acos*mask)+(asin*mask),
-//	y-(asin*mask)+(acos*mask),
-//	x+(acos*mask)+(asin*line),
-//	y-(asin*mask)+(acos*line));
-//	
-//draw_line(
-//	x-(acos*mask)+(asin*mask),
-//	y+(asin*mask)+(acos*mask),
-//	x-(acos*mask)+(asin*line),
-//	y+(asin*mask)+(acos*line));
-//
-//draw_set_alpha(1);
-
-
-	
-//draw_point(x,bbox_bottom);
-	
-	
+//draw_sprite_ext(mask_index,0,x,y,image_xscale,image_yscale,image_angle,white,0.8);

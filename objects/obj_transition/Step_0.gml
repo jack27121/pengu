@@ -1,5 +1,5 @@
 /// @description
-if(fading){	
+if(fading){
 	x1 = ease_in(t++,start_,-start_,duration);
 	
 	if(x1 <= end_){

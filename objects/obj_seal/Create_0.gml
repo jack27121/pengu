@@ -47,6 +47,10 @@ state.add("dying", {
 	  	hspd = 2*sign(hspd); //launches into the air
 		vspd = -8;
 		rot_rate = 8 * -sign(hspd);
+		
+		var sound = audio_play_sound(snd_seal_hurt,100,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
+		
     },
     step: function() {
 		vspd += mass * global.gravity;

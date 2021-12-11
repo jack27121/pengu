@@ -10,93 +10,78 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 	var nudge = 8;
 	var wall = noone;
 	
+	show_debug_message("vspd:" + string(vspd_));
+	show_debug_message("hspd:" + string(hspd_));
+	
 	// Horizontal collisions
 	//Checks if the player will hit the wall on the next frame
-	var list_ = ds_list_create();
-	var num_ = instance_place_list(x+hspd_, y, obj_wall,list_,true);
-	if(num_ > 0){
-		for (var i = num_-1; i >= 0; --i) {
-			wall = list_[|i];
-			if (!is_child(wall,obj_wall_top)) {
-				//If there is space right above the wall. It will nudge the player up
-				if (!place_meeting(x+hspd, y-nudge, obj_wall)) {
-					while(place_meeting(x+hspd, y, obj_wall)) y-=1;
-					x+= hspd;
-				}
-				else {//Else it will then move the player one pixel closer until it's just next to the wall, and then stop moving
-					while(!place_meeting(x+sign(hspd_), y, obj_wall)) {
-						x += sign(hspd_);
-					}
-					//vspd = vspd * max(frict,wall.frict);				//friction
-					hspd = hspd * -(bounciness + wall.bounciness);		//bounciness
-				}
-			} else	x+= hspd;
+	if(place_meeting(x+hspd_, y, obj_wall)){
+		//If there is space right above the wall. It will nudge the player up
+		if (!place_meeting(x+hspd, y-nudge, obj_wall)) {
+			while(place_meeting(x+hspd, y, obj_wall)) y-=1;
+			x+= hspd;
+		}
+		else {//Else it will then move the player one pixel closer until it's just next to the wall, and then stop moving
+			while(!place_meeting(x+sign(hspd_), y, obj_wall)) {
+				x += sign(hspd_);
+			}
+			hspd = 0;
 		}
 	} else	x+= hspd;
+	
 	// Vertical collisions
 	//keeps player alligned with floor when going down slopes
 	//var wall = instance_place(x, y+nudge, obj_wall);
-	if(grounded && place_meeting(x,y+nudge, obj_wall)){//wall != noone){
-		while(!place_meeting(x, y+1, obj_wall)) {
+	if(abs(hspd)>10) nudge = 16;
+	if(grounded && place_meeting(x,y+nudge, obj_collission)){//wall != noone){
+		while(!place_meeting(x, y+1, obj_collission)) {
 			y += 1
 		}
 	}
-	
-	list_ = ds_list_create();
-	var num_ = instance_place_list(x, y+vspd_, obj_wall,list_,true);
-	if(num_ > 0){
-		for (var i = num_-1; i >= 0; --i) {
-			var wall = list_[|i];
-			//doesn't run if you're underneath a one way platform
-			if ((!is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2 && vspd >= 0)){
-				while(!place_meeting(x, y+sign(vspd_), obj_wall)) {
-					y += sign(vspd_);
-				}
-				y = round(y);
-				
-				//moves with platform
-				x+= wall.x-wall.xprevious;
-				if !collision_point(x,bbox_bottom,obj_wall,true,true) y+= wall.y-wall.yprevious;
-				else while(collision_point(x,bbox_bottom,obj_wall,true,true))y--;
-				
-				//rotation with platform
-				if(variable_instance_exists(wall,"rot_spd")){
-					var platform_dist = point_distance(x,y,wall.x,wall.y);
-					var platform_dir = point_direction(x,y,wall.x,wall.y);
-					x += (lengthdir_x(platform_dist,platform_dir) - lengthdir_x(platform_dist,platform_dir+wall.rot_spd));
-					y += (lengthdir_y(platform_dist,platform_dir) - lengthdir_y(platform_dist,platform_dir+wall.rot_spd));
-				}
-			
-				var frict_ = min(frict,wall.frict);//friction
-				if(hinput_ == 0) hspd = hspd * (1-frict_);
-				
-				//going up is slow, going down is fast
-				hspd = hspd * (1-sign(hspd)*asin*0.01);
-				
-				//slippery surfaces make you slide
-				if(frict_<0.1){
-					hspd = hspd * (1-sign(hspd)*asin*0.5);
-					hspd-=(asin)*(1-frict_)*0.1;
-				}
-				
-				if(vspd > 0) grounded = true;
-				vspd = vspd * -(bounciness + wall.bounciness);//bounciness
-				
-			} else{
- 				y+= vspd;
-				grounded = false;	
-			}
+	//doesn't run if you're underneath a one way platform
+	var wall = instance_place(x,y+vspd_,obj_collission);
+	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2 && vspd >= 0)){
+		while(!place_meeting(x, y+sign(vspd_), obj_collission)) {
+			y += sign(vspd_);
 		}
-	} else {
-		y+= vspd;
+		y = round(y);
+		
+		//moves with platform
+		x+= wall.x-wall.xprevious;
+		if !collision_point(x,bbox_bottom,obj_collission,true,true) y+= wall.y-wall.yprevious;
+		else while(collision_point(x,bbox_bottom,obj_collission,true,true))y--;
+		
+		//rotation with platform
+		//if(variable_instance_exists(wall,"rot_spd")){
+		//	var platform_dist = point_distance(x,y,wall.x,wall.y);
+		//	var platform_dir = point_direction(x,y,wall.x,wall.y);
+		//	x += (lengthdir_x(platform_dist,platform_dir) - lengthdir_x(platform_dist,platform_dir+wall.rot_spd));
+		//	y += (lengthdir_y(platform_dist,platform_dir) - lengthdir_y(platform_dist,platform_dir+wall.rot_spd));
+		//}
+	
+		var frict_ = min(frict,wall.frict);//friction
+		if(hinput_ == 0) hspd = hspd * (1-frict_);
+		
+		//going up is slow, going down is fast
+		hspd = hspd * (1-sign(hspd)*asin*0.01);
+		
+		//slippery surfaces make you slide
+		if(frict_<0.1){
+			hspd = hspd * (1-sign(hspd)*asin*0.5);
+			hspd-=(asin)*(1-frict_)*0.1;
+		}
+		
+		if(vspd > 0) grounded = true;
+		vspd = vspd * -(bounciness + wall.bounciness); //bounciness
+		
+	} else{
+ 		y+= vspd;
 		grounded = false;	
 	}
 	
 	///slope factor
 	if (grounded && collision_left_line(8) && collision_right_line(8)){
-	    angle=find_angle(angle,8,24);
-	}else{
-	    angle=0;
+	    angle=find_angle(angle,6,24);
 	}
 	acos = cos(degtorad(angle));
 	asin = sin(degtorad(angle));
@@ -274,6 +259,5 @@ function find_angle(angle,hspace,check){
 	var new_angle = round(point_direction(x1,y1,x2,y2));
 	var diff = angle_difference(new_angle,0);
 	new_angle = clamp(diff,-45,45)
-	//show_debug_message(new_angle)
 	return new_angle
 }

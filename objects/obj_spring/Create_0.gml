@@ -1,7 +1,5 @@
 /// @description
-
 subimg = 0;
-force = 60;
 state = new SnowState("idle");
 
 state.event_set_default_function("draw", function() {
@@ -9,14 +7,27 @@ state.event_set_default_function("draw", function() {
 });
 
 state.add("idle", {
+	enter: function(){
+		subimg = 0;	
+	},
 	step: function() {
 		if (place_meeting(x,y,obj_player)){
 			state.change("bounce");
 			with(obj_player){
-				state.change("launch");
-				image_angle = other.image_angle+90;
-				hspd = lengthdir_x(other.force,image_angle);
-				vspd = lengthdir_y(other.force,image_angle);
+				hspd = lengthdir_x(other.force,other.image_angle+90);
+				if(!other.grounded){
+					vspd = lengthdir_y(other.force,other.image_angle+90);
+					angle = other.image_angle;					
+					state.change("launch");
+					//y = round(other.y);
+				} else {
+					state.change("sliding");
+					maxSlideDeltaSpd = hspd;
+					while(!place_meeting(x, y+1, obj_collission)) {
+						y += 1;
+					}
+					
+				}
 			}
 		}
 	},
@@ -24,7 +35,9 @@ state.add("idle", {
 
 state.add("bounce", {
     enter: function() {
-		subimg = 0;
+		subimg = 1;
+		var sound = audio_play_sound(snd_bounce_pad,0,false);
+		audio_sound_pitch(sound,pitch_change(random_range(-2,2)))
     },
 	step: function() {
 		if (animation_end(sprite_index,subimg)){

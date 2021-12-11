@@ -36,7 +36,7 @@ zoom = 1;
 // Dipplers note: we should make this a global variable that can change based on the room. PBBBPLPBLPTTT
 //the camera bounding box, for the player to leave before the camera starts moving
 bounds_w = 20;
-bounds_h = 8;
+bounds_h = 16;
 
 //screen shake1
 shake_length = 0;
