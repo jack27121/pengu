@@ -13,7 +13,7 @@
   "AntiAlias": 0,
   "first": 0,
   "last": 0,
-  "sampleText": "0:01:20",
+  "sampleText": "created by:\r\nstann.co",
   "includeTTF": false,
   "TTFName": "",
   "textureGroupId": {

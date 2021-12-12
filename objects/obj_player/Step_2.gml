@@ -6,14 +6,13 @@ if(controlled){
 		if (input_check_pressed(eVerb.Up) || input_check_pressed(eVerb.Jump)){
 			//checks if there's space to stop sliding first
 			if(sliding){
-				mask_index = spr_pengu_mask_standing;	
-				var wall = instance_place(x,y,obj_wall);
-				if (wall == noone || is_child(wall,obj_wall_top)){
+				mask_index = spr_pengu_mask_standing;
+				var wall = instance_place(x,y-1,obj_wall);
+				if (wall == noone){
 					state.change("jumping");
-					if(asin != 0) image_xscale = -sign(asin);				
-					
 					vspd+= jumpF * acos;
 					hspd+= jumpF * asin * 0.5;
+					if(hspd != 0) flip = sign(hspd);
 				} else mask_index = spr_pengu_mask;
 			} else{
 				state.change("jumping");
@@ -81,7 +80,7 @@ if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
 		state.change("sliding_begin");
 		sliding = true;
 	}
-} else if(grounded) hcontrol = true;
+} else if(grounded || state.state_is("launch")) hcontrol = true;
 
 if (grounded && !sliding) angle = angle/2; 
 if(!grounded && (state.state_is("running") || state.state_is("idle"))) state.change("falling_start");

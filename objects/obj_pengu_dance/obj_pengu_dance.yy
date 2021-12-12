@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_pengu_dance",
-    "path": "sprites/spr_pengu_dance/spr_pengu_dance.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": {

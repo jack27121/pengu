@@ -1,7 +1,7 @@
 {
   "conversionMode": 0,
   "compression": 0,
-  "volume": 0.01,
+  "volume": 0.05,
   "preload": false,
   "bitRate": 512,
   "sampleRate": 48000,
@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "music_christmas.wav",
-  "duration": 60.8863525,
+  "duration": 115.778419,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

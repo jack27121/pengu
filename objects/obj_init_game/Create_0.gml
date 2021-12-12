@@ -63,6 +63,12 @@ global.points = 0;
 global.counting = true;
 #endregion
 
+#region restart / escape
+restart_time = 0;
+escape_time = 0;
+
+#endregion
+
 #region shaders
 application_surface_draw_enable(false);
 #endregion

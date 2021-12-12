@@ -7,4 +7,4 @@ state.draw();
 
 gpu_set_fog(false, gray,0,0);
 
-//draw_sprite_ext(mask_index,0,x,y,image_xscale,image_yscale,image_angle,white,0.8);
+//draw_sprite_ext(mask_index,0,x,y,flip,image_yscale,image_angle,white,0.8);

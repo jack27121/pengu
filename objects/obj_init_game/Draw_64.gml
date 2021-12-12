@@ -45,15 +45,22 @@ if(room != rm_lvl_select){
 	#endregion
 	
 	#region Escape level / restart menu
-	//if(input_check(eVerb.Escape)){
-	//	draw_clear_alpha(black,0.5);
-	//	var w = view_w*upscale;
-	//	var h = view_h*upscale;
-	//	
-	//	draw_set_font(f_hyper_mono);
-	//	draw_set_halign(fa_center);
-	//	draw_set_valign(fa_middle);
-	//	draw_text_outline(w/2,h/2,"Exit Level",5);
-	//}
+	if(escape_time != 0){
+		draw_set_font(f_credits);
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_top);
+		draw_set_alpha(escape_time / 60);
+		draw_text(view_w-5,5,"Exiting level");
+		draw_set_alpha(1);
+	}
+	
+	if(restart_time != 0){
+		draw_set_font(f_credits);
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_top);
+		draw_set_alpha(restart_time / 60);
+		draw_text(view_w-5,5,"Restarting level");
+		draw_set_alpha(1);
+	}
 	#endregion
 }

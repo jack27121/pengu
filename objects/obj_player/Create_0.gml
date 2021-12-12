@@ -37,6 +37,8 @@ angle = 0;
 
 subimg = 0;
 
+flip = 1;
+
 #region states
 state = new SnowState("idle");
 
@@ -49,7 +51,7 @@ state.event_set_default_function("draw", function() {
 	
 	viz_angle = angle;
 	if (grounded && !sliding) viz_angle = angle_difference(angle,0)/2 //if walking up slopes you aren't rotated as much
-	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,viz_angle,white,image_alpha);
+	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,flip*scaleX,scaleY,viz_angle,white,image_alpha);
 });
 
 state.add("idle", {
@@ -59,7 +61,7 @@ state.add("idle", {
     },
 	step: function() {
 		if (hinput != 0){
-			if( hinput != image_xscale ) state.change("turning");
+			if( hinput != flip ) state.change("turning");
 			else state.change("running");
 		}
 	},
@@ -67,7 +69,7 @@ state.add("idle", {
 
 state.add("turning", {
     enter: function() {
-		image_xscale = -image_xscale;
+		flip = -flip;
 		sprite_index = spr_pengu_idle;
 		subimg = 0;
 		
@@ -87,7 +89,7 @@ state.add("running", {
     },
 	step: function() {
 		if (hinput == 0) state.change("idle");
-		else if (hinput != image_xscale) state.change("turning");
+		else if (hinput != flip) state.change("turning");
 	},
 });
 
@@ -123,10 +125,10 @@ state.add("sliding", {
 		sprite_index = spr_pengu_slide;
 		mask_index = spr_pengu_mask;
 		
-		if(image_xscale > 0) slidingSubimg = 12; //decides wether to start pointing left or right
+		if(flip > 0) slidingSubimg = 12; //decides wether to start pointing left or right
 		else slidingSubimg = 0;
 		subimg = slidingSubimg;
-		image_xscale = 1;
+		flip = 1;
     },
 	step: function() {
 		slidingSubimg+=hspd/10;
@@ -146,7 +148,7 @@ state.add("sliding", {
 	leave: function() {
 		sliding = false;
 		mask_index = spr_pengu_mask;
-		if(slidingSubimg<3) image_xscale = -1;	
+		if(slidingSubimg<3) flip = -1;	
 	}
 });
 
@@ -157,7 +159,7 @@ state.add("jumping", {
 		sliding = false;
 		mask_index = spr_pengu_mask_standing;
 		sprite_index = spr_pengu_jump;		
-		if( hinput != 0 && hinput != image_xscale ) image_xscale = -image_xscale; //to turn when you start jumping
+		if( hinput != 0 && hinput != flip ) flip = -flip; //to turn when you start jumping
 		
 		scaleY = 1.9;
 		scaleX = 0.5;
@@ -210,8 +212,8 @@ state.add("launch", {
 	},
 	leave: function(){
 		if hspd != 0{
-			if hspd > 0 image_xscale = 1;
-			else image_xscale = -1;
+			if hspd > 0 flip = 1;
+			else flip = -1;
 		}
 	}
 });

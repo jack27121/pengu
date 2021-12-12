@@ -17,12 +17,14 @@ angle = 0;
 
 subimg = 0;
 
+flip = 1;
+
 #region states
 state = new SnowState("walking");
 
 state.event_set_default_function("draw",function() {
 	var yoffset = 16 * (1-scaleY);
-	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,image_xscale*scaleX,image_yscale*scaleY,image_angle,white,image_alpha);	
+	draw_sprite_ext(sprite_index,subimg,x,y+yoffset,flip*scaleX,scaleY,image_angle,white,image_alpha);	
 });
 
 state.add("walking", {
@@ -31,12 +33,12 @@ state.add("walking", {
     },
 	step: function() {
 
-		hspd = image_xscale * spd;
+		hspd = flip * spd;
 		
-		var x_offset = lengthdir_x(8*image_xscale,angle);
-		var y_offset = lengthdir_y(8*image_xscale,angle);
+		var x_offset = lengthdir_x(8*flip,angle);
+		var y_offset = lengthdir_y(8*flip,angle);
 		if collision_circle(x+x_offset,y+y_offset,4,obj_wall,true,true){ //turns around when hitting a wall
-			image_xscale = -image_xscale;
+			flip = -flip;
 		}
 	},
 });

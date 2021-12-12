@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_hiddencollect",
-    "path": "sprites/spr_hiddencollect/spr_hiddencollect.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
