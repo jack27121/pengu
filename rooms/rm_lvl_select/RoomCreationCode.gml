@@ -1,1 +1,0 @@
-ng_request_login();

@@ -1,6 +1,8 @@
 /// @description
 controlled = true;
 unlocked_levels = 1 //this and every level before this number will be unlocked
+global.playername = "User"; //DEFAULT USERNAME
+alarm[0] = 60; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
 
 levels = [
 	rm_1_pico,

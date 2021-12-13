@@ -38,13 +38,13 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
 var credit_offset = 6;
+draw_text(6,view_h*upscale-80-credit_offset*6,"Thanks for playing, " + string(global.playername) + "!");
 draw_text(6,view_h*upscale-80-credit_offset*5,"Created by:");
 draw_text(6,view_h*upscale-80-credit_offset*4,"STANN.co");
 draw_text(6,view_h*upscale-80-credit_offset*3,"Stepford");
-draw_text(6,view_h*upscale-80-credit_offset*2,"ChocoholicMonkey");
+draw_text(6,view_h*upscale-80-credit_offset*2,"Chocoholicmonkey");
 draw_text(6,view_h*upscale-80-credit_offset,"FractalCounty");
 #endregion
-
 
 
 #region Lvl select

@@ -10,6 +10,7 @@
 #macro dirDownLeft 225
 #macro dirDown 270
 #macro dirDownRight 315
+vol = 1;
 
 //Declare an enum that stores verb names
 enum eVerb
