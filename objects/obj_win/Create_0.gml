@@ -38,9 +38,9 @@ state.add("end", {
 		//if (!medal) {
 		//	medal = true;	
 		
-		var new_score = (global.timer-global.cookietimer)// / 60 * 1000;
+		var new_score = (global.timer-global.cookietimer);
 			
-		show_debug_message("submit scores");
+		show_debug_message("submit scores: "+string(new_score));
 		if (room == rm_1_pico)		{ ng_unlockmedal("Day 1"); ng_postScore("11149", new_score); }
 		if (room == rm_2_tankman)	{ ng_unlockmedal("Day 2"); ng_postScore("11150", new_score); }
 		if (room == rm_3_ena)		{ ng_unlockmedal("Day 3"); ng_postScore("11152", new_score); }
