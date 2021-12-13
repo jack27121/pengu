@@ -38,7 +38,7 @@ state.add("end", {
 		//if (!medal) {
 		//	medal = true;	
 		
-		var new_score = (global.timer-global.cookietimer) / 60 * 1000;
+		var new_score = (global.timer-global.cookietimer)// / 60 * 1000;
 			
 		show_debug_message("submit scores");
 		if (room == rm_1_pico)		{ ng_unlockmedal("Day 1"); ng_postScore("11149", new_score); }

@@ -92,10 +92,14 @@ for (var i = 0; i < array_length(levels); ++i) {
 		var timer_text;
 		if(beattime[i] == -1) timer_text = "Unbeaten";
 		else{
-			var frames =  string_format(beattime[i] mod room_speed,2,0);
-			var seconds = string_format(beattime[i] div 60 mod 60,2,0);
-			var minutes = string_format(beattime[i] div 3600,2,0);
-			timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0");
+			//var frames =  string_format(beattime[i] mod room_speed,2,0);
+			//var seconds = string_format(beattime[i] div 60 mod 60,2,0);
+			//var minutes = string_format(beattime[i] div 3600,2,0);
+			//timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0");
+				var miliseconds = string_copy(string_format((global.timer-global.cookietimer) mod 1000,2,0),1,2);
+				var seconds = string_format((global.timer-global.cookietimer) div 1000 mod 60,2,0);
+				var minutes = string_format((global.timer-global.cookietimer) div 60000,2,0);
+				var timer_text = string_replace_all(minutes + ":" + seconds + ":" + miliseconds," ","0");
 		}
 		
 		if(unlocked_levels <= i){
