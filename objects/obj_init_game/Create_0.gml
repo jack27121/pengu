@@ -34,6 +34,7 @@ gpu_set_blendenable(true);
 #region global vars
 global.gravity = 1;
 global.timer = 0;
+global.cookietimer = 0;
 
 global.music = audio_play_sound(music_christmas,0,true);
 

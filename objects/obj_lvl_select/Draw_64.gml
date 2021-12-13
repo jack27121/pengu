@@ -14,7 +14,7 @@ for (var i = 0; i < array_length(pictures); ++i) {
 			for (var rot = 0; rot < 360; rot+=22) {
 				var offset_x = lengthdir_x(1,rot);
 				var offset_y = lengthdir_y(1,rot);
-				draw_sprite_ext(pictures[i],0,offset_x,offset_y,1,1,0,white,1);
+				draw_sprite_ext(pictures[i],0,offset_x,offset_y+sinwave(-4,4,1,0),1,1,0,white,1);
 			}
 			shader_reset();
 		}
@@ -23,10 +23,13 @@ for (var i = 0; i < array_length(pictures); ++i) {
 		//draws number
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_middle);
-		draw_set_font(f_calendar);
-		var txt_col = black;
-		if(global.selected == i) txt_col = red;
-		draw_text_outline(nr_cords[i][0],nr_cords[i][1],i+1,4,txt_col);
+		draw_set_font(f_whackyjoe_title);
+		var txt_col = c_navy;
+		var offs = 0;
+		if(global.selected == i) {txt_col = red; offs = sinwave(-10,10,1,0)}
+		draw_text_outline(nr_cords[i][0],nr_cords[i][1]+offs,i+1,4,txt_col);
+		
+		draw_sprite_ext(pictures[i],0,0,0,1,1,0,black,0.1);
 	}
 }
 #endregion
@@ -38,6 +41,9 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
 var credit_offset = 6;
+draw_text(6,view_h*upscale-80-credit_offset*9,"PAGE UP to raise volume.");
+draw_text(6,view_h*upscale-80-credit_offset*8,"PAGE DOWN to lower volume.");
+
 draw_text(6,view_h*upscale-80-credit_offset*6,"Thanks for playing, " + string(global.playername) + "!");
 draw_text(6,view_h*upscale-80-credit_offset*5,"Created by:");
 draw_text(6,view_h*upscale-80-credit_offset*4,"STANN.co");

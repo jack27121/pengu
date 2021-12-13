@@ -27,7 +27,7 @@ state.add("idle", {
 			state.change("prep");
 			
 			ini_open("savedata.ini");
-			var best_time = max(ini_read_real(room,"beattime",-1),global.timer);
+			var best_time = min(ini_read_real(room,"beattime",-1),(global.timer-global.cookietimer));
 			ini_write_real(room, "beattime", best_time);
 			ini_close();
 			
