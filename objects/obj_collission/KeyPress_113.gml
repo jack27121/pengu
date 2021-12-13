@@ -1,2 +1,4 @@
 /// @description MAKE THEM VISIBLE CHEAT
-visible = !visible;
+if os_browser == browser_not_a_browser{
+	visible = !visible;
+}
