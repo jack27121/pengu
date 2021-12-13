@@ -78,7 +78,7 @@ for (var i = 0; i < array_length(levels); ++i) {
 		}
 		
 		if(unlocked_levels <= i){
-			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21,"Unlocks sometime Dec "+string(i+1));
+			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21,"Unlocks sometime Dec "+string(i+13));
 		} else {
 			draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(global.selected*offset)-28,view_h-22);
 			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21,timer_text);
