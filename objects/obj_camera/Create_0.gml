@@ -6,7 +6,6 @@
 //global.upscale = 4;
 #macro upscale 4
 
-view_surf = -1;
 camera_set_view_size(cam,view_w,view_h);
 
 resolution_resize = function(){

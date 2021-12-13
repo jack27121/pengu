@@ -59,24 +59,4 @@ if(room != rm_lvl_select){
 	draw_set_alpha(1);
 	draw_text(116,-4,timer_text);
 	#endregion
-	
-	#region Escape level / restart menu
-	if(escape_time != 0){
-		draw_set_font(f_credits);
-		draw_set_halign(fa_right);
-		draw_set_valign(fa_top);
-		draw_set_alpha(escape_time / 60);
-		draw_text(view_w-5,5,"Exiting level");
-		draw_set_alpha(1);
-	}
-	
-	if(restart_time != 0){
-		draw_set_font(f_credits);
-		draw_set_halign(fa_right);
-		draw_set_valign(fa_top);
-		draw_set_alpha(restart_time / 60);
-		draw_text(view_w-5,5,"Restarting level");
-		draw_set_alpha(1);
-	}
-	#endregion
 }

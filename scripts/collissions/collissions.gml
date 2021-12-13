@@ -10,9 +10,6 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 	var nudge = 8;
 	var wall = noone;
 	
-	show_debug_message("vspd:" + string(vspd_));
-	show_debug_message("hspd:" + string(hspd_));
-	
 	// Horizontal collisions
 	//Checks if the player will hit the wall on the next frame
 	if(place_meeting(x+hspd_, y, obj_wall)){
@@ -63,7 +60,7 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 		if(hinput_ == 0) hspd = hspd * (1-frict_);
 		
 		//going up is slow, going down is fast
-		hspd = hspd * (1-sign(hspd)*asin*0.01);
+		hspd = hspd * (1-sign(hspd)*asin*0.1);
 		
 		//slippery surfaces make you slide
 		if(frict_<0.1){

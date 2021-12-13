@@ -11,6 +11,9 @@
 #macro dirDown 270
 #macro dirDownRight 315
 vol = 1;
+restart_time = 0;
+escape_time = 0;
+dataclear_time = 0;
 
 //Declare an enum that stores verb names
 enum eVerb

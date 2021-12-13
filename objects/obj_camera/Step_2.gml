@@ -1,6 +1,5 @@
 /// @description
-if (!is_undefined(global.camera_follow))
-{
+if (!is_undefined(global.camera_follow)){
 	//update destination
 	xTo = global.camera_follow.x;
 	yTo = global.camera_follow.y;

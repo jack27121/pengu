@@ -17,7 +17,7 @@ angle = 0;
 
 subimg = 0;
 
-flip = 1;
+flip = image_xscale;
 
 #region states
 state = new SnowState("walking");

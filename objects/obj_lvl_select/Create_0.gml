@@ -1,9 +1,12 @@
 /// @description
-controlled = true;
+controlled = false;
 unlocked_levels = 1 //this and every level before this number will be unlocked
 global.playername = "User"; //DEFAULT USERNAME
 alarm[0] = 60; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
 
+if(!global.started) pandown = 720; //starts in the sky and pans down
+else pandown = 0;
+ 
 levels = [
 	rm_1_pico,
 	rm_2_tankman,
@@ -54,4 +57,5 @@ ini_open("savedata.ini");
 for (var i = 0; i < array_length(levels); ++i) {
 	beattime[i] = ini_read_real(levels[i],"beattime",-1);
 }
+ini_close();
 selected_viz = 0;

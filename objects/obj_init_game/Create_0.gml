@@ -35,6 +35,7 @@ gpu_set_blendenable(true);
 global.gravity = 1;
 global.timer = 0;
 global.cookietimer = 0;
+global.started = false;
 
 global.music = audio_play_sound(music_christmas,0,true);
 
@@ -62,12 +63,6 @@ global.selected = 0; //for level select menu;
 #region points and timer
 global.points = 0;
 global.counting = true;
-#endregion
-
-#region restart / escape
-restart_time = 0;
-escape_time = 0;
-
 #endregion
 
 #region shaders

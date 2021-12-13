@@ -21,13 +21,17 @@ state.add("idle", {
 		if (place_meeting(x,y,obj_player)){
 			global.counting = false;
 			obj_player.state.change("idle");
+			obj_player.flip = 1;
 			obj_player.controlled = false;
 			global.camera_follow = undefined;
 			camera_move(cam_pos_x,cam_pos_y,room_speed);
 			state.change("prep");
 			
 			ini_open("savedata.ini");
-			var best_time = min(ini_read_real(room,"beattime",-1),(global.timer-global.cookietimer));
+			var last_time = ini_read_real(room,"beattime",-1);
+			if(last_time == -1) last_time = 9999999999;
+			var best_time = min(last_time , (global.timer-global.cookietimer));
+			show_debug_message(best_time);
 			ini_write_real(room, "beattime", best_time);
 			ini_close();
 			
@@ -43,7 +47,6 @@ state.add("prep", {
 		} else if(!obj_camera.moving){
 			if(wait_t < 30) wait_t++; //a little delay before you win
 			else{
-				obj_player.image_xscale = 1;
 				obj_player.hspd = 0;
 				obj_win.state.change("turn");
 				state.change("win");
