@@ -28,11 +28,10 @@ if(room != rm_lvl_select){
 	//DRAW COOKIE TIMER
 	global.cookietimer = (global.points * 5);
 	
-	var cframes, cseconds, cminutes = 0;
 	cframes = string_format(global.cookietimer mod room_speed,2,0);
 	cseconds = string_format(global.cookietimer div 60 mod 60,2,0);
 	cminutes = string_format(global.cookietimer div 3600,2,0);
-	var ctimer_text = string_replace_all(cminutes + ":" + cseconds + ":" + cframes," ","0");
+	ctimer_text = string_replace_all(cminutes + ":" + cseconds + ":" + cframes," ","0");
 	
 	draw_set_font(f_pixel);
 	draw_set_color(black);
@@ -42,13 +41,14 @@ if(room != rm_lvl_select){
 	draw_set_alpha(1);
 	draw_text(14,20,"-(" + ctimer_text + ")");
 	
+	//DEBUG
+	//draw_text(14,30,string(global.new_score));
 	
 	//draw_text(4,36,"SECRET: " + string(global.secret) + " / 1");
-	var frames, seconds, minutes = 0;
 	frames = string_format((global.timer-global.cookietimer) mod room_speed,2,0);
 	seconds = string_format((global.timer-global.cookietimer) div 60 mod 60,2,0);
 	minutes = string_format((global.timer-global.cookietimer) div 3600,2,0);
-	var timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0");
+	timer_text = string_replace_all(minutes + ":" + seconds + ":" + frames," ","0");
 	
 	draw_set_font(f_whackyjoe);
 	draw_sprite(spr_icon_watch,0,99,2);
