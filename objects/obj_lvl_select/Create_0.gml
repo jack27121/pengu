@@ -10,18 +10,18 @@ if(!global.started) pandown = 720; //starts in the sky and pans down
 else pandown = 0;
  
 levels = [
-	rm_1_pico,
-	rm_2_tankman,
-	rm_3_ena,
-	rm_4_zone,
-	rm_5_fnf,
-	rm_6_fancypants,
-	rm_7_mimes,
-	rm_8_meatboy,
-	rm_9_bees,
-	"10",
-	"11",
-	"12"
+	room_get_name(rm_1_pico),
+	room_get_name(rm_2_tankman),
+	room_get_name(rm_3_ena),
+	room_get_name(rm_4_zone),
+	room_get_name(rm_5_fnf),
+	room_get_name(rm_6_fancypants),
+	room_get_name(rm_7_mimes),
+	room_get_name(rm_8_meatboy),
+	room_get_name(rm_9_bees),
+	room_get_name(rm_10_cordelia),
+	room_get_name(rm_11_satina),
+	room_get_name(rm_12_castlecrashers)
 ];
 
 pictures = [
@@ -39,6 +39,17 @@ pictures = [
 	spr_calendar_castlecrashers
 ];
 
+
+beattime = [];
+star = [];
+ini_open("savedata.ini");
+for (var i = 0; i < array_length(levels); ++i) {
+	beattime[i] = ini_read_real(levels[i] ,"beattime",-1);
+	star[i] = ini_read_real(levels[i],"star",0);
+}
+ini_close();
+selected_viz = 0;
+
 nr_cords = [
 	[594,	144],
 	[156,	242],
@@ -53,13 +64,3 @@ nr_cords = [
 	[728,	459],
 	[286,	489]
 ];
-
-beattime = [];
-star = [];
-ini_open("savedata.ini");
-for (var i = 0; i < array_length(levels); ++i) {
-	beattime[i] = ini_read_real(levels[i],"beattime",-1);
-	star[i] = ini_read_real(levels[i],"star",0);
-}
-ini_close();
-selected_viz = 0;

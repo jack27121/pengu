@@ -2,7 +2,7 @@
 char_x = obj_win.x;
 player_x = char_x - 128; //the distance the player goes from the character
 banner = false;
-global.star = 0;
+global.star = false;
 
 cam_pos_x = player_x+64;
 cam_pos_y = obj_win.y-32;
@@ -29,15 +29,20 @@ state.add("idle", {
 			state.change("prep");
 			
 			ini_open("savedata.ini");
-			var last_time = ini_read_real(room,"beattime",-1);
+			var last_time = ini_read_real(room_get_name(room),"beattime",-1);
 			if(last_time == -1) last_time = 9999999999;
 			var best_time = min(last_time , (global.timer-global.cookietimer));
 			show_debug_message(best_time);
-			ini_write_real(room, "beattime", best_time);
+			ini_write_real(room_get_name(room), "beattime", best_time);
+			
+			
 			//STAR
-			if global.hooked = 1 {global.star = 1; audio_play_sound(snd_star_win,10,false)};
-			gotstar = ini_read_real(room, "star", 0);
-			if global.star = 1 and gotstar = 0 {ini_write_real(room, "star", 1);}
+			if (global.hooked){
+				global.star = 1;
+				audio_play_sound(snd_star_win,10,false);
+			}
+			var gotstar = ini_read_real(room_get_name(room), "star", 0);
+			if (global.star && gotstar == 0) ini_write_real(room_get_name(room), "star", 1);
 			ini_close();
 			
 		}	

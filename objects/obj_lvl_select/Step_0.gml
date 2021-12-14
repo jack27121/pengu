@@ -17,7 +17,7 @@ if(controlled) {
 	
 	if input_check_pressed(eVerb.Jump){
 		if(unlocked_levels > global.selected){
-			level = levels[global.selected];
+			level = asset_get_index(levels[global.selected]);
 			controlled = false;
 			start_fade_out(function(){
 				room_goto(level);

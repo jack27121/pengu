@@ -35,11 +35,7 @@ if(room != rm_lvl_select){
 		if(dataclear_time >= 0.9){
 			dataclear_time = 0;
 			start_fade_out(function(){
-				ini_open("savedata.ini");
-				for (var i = 0; i < array_length(obj_lvl_select.levels); ++i) {
-					ini_write_real(obj_lvl_select.levels[i],"beattime",-1);
-				}
-				ini_close();
+				if file_exists("savedata.ini") file_delete("savedata.ini");
 				room_restart();
 			});
 		}
