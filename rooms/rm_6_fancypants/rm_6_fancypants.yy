@@ -411,6 +411,7 @@
             {"propertyId":{"name":"grounded","path":"objects/obj_spring/obj_spring.yy",},"objectId":{"name":"obj_spring","path":"objects/obj_spring/obj_spring.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
             {"propertyId":{"name":"force","path":"objects/obj_spring/obj_spring.yy",},"objectId":{"name":"obj_spring","path":"objects/obj_spring/obj_spring.yy",},"value":"6","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
           ],"isDnd":false,"objectId":{"name":"obj_spring","path":"objects/obj_spring/obj_spring.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":-180.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":2464.0,"y":76.0,"resourceVersion":"1.0","name":"inst_37A51D26","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_hiddencollect","path":"objects/obj_hiddencollect/obj_hiddencollect.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1760.0,"y":256.0,"resourceVersion":"1.0","name":"inst_1AC31020","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":38.0,"scaleY":8.5,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":752.0,"resourceVersion":"1.0","name":"inst_5CEEC007","tags":[],"resourceType":"GMRInstance",},
@@ -941,6 +942,7 @@
     {"name":"inst_7109AAB3","path":"rooms/rm_6_fancypants/rm_6_fancypants.yy",},
     {"name":"inst_37A51D26","path":"rooms/rm_6_fancypants/rm_6_fancypants.yy",},
     {"name":"inst_7D70EDE0","path":"rooms/rm_6_fancypants/rm_6_fancypants.yy",},
+    {"name":"inst_1AC31020","path":"rooms/rm_6_fancypants/rm_6_fancypants.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

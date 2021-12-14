@@ -6,6 +6,8 @@ sliding = false;
 
 grounded = false;
 mass = 0.26;
+startx = x;
+starty = y;
 
 //hurting
 hurting = false;
@@ -306,10 +308,18 @@ state.add("hurt", {
 	
 state.add("dying", {
 	enter: function(){
-		controlled = false;	
-		start_fade_out(function(){
-			room_restart();
-		});
+		if room != rm_13_secret {
+			controlled = false;	
+			start_fade_out(function(){
+				room_restart();
+			});
+		}
+		else
+		{
+			x = startx;
+			y = starty;
+			global.points = 10;
+		}
 	}
 });
 

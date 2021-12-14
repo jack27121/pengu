@@ -107,7 +107,7 @@ if(!hurting) { //DETECT BEING HIT BY spikies
 
 #region pits
 if(y > room_height+20) { //DETECT BEING HIT BY spikies
-	state.change("dying");
+	if room != rm_13_secret {state.change("dying");}
 }
 #endregion
 

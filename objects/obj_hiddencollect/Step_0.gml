@@ -2,19 +2,32 @@ if distance_to_object(obj_player) < 10 and goto = false
 {
 	goto = true;
 	depth = obj_player.depth+1;
-	global.secret += 1;
 	
-	repeat(5) {
-		sap = instance_create_depth(x,y+sinwave(-5,5,1,wavemod),obj_player.depth-1,obj_shrinkawaypart);
+	audio_play_sound(snd_star,10,false);
+	
+	repeat(10) {
+		sap = instance_create_depth(x,y,obj_player.depth-1,obj_shrinkawaypart);
 		sap.direction = random_range(90-30,90+30);
 		sap.speed = random_range(2,3);
-		sap.gravity = 0.25;
-		sap.sprite_index = spr_init;
+		sap.gravity = 0.1;
+		sap.image_xscale = 1.25;
+		sap.image_yscale = 1.25;
+		sap.sprite_index = spr_starpart;
+		sap.shrinkspd = 0.02;
 	}
 }
 
 if goto = true
 {
+	repeat(1) {
+		sap = instance_create_depth(x,y,obj_player.depth+5,obj_shrinkawaypart);
+		sap.direction = random_range(90-30,90+30);
+		sap.speed = random_range(2,3);
+		sap.gravity = 0.1;
+		sap.sprite_index = spr_starpart;
+		sap.shrinkspd = 0.02;
+	}
+	
 	if distance_to_point(obj_player.x-32,obj_player.y-32) > 20
 	{
 		move_towards_point(obj_player.x-32,obj_player.y-32,spd);
@@ -26,4 +39,6 @@ if goto = true
 		speed = lerp(speed,0,0.2);	
 		spd = lerp(spd,0,0.2);
 	}
+	
+	global.hooked = 1;
 }

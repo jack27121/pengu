@@ -37,6 +37,7 @@ global.timer = 0;
 global.newscore = 0;
 global.cookietimer = 0;
 global.started = false;
+global.hooked = 0;
 
 cframes = 0;
 cseconds = 0;
@@ -46,6 +47,7 @@ frames = 0;
 seconds = 0;
 minutes = 0;
 timer_text = 0;
+showing = false;
 
 global.music = audio_play_sound(music_christmas,0,true);
 

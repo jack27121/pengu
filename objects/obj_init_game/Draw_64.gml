@@ -1,6 +1,44 @@
 /// @description
 if(room != rm_lvl_select){
 #region points n' timer
+	
+	//LEVEL CREATOR TEXT	
+	if room = rm_13_secret 
+	{
+		if keyboard_check_pressed(vk_shift) {if showing = true {showing = false}else{showing = true}}
+		
+		draw_set_font(f_pixel);
+		draw_set_color(c_white);
+		if showing = true
+		{
+			draw_set_alpha(1);
+			draw_text_outline(6,30 + 0  ,"LEFT CLICK to place an object.",1,c_black,8);
+			draw_text_outline(6,30 + 7*1,"RIGHT CLICK to destroy an object, that you have selected.",1,c_black,8);
+			draw_text_outline(6,30 + 7*2,"MIDDLE CLICK to teleport Pengu.",1,c_black,8);
+			draw_text_outline(6,30 + 7*3,"E and Q to rotate. (!)",1,c_black,8);
+			draw_text_outline(6,30 + 7*4,"SCROLL UP to Enlarge. (!)",1,c_black,8);
+			draw_text_outline(6,30 + 7*5,"SCROLL UP to Shrink. (!)",1,c_black,8);
+			draw_text_outline(6,30 + 7*6,"TAB to Mirror. (!)",1,c_black,8);
+			
+			draw_text_outline(6,30 + 7*7,"1 = Point.",1,c_black,8);
+			draw_text_outline(6,30 + 7*8,"2 = Spikes.",1,c_black,8);
+			draw_text_outline(6,30 + 7*9,"3 = Wall.",1,c_black,8);
+			draw_text_outline(6,30 + 7*10,"4 = Ice Wall.",1,c_black,8);
+			draw_text_outline(6,30 + 7*11,"5 = One Way.",1,c_black,8);
+			draw_text_outline(6,30 + 7*12,"6 = Ice One Way.",1,c_black,8);
+			draw_text_outline(6,30 + 7*13,"7 = Falling Platform.",1,c_black,8);
+			draw_text_outline(6,30 + 7*14,"8 = Ice Falling Platform.",1,c_black,8);
+			draw_text_outline(6,30 + 7*15,"9 = Spring.",1,c_black,8);
+			draw_text_outline(6,30 + 7*16,"0 = Bouncy Ball.",1,c_black,8);
+			draw_text_outline(6,30 + 7*17,"F1, F2, F3, F4 = Different slope variations.",1,c_black,8);
+			draw_text_outline(6,30 + 7*18,"F5 = Seal.",1,c_black,8);
+			
+			draw_text_outline(6+sinwave(-2,2,3,0),30 + 7*19,"(!) means this might not work or act strangely with some objects.",1,c_black,8);
+		}
+		
+		draw_text_outline(6+sinwave(-2,2,3,0),30 + 7*20,"LEFT SHIFT to hide/show info.",1,c_black,8);
+	}
+
 	draw_sprite(spr_icon_cookie,0,2,2);
 	draw_set_font(f_whackyjoe);
 	draw_set_halign(fa_left);
