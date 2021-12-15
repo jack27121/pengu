@@ -26,21 +26,21 @@ if keyboard_check_pressed(vk_f4)       {tool = spr_wall_diagonal_icey;   scale =
 if keyboard_check_pressed(vk_f5)       {tool = spr_seal;                 scale = 1; dir = 0; xscale = 1; audio_play_sound(snd_pickup,10,false); }
 
 if input_mouse_check_pressed(mb_left) {
-	if tool = spr_point {ob = instance_create_layer(x,y,"Instances",obj_point);}
-	if tool = spr_spikes {ob = instance_create_layer(x,y,"Instances",obj_spikes);}
-	if tool = spr_wall {ob = instance_create_layer(x,y,"Instances",obj_wall);}
-	if tool = spr_wall_icey {ob = instance_create_layer(x,y,"Instances",obj_wall_icey);}
-	if tool = spr_wall_top {ob = instance_create_layer(x,y,"Instances",obj_wall_top);}
-	if tool = spr_wall_top_icey {ob = instance_create_layer(x,y,"Instances",obj_wall_top_icey);}
-	if tool = spr_fall_platform {ob = instance_create_layer(x,y,"Instances",obj_falling_platform);}
+	if tool = spr_point              {ob = instance_create_layer(x,y,"Instances",obj_point);}
+	if tool = spr_spikes             {ob = instance_create_layer(x,y,"Instances",obj_spikes);}
+	if tool = spr_wall               {ob = instance_create_layer(x,y,"Instances",obj_wall);}
+	if tool = spr_wall_icey          {ob = instance_create_layer(x,y,"Instances",obj_wall_icey);}
+	if tool = spr_wall_top           {ob = instance_create_layer(x,y,"Instances",obj_wall_top);}
+	if tool = spr_wall_top_icey      {ob = instance_create_layer(x,y,"Instances",obj_wall_top_icey);}
+	if tool = spr_fall_platform      {ob = instance_create_layer(x,y,"Instances",obj_falling_platform);}
 	if tool = spr_fall_platform_icey {ob = instance_create_layer(x,y,"Instances",obj_falling_platform_icey);}
-	if tool = spr_spring {ob = instance_create_layer(x,y,"Instances",obj_spring);}
-	if tool = spr_bounce_ball {ob = instance_create_layer(x,y,"Instances",obj_bounce_ball);}
-	if tool = spr_wall_bump {ob = instance_create_layer(x,y,"Instances",obj_wall_diagonal);}
-	if tool = spr_wall_bump_icey {ob = instance_create_layer(x,y,"Instances",obj_wall_diagonal_icey);}
-	if tool = spr_wall_diagonal {ob = instance_create_layer(x,y,"Instances",obj_wall_slope);}
+	if tool = spr_spring             {ob = instance_create_layer(x,y,"Instances",obj_spring);}
+	if tool = spr_bounce_ball        {ob = instance_create_layer(x,y,"Instances",obj_bounce_ball);}
+	if tool = spr_wall_bump          {ob = instance_create_layer(x,y,"Instances",obj_wall_diagonal);}
+	if tool = spr_wall_bump_icey     {ob = instance_create_layer(x,y,"Instances",obj_wall_diagonal_icey);}
+	if tool = spr_wall_diagonal      {ob = instance_create_layer(x,y,"Instances",obj_wall_slope);}
 	if tool = spr_wall_diagonal_icey {ob = instance_create_layer(x,y,"Instances",obj_wall_slope_icey);}
-	if tool = spr_seal {ob = instance_create_layer(x,y,"Instances",obj_seal);}
+	if tool = spr_seal               {ob = instance_create_layer(x,y,"Instances",obj_seal);}
 	
 	ob.image_xscale = scale*xscale;
 	ob.image_yscale = scale;
@@ -51,19 +51,19 @@ if input_mouse_check_pressed(mb_left) {
 }
 
 if input_mouse_check(mb_right) {
-	if tool = spr_point {with(obj_point) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_spikes {with(obj_spikes) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall {with(obj_wall) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall_icey {with(obj_wall_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall_top {with(obj_wall_top) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall_top_icey {with(obj_wall_top_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_fall_platform {with(obj_falling_platform) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_fall_platform_icey {with(obj_falling_platform_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_spring {with(obj_spring) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_bounce_ball {with(obj_bounce_ball) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall_bump {with(obj_wall_diagonal) {if distance_to_object(obj_lvleditor) < 8 {instance_destroy(); audio_play_sound(snd_landing,10,false)}}} //TOO BIG AND TOO FAR FROM ORIGIN
-	if tool = spr_wall_bump_icey {with(obj_wall_diagonal_icey) {if distance_to_object(obj_lvleditor) < 8 {instance_destroy(); audio_play_sound(snd_landing,10,false)}}} //TOO BIG AND TOO FAR FROM ORIGIN
-	if tool = spr_wall_diagonal {with(obj_wall_slope) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_wall_diagonal_icey {with(obj_wall_slope_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
-	if tool = spr_seal {with(obj_seal) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_point                 {with(obj_point) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_spikes                {with(obj_spikes) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall                  {with(obj_wall) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall_icey             {with(obj_wall_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall_top              {with(obj_wall_top) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall_top_icey         {with(obj_wall_top_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_fall_platform         {with(obj_falling_platform) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_fall_platform_icey    {with(obj_falling_platform_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_spring                {with(obj_spring) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_bounce_ball           {with(obj_bounce_ball) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall_bump             {with(obj_wall_diagonal) {if distance_to_object(obj_lvleditor) < 8 {instance_destroy(); audio_play_sound(snd_landing,10,false)}}} //TOO BIG AND TOO FAR FROM ORIGIN
+	if tool = spr_wall_bump_icey        {with(obj_wall_diagonal_icey) {if distance_to_object(obj_lvleditor) < 8 {instance_destroy(); audio_play_sound(snd_landing,10,false)}}} //TOO BIG AND TOO FAR FROM ORIGIN
+	if tool = spr_wall_diagonal         {with(obj_wall_slope) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_wall_diagonal_icey    {with(obj_wall_slope_icey) {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
+	if tool = spr_seal                  {with(obj_seal)  {if instance_place(x,y,obj_lvleditor) {instance_destroy(); audio_play_sound(snd_landing,10,false)}}}
 }

@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "music_christmas.mp3",
-  "duration": 170.256,
+  "duration": 225.648,
   "parent": {
     "name": "music",
     "path": "folders/Sounds/music.yy",

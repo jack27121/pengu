@@ -31,9 +31,9 @@ if(controlled){
 	
 	if(hcontrol){
 		hinput = input_check(eVerb.Right) -input_check(eVerb.Left);
-		if(grounded && !sliding) hspd += hinput * spd;
-		else if(grounded && sliding) hspd += hinput * spd * 0.6;
-		else hspd += hinput * spd * 0.8; //not as good control in air
+		if(grounded && !sliding) {hspd += hinput * spd; flytime = 0;}
+		else if(grounded && sliding) {hspd += hinput * spd * 0.6;  flytime = 0;}
+		else {hspd += hinput * spd * 0.8; flytime += 1;}; //not as good control in air
 	}	
 }
 	
@@ -110,6 +110,23 @@ if(y > room_height+20) { //DETECT BEING HIT BY spikies
 	if room != rm_13_secret {state.change("dying");}
 }
 #endregion
+
+///SPEED MEDAL
+if abs(hspd) > 12 and global.medalmach10 = false
+{
+	global.medalmach10 = true;
+	ng_unlockmedal("Mach 10 Penguin");
+	show_debug_message("MACH 10 PENGUIN");
+}
+
+///FLYING MEDAL
+if flytime > 60*3 and global.medalfly = false
+{
+	global.medalfly = true;
+	ng_unlockmedal("A Real Bird");
+	show_debug_message("A REAL BIRD");
+}
+
 
 if(angle < 0) angle += 360;
 if(abs(angle_difference(0,angle)) < 1) angle = 0;

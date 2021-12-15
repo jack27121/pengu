@@ -39,6 +39,36 @@ global.cookietimer = 0;
 global.started = false;
 global.hooked = 0;
 
+//MEDAL VARS
+global.medalplay = false;
+global.medal1 = false;
+global.medal2 = false;
+global.medal3 = false;
+global.medal4 = false;
+global.medal5 = false;
+global.medal6 = false;
+global.medal7 = false;
+global.medal8 = false;
+global.medal9 = false;
+global.medal10 = false;
+global.medal11 = false;
+global.medal12 = false;
+global.medalall = false; // all the levels beaten
+global.medal1star = false;
+global.medal3star = false;
+global.medal6star = false;
+global.medal9star = false;
+global.medal12star = false;
+global.medaltasty = false;
+global.medalovo = false;
+global.medalspeedrun = false;
+global.medalmach10 = false;
+global.medalscuffed = false;
+global.medalnoslide = false;
+global.medalsealsquash = false;
+global.medalrealbird = false;
+global.medalouch = false;
+
 cframes = 0;
 cseconds = 0;
 cminutes = 0;
@@ -49,6 +79,7 @@ minutes = 0;
 timer_text = 0;
 showing = false;
 
+global.mute = false;
 global.music = audio_play_sound(music_christmas,0,true);
 
 //root note has to be G

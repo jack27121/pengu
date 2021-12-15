@@ -45,9 +45,11 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
 var credit_offset = 6;
-draw_text(6,view_h*upscale-80-credit_offset*10+pandown,"P to clear save data.");
-draw_text(6,view_h*upscale-80-credit_offset*9+pandown,"L to raise volume.");
-draw_text(6,view_h*upscale-80-credit_offset*8+pandown,"K to lower volume.");
+
+draw_text(6,view_h*upscale-80-credit_offset*11+pandown,"P to clear save data.");
+draw_text(6,view_h*upscale-80-credit_offset*10+pandown,"L to raise volume.");
+draw_text(6,view_h*upscale-80-credit_offset*9+pandown,"K to lower volume.");
+draw_text(6,view_h*upscale-80-credit_offset*8+pandown,"M to play/pause the music.");
 
 draw_text(6,view_h*upscale-80-credit_offset*6+pandown,"Thanks for playing, " + string(global.playername) + "!");
 draw_text(6,view_h*upscale-80-credit_offset*5+pandown,"Created by:");

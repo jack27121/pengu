@@ -22,11 +22,13 @@ vspd = 0;
 
 maxWalkSpd = 3;
 maxSlideSpd = 6;
-maxSpd = 16
+maxSpd = 16;
 maxFlySpd = 0;
 maxSlideDeltaSpd = 0;
 
 spd= 0.3;
+slid = 0;
+flytime = 0;
 
 scaleX = 1;
 scaleY = 1;
@@ -40,6 +42,7 @@ angle = 0;
 subimg = 0;
 
 flip = 1;
+slidetimer = 0;
 
 #region states
 state = new SnowState("idle");
@@ -50,6 +53,8 @@ state.event_set_default_function("step", function() {
 
 state.event_set_default_function("draw", function() {
 	var yoffset = 16 * (1-scaleY);
+	
+	//draw_text(x,y-60,string(flytime));
 	
 	viz_angle = angle;
 	if (grounded && !sliding) viz_angle = angle_difference(angle,0)/2 //if walking up slopes you aren't rotated as much
@@ -98,6 +103,7 @@ state.add("running", {
 state.add("sliding_begin", {
     enter: function() {
 		sliding = true;
+		slid = 1;
 		sprite_index = spr_pengu_slide_begin;
 		subimg = 0;
 		var sound = audio_play_sound(snd_down,100,false);
@@ -120,6 +126,7 @@ state.add("spinning", {
 state.add("sliding", {
     enter: function() {
 		sliding = true;
+		slid = 1;
 		scaleY = 0.8;
 		scaleX = 1.2;
 		// audio_play_sound(snd_slide_loop, 15, true); NEED TO FIX
@@ -136,6 +143,19 @@ state.add("sliding", {
 		slidingSubimg+=hspd/10;
 		slidingSubimg = clamp(slidingSubimg,0,12);
 		subimg = slidingSubimg;
+		
+		//LOOK AT SCREEN MEDAL
+		if slidingSubimg = 6 {
+			slidetimer += 1;
+			if slidetimer > 4*60 and global.medalovo = false
+			{
+				global.medalovo = true;
+				ng_unlockmedal("( o ) v ( o )");
+				show_debug_message("OVO???");
+			}
+		}
+		else
+		{slidetimer = 0;}
 		
 		if(hinput !=0 ){ //squishes a little bit when moving
 			scaleY = 0.95;
@@ -289,6 +309,14 @@ state.add("hurt", {
 		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
 		if (global.points == 0){
 			state.change("dying");
+			
+			//MEDAL
+			global.deathcounter += 1;
+			if global.deathcounter >= 10 and global.medalouch = false {
+				ng_unlockmedal("Oof! Ouch! Owie!");
+				show_debug_message("OUCHIES MEDAL");
+				global.medalouch = true;
+			}
 		}else{ //OHHH? THE PLAYER DOES HAVE POINTS?
 			point_scatter();
 			global.points = 0; //REMOVE ALL POINTS
