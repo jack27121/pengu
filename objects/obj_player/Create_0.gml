@@ -145,17 +145,14 @@ state.add("sliding", {
 		subimg = slidingSubimg;
 		
 		//LOOK AT SCREEN MEDAL
-		if slidingSubimg = 6 {
+		if (floor(slidingSubimg) == 6) {
 			slidetimer += 1;
-			if slidetimer > 4*60 and global.medalovo = false
-			{
+			if(slidetimer > 4*60 && !global.medalovo){
 				global.medalovo = true;
 				ng_unlockmedal("( o ) v ( o )");
 				show_debug_message("OVO???");
 			}
-		}
-		else
-		{slidetimer = 0;}
+		} else slidetimer = 0;
 		
 		if(hinput !=0 ){ //squishes a little bit when moving
 			scaleY = 0.95;
@@ -309,14 +306,6 @@ state.add("hurt", {
 		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
 		if (global.points == 0){
 			state.change("dying");
-			
-			//MEDAL
-			global.deathcounter += 1;
-			if global.deathcounter >= 10 and global.medalouch = false {
-				ng_unlockmedal("Oof! Ouch! Owie!");
-				show_debug_message("OUCHIES MEDAL");
-				global.medalouch = true;
-			}
 		}else{ //OHHH? THE PLAYER DOES HAVE POINTS?
 			point_scatter();
 			global.points = 0; //REMOVE ALL POINTS
@@ -336,14 +325,22 @@ state.add("hurt", {
 	
 state.add("dying", {
 	enter: function(){
+		//MEDAL
+		global.deathcounter += 1;
+		if global.deathcounter >= 10 and global.medalouch = false {
+			ng_unlockmedal("Oof! Ouch! Owie!");
+			show_debug_message("OUCHIES MEDAL");
+			global.medalouch = true;
+		}
+		
+		
+		
 		if room != rm_13_secret {
 			controlled = false;	
 			start_fade_out(function(){
 				room_restart();
 			});
-		}
-		else
-		{
+		}else{
 			x = startx;
 			y = starty;
 			global.points = 10;

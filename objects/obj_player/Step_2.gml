@@ -106,22 +106,20 @@ if(!hurting) { //DETECT BEING HIT BY spikies
 #endregion
 
 #region pits
-if(y > room_height+20) { //DETECT BEING HIT BY spikies
-	if room != rm_13_secret {state.change("dying");}
+if(y > room_height+20 && !state.state_is("dying")) { //DETECT falling in a pit
+	if (room != rm_13_secret) state.change("dying");
 }
 #endregion
 
 ///SPEED MEDAL
-if abs(hspd) > 12 and global.medalmach10 = false
-{
+if(abs(hspd) > 12 && !global.medalmach10){
 	global.medalmach10 = true;
 	ng_unlockmedal("Mach 10 Penguin");
 	show_debug_message("MACH 10 PENGUIN");
 }
 
 ///FLYING MEDAL
-if flytime > 60*3 and global.medalrealbird = false
-{
+if (flytime > 60*3 && !global.medalrealbird){
 	global.medalrealbird = true;
 	ng_unlockmedal("A Real Bird");
 	show_debug_message("A REAL BIRD");

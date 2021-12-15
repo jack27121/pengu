@@ -7,4 +7,4 @@ spr_end =	spr_win_ena_end;
 
 sprite_index = spr_idle;
 
-win_string = "You found Ena!"
+win_string = "You found ENA!"
