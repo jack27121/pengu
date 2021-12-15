@@ -4,6 +4,8 @@ mass = 0.2;
 hspd = 0;
 vspd = 0;
 
+placed = false;
+
 spd = 1;
 maxVSpd = 8
 maxSpd = 1

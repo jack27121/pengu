@@ -3,6 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
+placed = false;
 hspd = 0;
 hspd_max = 4;
 

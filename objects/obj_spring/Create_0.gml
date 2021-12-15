@@ -1,6 +1,7 @@
 /// @description
 subimg = 0;
 state = new SnowState("idle");
+placed = false;
 
 state.event_set_default_function("draw", function() {
 	draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,image_angle,white,1);

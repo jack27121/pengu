@@ -39,13 +39,20 @@ for (var i = 0; i < array_length(pictures); ++i) {
 #endregion
 
 #region credits
-draw_set_color(black);
-draw_set_font(f_credits);
+var credit_offset = 6;
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 
-var credit_offset = 6;
+draw_set_color(black);
+draw_set_font(f_whackyjoe_title);
+c_rainbow = make_color_hsv((get_timer()/10000) mod 255,255,255);
+if os_browser == browser_not_a_browser or global.levelsbeaten = 12 {
+	draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",4,c_black,12);
+	draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",2,c_rainbow,6);
+}
 
+draw_set_color(black);
+draw_set_font(f_credits);
 draw_text(6,view_h*upscale-80-credit_offset*11+pandown,"P to clear save data.");
 draw_text(6,view_h*upscale-80-credit_offset*10+pandown,"L to raise volume.");
 draw_text(6,view_h*upscale-80-credit_offset*9+pandown,"K to lower volume.");

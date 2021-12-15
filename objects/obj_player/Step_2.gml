@@ -120,9 +120,9 @@ if abs(hspd) > 12 and global.medalmach10 = false
 }
 
 ///FLYING MEDAL
-if flytime > 60*3 and global.medalfly = false
+if flytime > 60*3 and global.medalrealbird = false
 {
-	global.medalfly = true;
+	global.medalrealbird = true;
 	ng_unlockmedal("A Real Bird");
 	show_debug_message("A REAL BIRD");
 }

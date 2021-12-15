@@ -5,6 +5,7 @@ fired = false;
 lifetime = 2*room_speed;
 blinktime = lifetime/1.5;
 
+placed = false;
 ymod = 0;
 grounded = false;
 
