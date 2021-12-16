@@ -27,6 +27,26 @@ if(controlled) {
 		}
 	}
 	
+	if keyboard_check_pressed(ord("H")) and ready = true {
+		if(unlocked_levels > global.selected and beattime[global.selected] > 0){
+			audio_play_sound(snd_pickup,10,false);
+			new_score = beattime[global.selected];
+			show_debug_message("trying to resub score: level:" + string(global.selected+1) + " score: " + string(new_score));
+			if (global.selected == 0)     { ng_postScore("11149", new_score);}
+			if (global.selected == 1)	  { ng_postScore("11150", new_score);}
+			if (global.selected == 2)     { ng_postScore("11152", new_score);}
+			if (global.selected == 3)     { ng_postScore("11153", new_score);}
+			if (global.selected == 4)     { ng_postScore("11154", new_score);}
+			if (global.selected == 5)     { ng_postScore("11155", new_score);}
+			if (global.selected == 6)     { ng_postScore("11156", new_score);}
+			if (global.selected == 7)     { ng_postScore("11157", new_score);}
+			if (global.selected == 8)     { ng_postScore("11158", new_score);}
+			if (global.selected == 9) 	  { ng_postScore("11159", new_score);}
+			if (global.selected == 10)    { ng_postScore("11160", new_score);}
+			if (global.selected == 11)    { ng_postScore("11161", new_score);}
+		}
+	}
+	
 	if keyboard_check_pressed(ord("P")){
 		audio_play_sound(snd_jump,10,false);
 	}

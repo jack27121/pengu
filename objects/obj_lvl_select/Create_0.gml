@@ -8,6 +8,7 @@ global.star = 0;
 global.startotal = 0;
 global.levelsbeaten = 0;
 global.deathcounter = 0;
+ready = false;
 
 if(!global.started) pandown = 720; //starts in the sky and pans down
 else pandown = 0;

@@ -53,10 +53,11 @@ if global.startotal = 12 {
 
 draw_set_color(black);
 draw_set_font(f_credits);
-draw_text(6,view_h*upscale-80-credit_offset*11+pandown,"P to clear save data.");
-draw_text(6,view_h*upscale-80-credit_offset*10+pandown,"L to raise volume.");
-draw_text(6,view_h*upscale-80-credit_offset*9+pandown,"K to lower volume.");
-draw_text(6,view_h*upscale-80-credit_offset*8+pandown,"M to play/pause the music.");
+draw_text(6,view_h*upscale-80-credit_offset*12+pandown,"P to clear save data.");
+draw_text(6,view_h*upscale-80-credit_offset*11+pandown,"L to raise volume.");
+draw_text(6,view_h*upscale-80-credit_offset*10+pandown,"K to lower volume.");
+draw_text(6,view_h*upscale-80-credit_offset*9+pandown,"M to play/pause the music.");
+draw_text(6,view_h*upscale-80-credit_offset*8+pandown,"H to reattempt submitting your highscore.");
 
 draw_text(6,view_h*upscale-80-credit_offset*6+pandown,"Thanks for playing, " + string(global.playername) + "!");
 draw_text(6,view_h*upscale-80-credit_offset*5+pandown,"Created by:");
@@ -120,7 +121,7 @@ for (var i = 0; i < array_length(levels); ++i) {
 				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown,1,1,0,c_dkgray,1);
 			} else {
 				//IF STAR = 1?
-				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown,1,1,sinwave(-6,6,2,0),c_white,1);	
+				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,1);	
 			}
 			draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(global.selected*offset)-28,view_h-22+pandown);
 			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,timer_text);

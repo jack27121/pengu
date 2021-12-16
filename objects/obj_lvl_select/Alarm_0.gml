@@ -26,3 +26,5 @@ global.playername = ng_get_username();
 if global.playername = "" {
 	global.playername = "User";	
 }
+
+ready = true;

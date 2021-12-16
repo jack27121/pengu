@@ -80,7 +80,7 @@ timer_text = 0;
 showing = false;
 
 global.mute = false;
-global.music = audio_play_sound(music_christmas,0,true);
+global.music = music_christmas;
 
 //root note has to be G
 #macro scale_pitches [-7,-5,-3,0,2,4,5,7,9,12];
