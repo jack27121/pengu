@@ -78,6 +78,7 @@ if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
 	hcontrol = false;
 	if(!sliding){
 		state.change("sliding_begin");
+		// angle =
 		sliding = true;
 	}
 } else if(grounded || state.state_is("launch")) hcontrol = true;
