@@ -5,7 +5,7 @@ banner = false;
 global.star = false;
 
 cam_pos_x = player_x+64;
-cam_pos_y = obj_win.y-32;
+cam_pos_y = obj_win.y-42;
 
 wait_t = 0;
 banner_t = 0;
