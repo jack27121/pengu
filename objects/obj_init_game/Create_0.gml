@@ -37,6 +37,12 @@ global.timer = 0;
 global.cookietimer = 0;
 global.started = false;
 global.hooked = 0;
+global.star = 0;
+global.startotal = 0;
+global.levelsbeaten = 0;
+global.deathcounter = 0;
+global.gottenstar = 0;
+
 
 //MEDAL VARS
 global.medalplay = false;
