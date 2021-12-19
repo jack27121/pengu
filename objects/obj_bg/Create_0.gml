@@ -13,3 +13,5 @@ ocean_y9 = ocean_y1+40;
 ocean_y10 = ocean_y1+45;
 ocean_y11 = ocean_y1+50;
 ocean_y12 = ocean_y1+55;
+
+surf_ocean = -1;

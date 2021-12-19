@@ -34,7 +34,6 @@ gpu_set_blendenable(true);
 #region global vars
 global.gravity = 1;
 global.timer = 0;
-global.newscore = 0;
 global.cookietimer = 0;
 global.started = false;
 global.hooked = 0;
@@ -69,11 +68,9 @@ global.medalsealsquash = false;
 global.medalrealbird = false;
 global.medalouch = false;
 
-cframes = 0;
 cseconds = 0;
 cminutes = 0;
 ctimer_text = 0;
-frames = 0;
 seconds = 0;
 minutes = 0;
 timer_text = 0;
