@@ -299,9 +299,9 @@ state.add("hurt", {
 		hurting = true;
 		sprite_index = spr_pengu_hurt;
 		
-		var sound_file = (random_range(1,1000) != 1000) ? snd_pengu_hurt : snd_pengu_uwu;
+		var sound_file = (irandom_range(1,1000) != 1000) ? snd_pengu_hurt : snd_pengu_uwu;
 		var sound = audio_play_sound(sound_file,100,false);
-		audio_sound_pitch(sound,pitch_change(random_range(2,10)))
+		audio_sound_pitch(sound,pitch_change(random_range(2,10)));
 		
 		//IF THE PLAYER HAS NO POINTS, THEN KILL THEM
 		if (global.points == 0){

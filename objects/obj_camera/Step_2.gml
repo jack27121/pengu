@@ -45,8 +45,11 @@ shake_y = screen_shake_;
 var vibration = screen_shake_ / 20;
 gamepad_set_vibration(0,vibration,vibration);
 
+var clamp_y = room_height;
+if(instance_exists(obj_water_level)) clamp_y = min(room_height,obj_water_level.y+64);
+
 x = clamp(x,(view_w/2),room_width -(view_w/2));
-y = clamp(y,(view_h/2),room_height-(view_h/2));
+y = clamp(y,(view_h/2),clamp_y-(view_h/2));
 
 //update camera view
 var new_x = x - (view_w / 2 + shake_x)*zoom;

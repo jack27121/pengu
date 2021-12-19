@@ -32,9 +32,8 @@ if(!instance_exists(obj_water_level)){
 } else { //if there's a water level present, the bg water will stretch to match the water level
 	//gpu_set_blendmode(bm_add);
 	var water_y = obj_water_level.y - ay;
-	var yscale = (water_y - 129) / surface_get_height(ocean_surface);
-	var water_alpha = yscale < 0 ? 0.95 : 1;
-	draw_surface_ext(ocean_surface, 0, 130, 1, yscale, 0, white, water_alpha);
+	var yscale = (water_y - 120) / surface_get_height(ocean_surface);
+	draw_surface_ext(ocean_surface, 0, 130, 1, yscale, 0, white, 1);
 	gpu_set_blendmode(bm_normal);
 }
 
@@ -43,8 +42,6 @@ surface_reset_target();
 #endregion
 
 draw_surface(bg_surface,ax,ay);
-
-
 
 //draw_sprite_tiled_area(spr_bg_ocean,0,(-x+bg_t)*0.25,0,0,ocean_y1, view_w,ocean_y2);  //ocean 1
 //draw_sprite_tiled_area(spr_bg_ocean,0,(-x+bg_t)*0.3,0,0,ocean_y2, view_w,ocean_y3);  //ocean 2

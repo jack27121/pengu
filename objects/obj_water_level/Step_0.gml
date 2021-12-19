@@ -11,6 +11,9 @@ else{ //reverses after reaching destination
 }
 y = round(y_);
 
+if(obj_player.y > y+16){
+	hurtplayer();
+}
 
 //if(obj_camera.y < y) layer_clear_fx("water_fx");
 //else layer_set_fx("water_fx",water_fx);

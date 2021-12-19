@@ -1,12 +1,15 @@
 /// @description
 controlled = false;
-unlocked_levels = 6; //this and every level before this number will be unlocked
+unlocked_levels = 7; //this and every level before this number will be unlocked
 global.playername = "User"; //DEFAULT USERNAME
 alarm[0] = 120; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
 ready = false;
 
 if(!global.started) pandown = 720; //starts in the sky and pans down
 else pandown = 0;
+
+global.startotal = 0;
+global.levelsbeaten = 0;
  
 levels = [
 	room_get_name(rm_1_pico),
