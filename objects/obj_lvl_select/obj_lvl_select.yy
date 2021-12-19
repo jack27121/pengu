@@ -28,7 +28,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "tools",
-    "path": "folders/tools.yy",
+    "path": "folders/Objects/tools.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_lvl_select",

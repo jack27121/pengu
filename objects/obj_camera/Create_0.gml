@@ -14,8 +14,8 @@ resolution_resize = function(){
 	surface_resize(application_surface, view_w,view_h);
 	display_reset(0, false);
 	
-	view_wport[0] = view_w
-	view_hport[0] = view_h
+	view_wport[0] = view_w;
+	view_hport[0] = view_h;
 	
 	display_width =  view_w * upscale;
 	display_height = view_h* upscale;

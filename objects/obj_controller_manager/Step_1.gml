@@ -2,6 +2,19 @@
 input_tick();
 input_hotswap_tick(0);
 
+if (os_browser == browser_not_a_browser)
+{
+	if keyboard_check_pressed(vk_f3)
+	{
+		camera_zoom(1.5,120);
+	}
+	if keyboard_check_pressed(vk_f4)
+	{
+		camera_zoom(1,120);
+	}
+}
+
+
 /// @desc restart && timer
 if(room != rm_lvl_select){
 	////restart

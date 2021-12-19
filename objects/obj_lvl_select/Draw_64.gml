@@ -119,9 +119,12 @@ for (var i = 0; i < array_length(levels); ++i) {
 			if(star[i] == 0) {
 				//IF STAR = 0?
 				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown,1,1,0,c_dkgray,1);
+				global.gottenstar = 0;
 			} else {
 				//IF STAR = 1?
-				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,1);	
+				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,1);
+				draw_sprite_ext(spr_icon_star,1,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,sinwave(0.1,0.6,1,0));	
+				global.gottenstar = 1;
 			}
 			draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(global.selected*offset)-28,view_h-22+pandown);
 			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,timer_text);
