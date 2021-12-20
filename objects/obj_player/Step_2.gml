@@ -89,10 +89,11 @@ if(!grounded && (state.state_is("running") || state.state_is("idle"))) state.cha
 #region damage
 if(!hurting) { //DETECT BEING HIT BY spikies
 	//var spike = instance_place(x+hspd,y+vspd,obj_spikes);
-	if(is_child(wall,obj_spikes)){
+	var spike = instance_place(x+hspd,y+vspd,obj_spikes);
+	if(spike != noone){
 		var launch_spd = 6;
-		var launch_x = lengthdir_x(launch_spd/2,wall.image_angle+90);
-		var launch_y = lengthdir_y(launch_spd,wall.image_angle+90);
+		var launch_x = lengthdir_x(launch_spd/2,spike.image_angle+90);
+		var launch_y = lengthdir_y(launch_spd,spike.image_angle+90);
 		
 		hspd += launch_x; // Launch the player away;
 		vspd += launch_y; 
