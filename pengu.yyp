@@ -391,7 +391,7 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"init_game","path":"rooms/init_game/init_game.yy",},},
-    {"roomId":{"name":"rm_9_bees","path":"rooms/rm_9_bees/rm_9_bees.yy",},},
+    {"roomId":{"name":"rm_10_cordelia","path":"rooms/rm_10_cordelia/rm_10_cordelia.yy",},},
     {"roomId":{"name":"rm_lvl_select","path":"rooms/rm_lvl_select/rm_lvl_select.yy",},},
     {"roomId":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},},
     {"roomId":{"name":"rm_2_tankman","path":"rooms/rm_2_tankman/rm_2_tankman.yy",},},
@@ -401,7 +401,7 @@
     {"roomId":{"name":"rm_6_fancypants","path":"rooms/rm_6_fancypants/rm_6_fancypants.yy",},},
     {"roomId":{"name":"rm_7_mimes","path":"rooms/rm_7_mimes/rm_7_mimes.yy",},},
     {"roomId":{"name":"rm_8_meatboy","path":"rooms/rm_8_meatboy/rm_8_meatboy.yy",},},
-    {"roomId":{"name":"rm_10_cordelia","path":"rooms/rm_10_cordelia/rm_10_cordelia.yy",},},
+    {"roomId":{"name":"rm_9_bees","path":"rooms/rm_9_bees/rm_9_bees.yy",},},
     {"roomId":{"name":"rm_11_satina","path":"rooms/rm_11_satina/rm_11_satina.yy",},},
     {"roomId":{"name":"rm_12_castlecrashers","path":"rooms/rm_12_castlecrashers/rm_12_castlecrashers.yy",},},
     {"roomId":{"name":"rm_13_secret","path":"rooms/rm_13_secret/rm_13_secret.yy",},},

@@ -11,8 +11,8 @@
   },
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_wall_icey",
-    "path": "objects/obj_wall_icey/obj_wall_icey.yy",
+    "name": "obj_wall_top_icey",
+    "path": "objects/obj_wall_top_icey/obj_wall_top_icey.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
