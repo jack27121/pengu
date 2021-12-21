@@ -39,15 +39,20 @@ if distance_to_object(obj_player) < 500
 			//vspd = lerp(vspd,0,0.01);
 			//if (bounce >= 7) {speed = lerp(speed,0,0.1); gravity = 0;} //IF BOUNCED 3 TIMES, STOP GRAVITY AND BRING SPEED TO 0 FASTER
 		
+			vspd += grav;
+		
 			//Horizontal bounced
 			if(place_meeting(x + hspd, y, obj_wall)) hspd = -hspd;
 		
 			//Vertical bounce
 			if(place_meeting(x, y + vspd, obj_wall)) vspd = -vspd;
+			
+			x+=hspd;
+			y+=vspd;
 		
-			vspd += grav;
-		
-			collision(0,1);
+			//vspd += grav;
+			//
+			//collision(0,1);
 		}
 	}
 }

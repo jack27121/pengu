@@ -90,6 +90,7 @@ if(!grounded && (state.state_is("running") || state.state_is("idle"))) state.cha
 if(!hurting) { //DETECT BEING HIT BY spikies
 	//var spike = instance_place(x+hspd,y+vspd,obj_spikes);
 	var spike = instance_place(x+hspd,y+vspd,obj_spikes);
+	if(spike == noone && is_child(wall,obj_spikes)) spike = wall;
 	if(spike != noone){
 		var launch_spd = 6;
 		var launch_x = lengthdir_x(launch_spd/2,spike.image_angle+90);
