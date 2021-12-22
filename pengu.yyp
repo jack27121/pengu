@@ -400,6 +400,7 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"init_game","path":"rooms/init_game/init_game.yy",},},
+    {"roomId":{"name":"rm_11_satina","path":"rooms/rm_11_satina/rm_11_satina.yy",},},
     {"roomId":{"name":"rm_lvl_select","path":"rooms/rm_lvl_select/rm_lvl_select.yy",},},
     {"roomId":{"name":"rm_1_pico","path":"rooms/rm_1_pico/rm_1_pico.yy",},},
     {"roomId":{"name":"rm_2_tankman","path":"rooms/rm_2_tankman/rm_2_tankman.yy",},},
@@ -415,7 +416,6 @@
     {"roomId":{"name":"rm_13_secret","path":"rooms/rm_13_secret/rm_13_secret.yy",},},
     {"roomId":{"name":"rm_testroom","path":"rooms/rm_testroom/rm_testroom.yy",},},
     {"roomId":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
-    {"roomId":{"name":"rm_11_satina","path":"rooms/rm_11_satina/rm_11_satina.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":14,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

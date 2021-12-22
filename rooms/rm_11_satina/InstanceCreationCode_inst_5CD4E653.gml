@@ -1,3 +1,5 @@
 script = function(){
-	instance_deactivate_object(inst_6AD81896);
+	with(inst_6AD81896){
+		mask_index = spr_blank;
+	}
 }
