@@ -58,6 +58,7 @@ state.add("prep", {
 			if(wait_t < 30) wait_t++; //a little delay before you win
 			else{
 				obj_player.hspd = 0;
+				obj_player.flip = 1;
 				obj_win.state.change("turn");
 				state.change("win");
 			}
