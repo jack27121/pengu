@@ -1,4 +1,4 @@
-if distance_to_object(obj_player) < 500
+if dist = true
 {
 	wavemod = x/200;
 	

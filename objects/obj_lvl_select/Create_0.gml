@@ -1,6 +1,6 @@
 /// @description
 controlled = false;
-unlocked_levels = 9; //this and every level before this number will be unlocked
+unlocked_levels = 10; //this and every level before this number will be unlocked
 global.playername = "User"; //DEFAULT USERNAME
 alarm[0] = 120; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
 ready = false;

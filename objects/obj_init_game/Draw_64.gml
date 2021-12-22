@@ -3,7 +3,7 @@ if(room != rm_lvl_select){
 #region points n' timer
 	
 	//LEVEL CREATOR TEXT	
-	if room = rm_13_secret 
+	if instance_exists(obj_lvleditor)
 	{
 		if keyboard_check_pressed(vk_shift) {if showing = true {showing = false}else{showing = true}}
 		

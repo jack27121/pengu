@@ -1,4 +1,4 @@
-if distance_to_object(obj_player) < 500
+if dist = true
 {
 		if(!obj_player.hurting){
 			if (distance_to_object(obj_player) < 10 && !shrink){

@@ -12,10 +12,13 @@ grounded = false;
 hspd = 0;
 vspd = 0;
 grav = 0.2;
+dist = false;
 
 acos = 1;
 asin = 0;
 angle = 0;
+
+alarm[0] = 1;
 
 var max_frames = sprite_get_number(sprite_index);
 image_index = random_range(0,max_frames);

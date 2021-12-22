@@ -4,13 +4,11 @@ input_hotswap_tick(0);
 
 if (os_browser == browser_not_a_browser)
 {
-	if keyboard_check_pressed(vk_f3)
+	if !instance_exists(obj_lvleditor)
 	{
-		camera_zoom(1.5,120);
-	}
-	if keyboard_check_pressed(vk_f4)
-	{
-		camera_zoom(1,120);
+		if keyboard_check_pressed(vk_f3) {camera_zoom(1.5,120);}
+		if keyboard_check_pressed(vk_f4) {camera_zoom(1,120);}
+		if keyboard_check_pressed(vk_f5) {instance_create_layer(mouse_x,mouse_y,"Instances",obj_lvleditor);}
 	}
 }
 
