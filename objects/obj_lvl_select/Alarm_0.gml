@@ -1,16 +1,6 @@
 /// @description GIVE MEDAL FOR PLAYING GAME
 if global.medalplay = false {ng_unlockmedal("Winter Bash"); global.medalplay = true; show_debug_message("Winter Bash");}
 
-//CHECK TO SEE HOW MANY LEVELS AND STARS ARE GOTTEN
-for (var i = 0; i < array_length(pictures); ++i) {
-	if beattime[i] != -1 {global.levelsbeaten += 1;}
-}
-for (var i = 0; i < array_length(pictures); ++i) {
-	if star[i] != 0 {global.startotal += 1;}
-}
-show_debug_message("levels beaten:" + string(global.levelsbeaten));
-show_debug_message("stars collected:" + string(global.startotal));
-
 //CHECK AND SEE IF ALL LEVELS ARE BEATEN
 if global.medalall = false {if global.levelsbeaten = 12 {ng_unlockmedal("Lil Helper"); global.medalall = true; show_debug_message("Lil Helper");}}
 

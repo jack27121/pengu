@@ -1,5 +1,5 @@
 /// @description 
-if distance_to_object(obj_player) < 2000
+if distance_to_object(obj_player) < 1000
 {
 	dist = true;	
 }

@@ -8,8 +8,11 @@ if(!surface_exists(ocean_surface)){
 }
 surface_set_target(ocean_surface);
 draw_clear(black);
+if global.bonuslevel = false {oceanspr = spr_bg_ocean;}
+if global.bonuslevel = true {oceanspr = spr_bg_ocean_bonus;}
+
 for (var i = 0; i < 16; ++i) {
-    draw_sprite_tiled_area(spr_bg_ocean,0,(-x+bg_t)*(0.25+(i*0.05)),0,0,i*5,view_w,(i*5)+5);
+    draw_sprite_tiled_area(oceanspr,0,(-x+bg_t)*(0.25+(i*0.05)),0,0,i*5,view_w,(i*5)+5);
 }
 surface_reset_target();
 #endregion
@@ -21,11 +24,22 @@ if(!surface_exists(bg_surface)){
 surface_set_target(bg_surface);
 draw_clear(black);
 
-draw_sprite_tiled(spr_bg_sky,0,-x*0.05,0); //sky
-
-draw_sprite_tiled(spr_bg_burg1,0,-x*0.1,0); //burg1
-draw_sprite_tiled(spr_bg_burg2,0,-x*0.15,0); //burg2
-draw_sprite_tiled(spr_bg_burg3,0,-x*0.2,0); //burg3
+if global.bonuslevel = false
+{
+	//REGULAR GAMEPLAY
+	draw_sprite_tiled(spr_bg_sky,0,-x*0.05,0); //sky
+	draw_sprite_tiled(spr_bg_burg1,0,-x*0.1,0); //burg1
+	draw_sprite_tiled(spr_bg_burg2,0,-x*0.15,0); //burg2
+	draw_sprite_tiled(spr_bg_burg3,0,-x*0.2,0); //burg3
+}
+else
+{
+	//BONUS GAMEPLAY
+	draw_sprite_tiled(spr_bg_sky_bonus,0,-x*0.05,0); //sky
+	draw_sprite_tiled(spr_bg_burg1_bonus,0,-x*0.1,0); //burg1
+	draw_sprite_tiled(spr_bg_burg2_bonus,0,-x*0.15,0); //burg2
+	draw_sprite_tiled(spr_bg_burg3_bonus,0,-x*0.2,0); //burg3
+}
 
 if(!instance_exists(obj_water_level)){
 	draw_surface(ocean_surface,0,130);

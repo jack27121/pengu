@@ -1,5 +1,5 @@
 /// @description
-if(room != rm_lvl_select){
+if(room != rm_lvl_select and room != rm_ending){
 #region points n' timer
 	
 	//LEVEL CREATOR TEXT	
@@ -107,4 +107,23 @@ if(room != rm_lvl_select){
 	draw_set_alpha(1);
 	draw_text(116,-4,timer_text);
 	#endregion
+}
+
+if instance_exists(obj_darkness)
+{
+	c_rainbow = make_color_hsv((get_timer()/10000) mod 255,255,255);
+	draw_set_alpha(obj_darkness.image_alpha);
+	draw_set_valign(fa_middle)
+	draw_set_halign(fa_center)
+	draw_set_color(c_rainbow);
+	draw_set_font(f_pixel);
+	draw_text_outline(view_w/2,(view_h/3)+sinwave(-6,6,2,0),"Merry Christmas!",1,c_black,4);
+	
+	draw_text_outline(view_w/2,(view_h/2.5)+sinwave(-6,6,2,0),"Thank you so much for playing our game!",1,c_black,4);
+	
+	draw_set_color(c_white);
+	draw_text_outline(view_w/2,view_h/1.5,"This year was pretty rough!\nA lot of bad things happened.\nBut so did a lot of good!\nWith everyone stuck indoors, creativity flourished.\nHere is to another year of making \nand playing cool shit with homies!\n \n XOXOXO, STANN.CO, Stepford, chocoholicmonkey & FractalCounty",1,c_black,4);
+	draw_set_valign(fa_top);
+	draw_set_halign(fa_left);	
+	draw_set_alpha(1);
 }

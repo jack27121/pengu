@@ -44,6 +44,8 @@ if(controlled) {
 			if (global.selected == 9) 	  { ng_postScore("11159", new_score);}
 			if (global.selected == 10)    { ng_postScore("11160", new_score);}
 			if (global.selected == 11)    { ng_postScore("11161", new_score);}
+			if (global.selected == 12)    { ng_postScore("11180", new_score);}
+			if (global.selected == 13)    { ng_postScore("11182", new_score);}
 		}
 	}
 	

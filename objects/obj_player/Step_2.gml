@@ -110,7 +110,7 @@ if(!hurting) { //DETECT BEING HIT BY spikies
 
 #region pits
 if(y > room_height+20 && !state.state_is("dying")) { //DETECT falling in a pit
-	if (room != rm_13_secret) state.change("dying");
+	if (room != rm_14_secret) state.change("dying");
 }
 #endregion
 
@@ -136,3 +136,4 @@ state.step();
 ////Makes the body always conform to it's original size
 scaleY = lerp(scaleY,1,0.15);
 scaleX = lerp(scaleX,1,0.15);
+

@@ -3,6 +3,7 @@ char_x = obj_win.x;
 player_x = char_x - 128; //the distance the player goes from the character
 banner = false;
 global.star = false;
+once = false;
 
 cam_pos_x = player_x+64;
 cam_pos_y = obj_win.y-42;
@@ -28,12 +29,21 @@ state.add("idle", {
 			camera_move(cam_pos_x,cam_pos_y,room_speed);
 			state.change("prep");
 			
-			ini_open("savedata.ini");
-			var last_time = ini_read_real(room_get_name(room),"beattime",-1);
-			if(last_time == -1) last_time = 9999999999;
-			var best_time = min(last_time , (global.timer-global.cookietimer));
-			show_debug_message(best_time);
-			ini_write_real(room_get_name(room), "beattime", best_time);
+			if global.bonuslevel = false
+			{
+				//NORMAL GAMEPLAY
+				ini_open("savedata.ini");
+				var last_time = ini_read_real(room_get_name(room),"beattime",-1);
+				if(last_time == -1) last_time = 9999999999;
+				var best_time = min(last_time , (global.timer-global.cookietimer));
+				show_debug_message(best_time);
+				ini_write_real(room_get_name(room), "beattime", best_time);
+				ini_close();
+			}
+			else if rm_12_castlecrashers
+			{
+				//HANDLE ELSEWHERE
+			}
 			
 			
 			//STAR
@@ -41,6 +51,8 @@ state.add("idle", {
 				global.star = 1;
 				audio_play_sound(snd_star_win,10,false);
 			}
+			
+			ini_open("savedata.ini");
 			var gotstar = ini_read_real(room_get_name(room), "star", 0);
 			if (global.star && gotstar == 0) ini_write_real(room_get_name(room), "star", 1);
 			ini_close();
@@ -74,7 +86,20 @@ state.add("win", {
 		banner_t = lerp(banner_t,1,0.1);
 		if(wait_t < 120) wait_t++; //a little delay before you win
 		else start_fade_out(function(){
-			room_goto(rm_lvl_select);
+			if global.bonuslevel = false {room_goto(rm_lvl_select); show_debug_message("all done. back to menu!");}
+			else
+			{
+				if room != rm_12_castlecrashers { //IF ITS NOT LEVEL 12, GO TO NEXT LEVEL
+					if instance_exists(obj_player) and once = false
+					{
+						once = true;
+						instance_destroy(obj_transition);
+						global.bonustime = global.timer-global.cookietimer; 
+						room_goto_next();
+						show_debug_message("GOING TO NEXT LEVEL, BONUS MODE!");
+					}
+				} else {room_goto(rm_lvl_select); show_debug_message("BACK TO MENU, BONUS MODE!");} //ELSE RETURN TO MENU
+			}
 		})
 	
 	},

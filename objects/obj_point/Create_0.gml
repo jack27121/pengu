@@ -12,7 +12,8 @@ grounded = false;
 hspd = 0;
 vspd = 0;
 grav = 0.2;
-dist = false;
+if distance_to_object(obj_player) > 1000 {dist = false;}
+else {dist = true;}
 
 acos = 1;
 asin = 0;

@@ -47,8 +47,8 @@ draw_set_color(black);
 draw_set_font(f_whackyjoe_title);
 c_rainbow = make_color_hsv((get_timer()/10000) mod 255,255,255);
 if global.startotal = 12 {
-	draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",4,c_black,12);
-	draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",2,c_rainbow,6);
+	//draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",4,c_black,12);
+	//draw_text_outline(830+sinwave(-2,2,2,0),view_h*upscale-80-credit_offset*102+pandown,"Press F12 to go to a secret bonus level!",2,c_rainbow,6);
 }
 
 draw_set_color(black);
@@ -94,7 +94,13 @@ for (var i = 0; i < array_length(levels); ++i) {
 	draw_set_color(white);
 	
 	if !(unlocked_levels > i) draw_set_alpha(0.5);
-    draw_text(view_w/2+(i*offset)-(selected_viz*offset),view_h+pandown,string(i+1));
+	
+	//IS THIS THE MYSTERY LEVEL?
+    if i < 12 {draw_set_font(f_whackyjoe); leveltext = string(i+1);}
+	else if i = 12 {draw_set_font(f_whackyjoe_title); leveltext = "?";}
+	else if i = 13 {draw_set_font(f_whackyjoe_title); leveltext = "*";}
+	
+	draw_text(view_w/2+(i*offset)-(selected_viz*offset),view_h+pandown,leveltext);
 	
 	if(global.selected == i){//display best time
 		draw_set_font(f_pixel);
@@ -113,19 +119,24 @@ for (var i = 0; i < array_length(levels); ++i) {
 		}
 		
 		if(unlocked_levels <= i){
-			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,"Unlocks sometime Dec "+string(i+13));
+			if i < 12 {draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,"Unlocks sometime Dec "+string(i+13));}
+			if i >= 12 {draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,"???");}
 		} else {
 			//DRAWING THE STAR
-			if(star[i] == 0) {
-				//IF STAR = 0?
-				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown,1,1,0,c_dkgray,1);
-				global.gottenstar = 0;
-			} else {
-				//IF STAR = 1?
-				draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,1);
-				draw_sprite_ext(spr_icon_star,1,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,sinwave(0.1,0.6,1,0));	
-				global.gottenstar = 1;
+			if i < 12 
+			{
+				if(star[i] == 0) {
+					//IF STAR = 0?
+					draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown,1,1,0,c_dkgray,1);
+					global.gottenstar = 0;
+				} else {
+					//IF STAR = 1?
+					draw_sprite_ext(spr_icon_star,0,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,1);
+					draw_sprite_ext(spr_icon_star,1,view_w/2+(i*offset)-(global.selected*offset)-36,view_h-22+pandown+sinwave(-0.5,0.5,2,0),1,1,0,c_white,sinwave(0.1,0.6,1,0));	
+					global.gottenstar = 1;
+				}
 			}
+			
 			draw_sprite(spr_icon_watch_small,0,view_w/2+(i*offset)-(global.selected*offset)-28,view_h-22+pandown);
 			draw_text(view_w/2+(i*offset)-(global.selected*offset),view_h-21+pandown,timer_text);
 		}

@@ -335,7 +335,7 @@ state.add("dying", {
 		
 		
 		
-		if room != rm_13_secret {
+		if room != rm_14_secret {
 			controlled = false;	
 			start_fade_out(function(){
 				room_restart();
@@ -347,5 +347,7 @@ state.add("dying", {
 		}
 	}
 });
+
+if global.bonuslevel = true {show_debug_message("BONUS LEVEL = true");}
 
 #endregion

@@ -21,7 +21,8 @@ if(room != rm_lvl_select){
 		if(restart_time >= 0.9){
 			restart_time = 0;
 			start_fade_out(function(){
-				room_restart();
+				if global.bonuslevel = false {room_restart();}
+				if global.bonuslevel = true {room_goto(rm_1_pico); global.bonustime = 0;}
 			});
 		}
 	} else restart_time = 0;

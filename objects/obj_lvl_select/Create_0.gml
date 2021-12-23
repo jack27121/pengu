@@ -3,13 +3,17 @@ controlled = false;
 unlocked_levels = 10; //this and every level before this number will be unlocked
 global.playername = "User"; //DEFAULT USERNAME
 alarm[0] = 120; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
+alarm[1] = 20; // CHECK COMPLETED LEVELS
 ready = false;
 
 if(!global.started) pandown = 720; //starts in the sky and pans down
 else pandown = 0;
 
+global.bonuslevel = false;
+global.bonustime = 0;
 global.startotal = 0;
 global.levelsbeaten = 0;
+global.hasseenend = 0; //FALSE
  
 levels = [
 	room_get_name(rm_1_pico),
@@ -23,7 +27,9 @@ levels = [
 	room_get_name(rm_9_bees),
 	room_get_name(rm_10_cordelia),
 	room_get_name(rm_11_satina),
-	room_get_name(rm_12_castlecrashers)
+	room_get_name(rm_12_castlecrashers),
+	room_get_name(rm_13_bonuslevel),
+	room_get_name(rm_14_secret)
 ];
 
 pictures = [
@@ -38,17 +44,20 @@ pictures = [
 	spr_calendar_drbees,
 	spr_calendar_cordelia,
 	spr_calendar_satina,
-	spr_calendar_castlecrashers
+	spr_calendar_castlecrashers,
+	spr_blank,
+	spr_blank
 ];
 
 
 beattime = [];
 star = [];
 ini_open("savedata.ini");
-for (var i = 0; i < array_length(levels); ++i) {
-	beattime[i] = ini_read_real(levels[i] ,"beattime",-1);
-	star[i] = ini_read_real(levels[i],"star",0);
-}
+	for (var i = 0; i < array_length(levels); ++i) {
+		beattime[i] = ini_read_real(levels[i] ,"beattime",-1);
+		star[i] = ini_read_real(levels[i],"star",0);
+	}
+	global.hasseenend = ini_read_real("game","hasseenend",0);
 ini_close();
 selected_viz = 0;
 
@@ -64,5 +73,7 @@ nr_cords = [
 	[849,	270],
 	[1028,	478],
 	[728,	459],
-	[286,	489]
+	[286,	489],
+	[2000,	2000],
+	[2000,	2000]
 ];

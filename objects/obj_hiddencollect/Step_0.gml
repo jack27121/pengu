@@ -38,3 +38,6 @@ if (goto){
 	}
 	global.hooked = 1;
 }
+
+///HIDE THEM!!!
+if global.bonuslevel = true {x = -99999; y = -99999;}
