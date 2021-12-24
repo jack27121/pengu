@@ -20,5 +20,9 @@ if instance_exists(obj_win) and instance_exists(obj_player)
 }
 
 //if the song doesn't play, it will
-if(!audio_is_playing(global.music) and global.mute = false) {global.music = audio_play_sound(music_christmas,100,true);} //IF NO MUTE
+if(!audio_is_playing(global.music) and global.mute = false){
+	global.music = audio_play_sound(music_christmas,100,true);
+	if(global.bonuslevel) audio_sound_pitch(global.music,1.2);	
+	else audio_sound_pitch(global.music,1);
+} //IF NO MUTE
 if (global.mute = true) {if audio_is_playing(global.music) {audio_stop_sound(global.music)}} //IF MUTE

@@ -74,6 +74,7 @@ vspd = clamp(vspd,-maxSpdV,maxSpdV);
 
 //retarded code but returning the ground object, to see if it's a slidey one
 var wall = collision(hinput, frict);
+show_debug_message(grounded)
 if(is_child(wall,obj_wall_icey) && abs(asin)>0.6){
 	hcontrol = false;
 	if(!sliding){

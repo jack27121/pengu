@@ -35,7 +35,7 @@
     "spriteId": {"name":"spr_win_satina_idle","path":"sprites/spr_win_satina_idle/spr_win_satina_idle.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.15,
+    "playbackSpeed": 0.05,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

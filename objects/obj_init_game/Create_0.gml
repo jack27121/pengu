@@ -43,7 +43,6 @@ global.levelsbeaten = 0;
 global.deathcounter = 0;
 global.gottenstar = 0;
 global.bonuslevel = false;
-global.bonustime = 0;
 
 
 //MEDAL VARS

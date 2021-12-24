@@ -1,15 +1,11 @@
 /// @description
-if(y_ != y_dest){
-	y_ = ease_in_out(t,y_start,y_dest-y_start,duration);
-	t++
+y_ = sinwave(y_start,y_dest,duration,0);
 
-}else{ //reverses after reaching destination
-	t = 0;
-	y_dest = y_start;
-	y_start = y_;
-}
-y = round(y_);
+if(rise_ != rise_dest) rise_ = lerp(rise_,rise_dest,0.04);
+
+y = round(y_+rise_);
 
 if(obj_player.y > y+16){
 	hurtplayer();
+	//if(!obj_player.hurting) obj_player.vspd = -2;
 }

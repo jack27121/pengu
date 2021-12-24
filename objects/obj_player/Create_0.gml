@@ -348,6 +348,4 @@ state.add("dying", {
 	}
 });
 
-if global.bonuslevel = true {show_debug_message("BONUS LEVEL = true");}
-
 #endregion

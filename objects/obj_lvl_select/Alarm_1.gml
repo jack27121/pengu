@@ -10,7 +10,8 @@ show_debug_message("levels beaten:" + string(global.levelsbeaten));
 show_debug_message("stars collected:" + string(global.startotal));
 
 //SHOW THE CUTSCENE? UNLOCK THE ? STAGE?
-if global.levelsbeaten = 12 {
+//global.levelsbeaten = 12
+if (global.levelsbeaten >= 12) {
 	unlocked_levels = 13;
 	if global.hasseenend = false
 	{
@@ -22,4 +23,4 @@ if global.levelsbeaten = 12 {
 }
 
 //UNLOCK THE SANDBOX MODE?
-if global.startotal = 12 {unlocked_levels = 14;}
+if global.startotal >= 12 {unlocked_levels = 14;}

@@ -35,7 +35,7 @@
     "spriteId": {"name":"spr_win_satina_turn","path":"sprites/spr_win_satina_turn/spr_win_satina_turn.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 0.2,
+    "playbackSpeed": 0.15,
     "playbackSpeedType": 1,
     "autoRecord": true,
     "volume": 1.0,

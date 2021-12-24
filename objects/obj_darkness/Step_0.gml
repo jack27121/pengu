@@ -1,2 +1,2 @@
 /// @description 
-image_alpha = lerp(image_alpha,1,0.1);
+alpha = lerp(alpha,1,0.1);

@@ -94,7 +94,6 @@ state.add("win", {
 					{
 						once = true;
 						instance_destroy(obj_transition);
-						global.bonustime = global.timer-global.cookietimer; 
 						room_goto_next();
 						show_debug_message("GOING TO NEXT LEVEL, BONUS MODE!");
 					}

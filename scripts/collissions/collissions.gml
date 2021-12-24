@@ -36,18 +36,24 @@ function collision(hinput_ = 0, frict = 0.2,bounciness = 0) {
 		}
 	}
 	//doesn't run if you're underneath a one way platform
-	var wall = instance_place(x,y+vspd_,obj_collission);
-	var going_down = (vspd >= 0 || is_child(wall,obj_moving_platform));
-	if ((wall != noone && !is_child(wall,obj_wall_top)) || (is_child(wall,obj_wall_top) && bbox_bottom-2 <= wall.bbox_top+2 && going_down )){
-		while(!place_meeting(x, y+sign(vspd_), obj_collission)) {
+	var wall = instance_place(x,y+vspd_+1,obj_wall);
+	var wall_top = instance_place(x,y+vspd_+1,obj_wall_top);
+	var going_down = (vspd >= 0 || is_child(wall_top,obj_moving_platform));
+	show_debug_message(wall != noone);
+	show_debug_message(vspd_);
+	show_debug_message(y);
+	if ((wall != noone) || (wall == noone && wall_top != noone && bbox_bottom-2 <= wall_top.bbox_top+2 && going_down)){
+		if (wall == noone) wall = wall_top;
+		var coll_type = wall.object_index
+		while(!place_meeting(x, y+sign(vspd_), coll_type)) {
 			y += sign(vspd_);
 		}
 		y = round(y);
 		
 		//moves with platform
 		x+= wall.x-wall.xprevious;
-		if !collision_point(x,bbox_bottom,obj_collission,true,true) y+= wall.y-wall.yprevious;
-		else while(collision_point(x,bbox_bottom,obj_collission,true,true))y--;
+		if !collision_point(x,bbox_bottom,coll_type,true,true) y+= wall.y-wall.yprevious;
+		else while(collision_point(x,bbox_bottom,coll_type,true,true))y--;
 		
 		//rotation with platform
 		//if(variable_instance_exists(wall,"rot_spd")){

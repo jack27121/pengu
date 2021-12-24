@@ -1,6 +1,6 @@
 /// @description
 controlled = false;
-unlocked_levels = 11; //this and every level before this number will be unlocked
+unlocked_levels = 12; //this and every level before this number will be unlocked
 global.playername = "User"; //DEFAULT USERNAME
 alarm[0] = 120; // GIVE THE MEDAL A BIT OF TIME TO ENSURE LOGIN
 alarm[1] = 20; // CHECK COMPLETED LEVELS
@@ -10,7 +10,8 @@ if(!global.started) pandown = 720; //starts in the sky and pans down
 else pandown = 0;
 
 global.bonuslevel = false;
-global.bonustime = 0;
+global.timer = 0;
+global.counting = false;
 global.startotal = 0;
 global.levelsbeaten = 0;
 global.hasseenend = 0; //FALSE
